@@ -496,10 +496,7 @@ function zcjy_callback_data($data=null,$code=0,$api='api'){
 }
 
 
-function zcjy_data($data=null)
-{
-  return response()->json($data);
-}
+
 
 /**
  * [api接口请求回转数据]

@@ -3,6 +3,12 @@ include_once 'Shop.php';
 include_once 'Smart.php';
 use App\User;
 
+
+function zcjy_data($data=null)
+{
+  return response()->json($data);
+}
+
 /**
  * 处理浮点数 数组或者直接浮点数
  * @param  [type]  $data  [description]
