@@ -18,7 +18,7 @@ use Illuminate\Http\Request;
  */
 $api = app('Dingo\Api\Routing\Router');
 $api->version('v1', function ($api) {
-		$api->group(['namespace' => 'App\Http\Controllers\Smart\API'], function ($api) {
+		$api->group(['namespace' => 'App\Http\Controllers\Smart\API','middleware' => 'acces'], function ($api) {
 
 		/**
 		 * 设备相关api

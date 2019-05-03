@@ -61,5 +61,6 @@ class Kernel extends HttpKernel
         'auth.user' => \App\Http\Middleware\AuthMiddleware::class,
         'webAuth' => \App\Http\Middleware\WebAuthMiddleware::class,
         'webCert' => \App\Http\Middleware\WebCertMiddleware::class,
+        'acces' => \App\Http\Middleware\AccessControlAllowOrigin::class
     ];
 }
