@@ -4,6 +4,27 @@ include_once 'Smart.php';
 use App\User;
 
 /**
+ * 处理浮点数 数组或者直接浮点数
+ * @param  [type]  $data  [description]
+ * @param  integer $limit [description]
+ * @return [type]         [description]
+ */
+function dealFloatData($data,$limit = 2)
+{
+    if(is_array($data))
+    {
+      foreach ($data as $key => $val) 
+      {
+        $data[$key] = sprintf("%.2f", $val);
+      }
+    }
+    else{
+      $data = sprintf("%.2f", $data);
+    }
+    return is_array($data) ? $data : $data;
+}
+
+/**
  * 直接获取必须参数
  * @param  [type]  $model        [description]
  * @param  boolean $return_array [description]
