@@ -258,6 +258,20 @@ trait SmartCacheService{
  * 智能控制
  */
 trait SmartControl{
+    /**
+     * 更新设备状态
+     * @param  [type] $input [description]
+     * @return [type]        [description]
+     */
+    public static function updateDeviceStatus($input)
+    {
+        $light = DevLight::where('me',$input['me'])->first();
+        if(!empty($light))
+        {
+            $light->update(['is_on'=>$input['switch']]);
+        }
+    }
+
 
     /**
      * 打开关闭场景
@@ -338,6 +352,11 @@ trait SmartControl{
         $input['agt'] = self::getCacheAgt();
 
         $result = self::simpleGuzzleRequest(self::$smartUrl.'set_one_device','GET',$input);
+
+        //操作更新状态
+        $input['switch'] = $switch;
+        
+        self::updateDeviceStatus($input);
 
         return self::returnVarifyJavaResultData($result);
     }
