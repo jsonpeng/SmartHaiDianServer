@@ -263,12 +263,12 @@ trait SmartControl{
      * @param  [type] $input [description]
      * @return [type]        [description]
      */
-    public static function updateDeviceStatus($input)
+    public static function updateDeviceStatus($input,$switch)
     {
         $light = DevLight::where('me',$input['me'])->first();
         if(!empty($light))
         {
-            $light->update(['is_on'=>$input['switch']]);
+            $light->update(['is_on'=>(int)$switch]);
         }
     }
 
@@ -353,10 +353,7 @@ trait SmartControl{
 
         $result = self::simpleGuzzleRequest(self::$smartUrl.'set_one_device','GET',$input);
 
-        //操作更新状态
-        $input['switch'] = $switch;
-        
-        self::updateDeviceStatus($input);
+        self::updateDeviceStatus($input,$switch);
 
         return self::returnVarifyJavaResultData($result);
     }
