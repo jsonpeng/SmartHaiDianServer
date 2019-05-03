@@ -196,7 +196,7 @@ trait SmartDataShow{
                     'image'      => $sensor->image,
                     'me'         => $sensor->me,
                     'support_switch' => 0,
-                    'is_on'     => $sensor->is_on,
+                    'is_on'     => 1,
                     'support_idx'=> '',
                     'region_name' => self::getRegionDescByName($sensor->region_name),
                     'state'      => self::getDeviceState($sensor),
