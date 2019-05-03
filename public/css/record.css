@@ -1,0 +1,30 @@
+.record{
+	border-top: 0.05rem solid #494232;
+	border-bottom: 0.05rem solid #494232;
+}
+.record-item{
+	padding:0.75rem 0.75rem 0.45rem 0.75rem;
+	color:#fff;
+	background-color: rgba(71,68,62,.3);
+	border-bottom: 0.05rem solid #7c7054;
+}
+.record-item:last-child{
+	border-bottom: none;
+}
+.record-item .weui-cell__bd p{
+	font-size:0.8rem;
+	margin-bottom: 0.4rem;
+}
+.record-item .weui-cell__bd div{
+	font-size:0.6rem;
+	opacity: 0.6;
+}
+.record-item .weui-cell__ft p{
+	color:#fff;
+	font-size:0.8rem;
+	margin-bottom: 0.4rem;
+}
+.record-item .weui-cell__ft div{
+	color:#fff;
+	font-size:0.6rem;
+}

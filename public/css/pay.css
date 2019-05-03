@@ -1,0 +1,163 @@
+.head{
+	background:url('../images/bg1.png') no-repeat center center;
+	background-size: cover;
+	padding:1rem 0.75rem;
+}
+.head .weui-cell__bd p{
+	font-size:0.7rem;
+}
+.head .weui-cell__bd p:first-child{
+	font-size:0.9rem;
+	font-weight:bold;
+	color:#fff;
+	margin-bottom: 0.3rem;
+}
+.balance{
+	padding:0.4rem 0.75rem;
+	background: rgba(71,68,62,.3);
+	border-top:0.05rem solid #494232;
+	border-bottom:0.05rem solid #494232;
+}
+.balance .weui-cell__bd{
+	font-size:0.9rem;
+	color:#fff;
+}
+.balance .weui-cell__ft a{
+	font-size:0.7rem;
+	line-height: 1rem;
+	color:#fff;
+	padding-left: 1rem;
+	background:url(../images/icon10.png) no-repeat left center;
+}
+.balance .weui-cell__ft a:last-child{
+	background:url(../images/icon11.png) no-repeat left center;
+	margin-left: 2.4rem;
+}
+.pay-num{
+	padding:1rem 0 0.7rem 0;
+}
+.pay-num .title{
+	text-align: center;
+	font-size: 0.8rem;
+	color:#fff;
+	margin-bottom: 0.9rem;
+}
+.pay-num .price-list{
+	flex-wrap: wrap;
+	padding:0 0.5rem;
+}
+.pay-num .price-list .price-item{
+	padding: 0.35rem 0.2rem;
+}
+.pay-num .price-list .price-item.active .placeholder{
+	color:#000;
+	background-color: #f3dca5;
+	box-shadow: 0 0.1rem 0.6rem rgba(254,240,197,.32);
+}
+.pay-num .price-list .price-item .placeholder{
+	width:4rem;
+	height:1.5rem;
+	line-height: 1.5rem;
+	background-color: #313131;
+	border-radius: 0.3rem;
+	color:rgba(255,255,255,.6);
+	font-size:0.7rem;
+	text-align: center;
+}
+.sel-way{
+	background-color: rgba(71,68,62,.3);
+}
+.sel-way .weui-cell{
+	border-top:1px solid #494232;
+	border-bottom:1px solid #494232;
+	padding:0.5rem 0.75rem;
+	justify-content: space-between;
+}
+.weui-cells_radio .weui-check:checked+.weui-icon-checked:before {
+    display: block;
+    content: "";
+    width:1rem;
+    height:1rem;
+    background:url(../images/gou.png) no-repeat center center;
+}
+.topay{
+	padding:0.75rem;
+}
+.topay a{
+	display: block;
+	background: linear-gradient(to right, #fef1c6 , #f2d9a2);
+	color:#63460f;
+	font-size:0.8rem;
+	text-align: center;
+	padding:0.7rem 0;
+	border-radius: 0.4rem;
+	box-shadow: 0 0 0.6rem rgba(254,240,197,0.32);
+}
+.pay-statement{
+	background-color: #fff;
+	margin:0 0.75rem;
+	padding:0.95rem 0.75rem 1.1rem 0.75rem;
+	border-radius: 0.4rem;
+}
+.pay-statement .title{
+	text-align: center;
+	font-size:0.9rem;
+	font-weight:bold;
+	color:#63460f;
+	margin-bottom: 0.5rem;
+}
+.pay-statement .content p{
+	line-height: 2;
+	font-size:0.7rem;
+	color:#63460f;
+}
+.tixian .title{
+	text-align: center;
+	color:#fff;
+	font-size:0.9rem;
+	padding:1.1rem 0;
+}
+.tixian label{
+	display: block;
+	padding:0 0.75rem;
+}
+.tixian label input{
+	width:100%;
+	font-size:0.8rem;
+	color:#63460f;
+	line-height: 2.25rem;
+	border-radius: 0.4rem;
+	text-align: center;
+}
+.yongjin{
+	color:#fff;
+	font-size:0.7rem;
+	padding:0 0.75rem;
+}
+.yongjin .weui-cell{
+	padding:0.75rem 0 0.8rem 0;
+	text-align: center;
+}
+.method-box .statement .content{
+	font-size:0.7rem;
+	color:rgba(255,255,255,.7);
+	padding-top: 1.3rem;
+	padding-bottom: 2.75rem;
+}
+.method-box .statement .content p{
+	line-height: 2;
+	text-align: center;
+}
+.method-box .statement .confirm{
+	margin:0 0.75rem;
+}
+.method-box .statement .confirm a{
+	display: block;
+	box-shadow: 0 0.1rem 0.6rem 0 rgba(254,240,197,0.32);
+	background-color: #fbecbe;
+	color:#63460f;
+	font-size:0.8rem;
+	text-align: center;
+	padding:0.65rem 0;
+	border-radius: 0.45rem;
+}

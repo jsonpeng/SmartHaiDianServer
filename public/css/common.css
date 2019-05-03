@@ -1,0 +1,265 @@
+@charset "UTF-8";
+/**
+ * ��������
+ */
+/**
+ * ����������
+ */
+/**
+ * ��������ʽ
+ */
+body {
+  font-family:  'Microsoft YaHei','-apple-system', "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
+  padding-bottom: 2.75rem;
+}
+a{
+  text-decoration: none;
+}
+a:hover{
+  text-decoration: none;
+}
+*{
+  margin:0;
+  padding:0;
+}
+/* ==========================================================================
+	浏览器设定初始化
+   ========================================================================== */
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+form,
+fieldset,
+input,
+textarea,
+p,
+blockquote，th,
+td {
+  margin: 0;
+  padding: 0;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+fieldset,
+img {
+  border: 0;
+}
+ol,
+ul {
+  list-style: none;
+}
+caption,
+th {
+  text-align: left;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+  font-weight: normal;
+}
+q:before,
+q:after {
+  content: ' ';
+}
+abbr,
+acronym {
+  border: 0;
+}
+.tl {
+  text-align: left;
+}
+.tc {
+  text-align: center;
+}
+.tr {
+  text-align: right;
+}
+.bc {
+  margin-left: auto;
+  margin-right: auto;
+}
+.fl {
+  float: left;
+  display: inline;
+}
+.fr {
+  float: right;
+  display: inline;
+}
+.cb {
+  clear: both;
+}
+.cl {
+  clear: left;
+}
+.cr {
+  clear: right;
+}
+/*.clearfix:after {
+  content: '.';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.clearfix {
+  display: inline-block;
+}
+*html .clearfix {
+  height: 1%;
+}
+.Clearfix {
+  display: block;
+}*/
+.vm {
+  vertical-align: middle;
+}
+.pr {
+  position: relative;
+}
+.pa {
+  position: absolute;
+}
+.abs-right {
+  position: absolute;
+  right: 0;
+}
+.zoom {
+  zoom: 1;
+}
+.hidden {
+  visibility: hidden;
+}
+.none {
+  display: none;
+}
+.db {
+  display: block;
+}
+.dbl {
+  display: inline-block;
+}
+body{
+  line-height: 1;
+}
+*{
+  box-sizing: border-box;
+}
+/*.main-bg .brand span{
+  color:#fff;
+  font-size: 
+  background:url('../images/') no-repeat left ;
+}*/
+/* //@import "main"; */
+/*!
+  Ionicons, v2.0.0
+  Created by Ben Sperry for the Ionic Framework, http://ionicons.com/
+  https://twitter.com/benjsperry  https://twitter.com/ionicframework
+  MIT License: https://github.com/driftyco/ionicons
+
+  Android-style icons originally built by Google��s
+  Material Design Icons: https://github.com/google/material-design-icons
+  used under CC BY http://creativecommons.org/licenses/by/4.0/
+  Modified icons to fit ionicon��s grid from original.
+*/
+.weui-tabbar{
+  background: rgba(35,34,34);
+  padding: 0.2rem 0;
+  position:fixed;
+  left:0;
+  right:0;
+}
+.weui-tabbar:before{
+  display: none;
+}
+.weui-tabbar__icon {
+    width: 1.45rem;
+    height: 1.45rem;
+}
+.weui-tabbar__label{
+  color:rgba(130,125,120);
+  font-size:0.55rem;
+  line-height: 1.4;
+}
+.weui-tabbar__item.weui-bar__item_on .weui-tabbar__label{
+  color:#f3dba4;
+}
+.weui-cell:before{
+  display: none;
+}
+.this-shadow{
+  box-shadow: 0 0.1rem 0.6rem 0 rgba(254,240,197,0.32);
+}
+#zhezhao{
+  position:fixed;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  z-index: 1000;
+  background-color: rgba(11,3,6,0.7);
+}
+.method-box .statement{
+  position:fixed;
+  z-index: 1001;
+  top:2.25rem;
+  left:0.75rem;
+  right:0.75rem;
+  background-color: #19171c;
+  padding:0 0.75rem;
+  padding-bottom: 1.8rem;
+}
+.method-box .statement .title{
+  text-align: center;
+  color:#fff;
+  font-size:0.9rem;
+  font-weight: bold;
+  padding:1.2rem 0;
+  border-bottom:1px solid #000;
+  position:relative;
+}
+.method-box .statement .title:after{
+  content:'';
+  position:absolute;
+  bottom:0;
+  left:0;
+  right:0;
+  border-top:1px solid #3e3b44;
+}
+
+body{
+  background-color: #000;
+  padding-bottom: 2.75rem;
+}
+
+.skip{
+  background: linear-gradient(to right, #fef1c6 , #f2d9a2);
+  box-shadow: 0 0.1rem 0.6rem 0 rgba(254,240,197,0.32);
+  border-radius: 0.4rem;
+  margin-bottom:0.8rem;
+}
+/*.skip a{
+  display: block;
+  padding:0.7rem 0; 
+  text-align: center;
+  color:#63460f;
+  font-size:0.8rem;
+}*/
