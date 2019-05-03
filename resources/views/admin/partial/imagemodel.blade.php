@@ -28,10 +28,11 @@
 
     function responsive_filemanager_callback(field_id){
         var url=jQuery('#'+field_id).val();
-        setTimeout(function(){
-             $("#seeImg").click();
-        },200);
+        $('#'+field_id).parent().find('img').attr('src', url);
+        // setTimeout(function(){
+        //      $("#seeImg").click();
+        // },200);
          // $('iframe#image').attr('src', '/filemanager/dialog.php?type=1&field_id=image');
-        window.open(url);
+        // window.open(url);
     }
 </script>
