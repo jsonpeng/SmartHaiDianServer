@@ -20,4 +20,5 @@
            </div>
        </div>
    </div>
+   @include('admin.partial.imagemodel')
 @endsection

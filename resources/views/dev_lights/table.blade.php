@@ -5,13 +5,13 @@
         <th>型号</th>
         <th>名称</th>
         <th>设备状态</th>
-        <th>灯光类型</th>
+        <!-- <th>灯光类型</th> -->
         <th>设定区域</th>
         <th>开关</th>
-        <th>颜色值</th>
-        <th>动态颜色值</th>
-        <th>色温</th>
-        <th>亮度</th>
+        <!-- <th>颜色值</th> -->
+        <!-- <th>动态颜色值</th> -->
+        <!-- <th>色温</th> -->
+        <!-- <th>亮度</th> -->
         <th>智慧中心ID Agt</th>
         <th>智慧中心状态</th>
         <th>是否已接入</th>
@@ -26,13 +26,13 @@
             <td>{!! $devLight->model !!}</td>
             <td>{!! $devLight->name !!}</td>
             <td>{!! $devLight->StateStatus !!}</td>
-            <td>{!! $devLight->type !!}</td>
+            <!-- <td>{!! $devLight->type !!}</td> -->
             <td>{!! app("common")->RegionRepo()->getNameById($devLight->region_id) !!}</td>
             <td>{!! $devLight->IsOnStatus !!}</td>
-            <td>{!! $devLight->rgbw !!}</td>
+    <!--         <td>{!! $devLight->rgbw !!}</td>
             <td>{!! $devLight->dyn !!}</td>
             <td>{!! $devLight->color_temp !!}</td>
-            <td>{!! $devLight->bri !!}</td>
+            <td>{!! $devLight->bri !!}</td> -->
             <td>{!! $devLight->agt !!}</td>
             <td>{!! Smart::getDisplayName($devLight->agt_state,'state') !!}</td>
             <td>{!! $devLight->IsJoinStatus !!}</td>

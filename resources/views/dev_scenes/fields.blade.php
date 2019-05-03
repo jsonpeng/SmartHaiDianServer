@@ -10,6 +10,20 @@
     {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
 </div>
 
+
+<div class="form-group col-sm-12">
+    {!! Form::label('image', '场景图片:') !!}
+         <div class="form-group">
+
+                <div class="input-append">
+                    {!! Form::text('image', null, ['class' => 'form-control', 'id' => 'image']) !!}
+                    <a data-toggle="modal" href="javascript:;" data-target="#myModal" class="btn" type="button" onclick="changeImageId('image')">选择图片</a>
+                    <img src="@if(isset($devScene)) {{$devScene->image}} @endif" style="max-width: 100%; max-height: 150px; display: block;">
+                </div>
+
+        </div>
+</div>
+
 <!-- Enabled Field -->
 <div class="form-group col-sm-12">
     {!! Form::label('enabled', '是否开启场景:') !!}

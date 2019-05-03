@@ -46,7 +46,8 @@ class DevSensor extends Model
         'agt_state',
         'is_join',
         'join_at',
-        'region_name'
+        'region_name',
+        'image'
     ];
 
     /**
