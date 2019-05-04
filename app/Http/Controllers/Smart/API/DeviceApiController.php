@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 
 class DeviceApiController extends AppBaseController
 {
+
+
+
 	/**
      * 获取当前网关的所有设备
      *
@@ -30,6 +33,37 @@ class DeviceApiController extends AppBaseController
 	{
 		return zcjy_callback_data(\Smart::getAllDevicesAndByRegionName());
 	}
+
+     /**
+     * 获取指定模型的所有设备
+     *
+     * @SWG\Get(path="/api/device/get_model/{model}",
+     *   tags={"设备模块"},
+     *   summary="获取指定区域的所有设备",
+     *   description="获取指定区域的所有设备",
+     *   operationId="testRecordsStore",
+     *   produces={"application/json"},
+     *   @SWG\Parameter(
+     *     in="path",
+     *     name="model",
+     *     type="string",
+     *     description="指定模型",
+     *     required=true,
+     *   ),
+     *     @SWG\Response(
+     *         response=200,
+     *         description="status_code=0请求成功,status_code=1请求失败(缺少请求参数,参数验证失败等),data返回设备列表",
+     *     ),
+     *     @SWG\Response(
+     *         response=500,
+     *         description="服务器出错",
+     *     ),
+     * )
+     */
+     public function getModelDevices($model)
+     {
+          return zcjy_callback_data(\Smart::getModelDevices($model));
+     }
 
 	/**
      * 获取指定区域的所有设备

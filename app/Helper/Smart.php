@@ -21,7 +21,7 @@ class Smart{
 trait SmartContent{
 
      //java 多个控制接口
-    public static $smartUrl = "http://picc.nat300.top/api/device/";
+    public static $smartUrl = "http://40.73.66.252:8080/api/device/";
 
     //传感器类型
     public static $sensorType = 
@@ -49,15 +49,37 @@ trait SmartContent{
         '1' => '报警'
     ];
 
-    //设备模型
-    public static $deviceModel =
+    //灯光设备模型
+    public static $lightDeviceModel =
     [
         'SL_SPOT'    ,
         'SL_LI_RGBW' ,
-        'SL_SC_CP'   ,
-        'SL_SC_CQ'   ,
         'SL_CT_RGBW' 
+    ];
 
+    //燃气设备模型
+    public static $cpDeviceModel =
+    [
+        'SL_SC_CP'
+    ];
+
+    //环境设备模型
+    public static $cqDeviceModel =
+    [
+        'SL_SC_CQ'
+    ];
+
+    /**
+     * 模型类型
+     * @var [type]
+     */
+    public static $modelType = 
+    [
+        'SL_SPOT'    => '智能灯光设备',
+        'SL_LI_RGBW' => '智能灯光设备',
+        'SL_SC_CP'   => '燃气传感器',
+        'SL_SC_CQ'   => '环境传感器',
+        'SL_CT_RGBW' => '智能灯光设备'
     ];
 
     //设备状态对应的类型
@@ -106,6 +128,8 @@ trait SmartContent{
         'dm' => '大门'
     ];
 
+
+
  }
 
 /**
@@ -132,6 +156,76 @@ trait SmartDataShow{
         return DevScene::where('region_name',$region_name)->get();
     }
 
+    /**
+     * 获取指定模型的设备
+     * @param  [type] $model [description]
+     * @return [type]        [description]
+     */
+    public static function getModelDevices($model)
+    {
+        $allDevices = [];
+       //灯光设备
+        if(in_array($model, self::$lightDeviceModel))
+        {
+            $lights = DevLight::orderBy('created_at','desc')->get();
+            if(count($lights))
+            {
+                foreach ($lights as $key => $light) 
+                {
+                   $allDevices[] = 
+                   [
+                        'name'       => $light->name,
+                        'model'      => $light->model,
+                        'model_name' => self::getModelName($light->model),
+                        'class'      => '智能灯光设备',
+                        'image'      => $light->image,
+                        'me'         => $light->me,
+                        'support_switch' => 1,
+                        'is_on'     => $light->is_on,
+                        'support_idx'=> self::getLightSupportIdx($light),
+                        'region_name' => self::getRegionDescByName($light->region_name),
+                        'state'      => self::getDeviceState($light),
+                        'created_at' => $light->created_at
+                   ];
+                }
+            }
+            return $allDevices;
+        }
+
+       //燃气设备
+       //环境设备
+       if(in_array($model, self::$cpDeviceModel) || in_array($model, self::$cqDeviceModel))
+       {
+            $sensors = DevSensor::orderBy('created_at','desc')->where('model',$model)->get();
+
+            if(count($sensors))
+            {
+                foreach ($sensors as $key => $sensor) 
+                {
+                   $allDevices[] = 
+                   [
+                        'name'       => $sensor->name,
+                        'model'      => $sensor->model,
+                        'model_name' => self::getModelName($sensor->model),
+                        'class'      => '智能传感器设备',
+                        'image'      => $sensor->image,
+                        'me'         => $sensor->me,
+                        'support_switch' => 0,
+                        'is_on'     => 1,
+                        'support_idx'=> '',
+                        'region_name' => self::getRegionDescByName($sensor->region_name),
+                        'state'      => self::getDeviceState($sensor),
+                        'created_at' => $sensor->created_at
+                   ];
+                }
+            }
+            return $allDevices;
+       }
+
+       //
+
+       return $allDevices;
+    }
 
     /**
      * 获取所有的设备列表

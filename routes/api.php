@@ -28,6 +28,8 @@ $api->version('v1', function ($api) {
 			$api->get('all','DeviceApiController@getAllDevices');
 			//获取指定区域内的设备
 			$api->get('get_region/{region_name}','DeviceApiController@getRegionDevices');
+			//获取指定模型的设备
+			$api->get('get_model/{model}','DeviceApiController@getModelDevices');
 			//发起设备控制
 			$api->get('control','DeviceApiController@controlDevice');
 			//发起设备添加
