@@ -1,5 +1,12 @@
 <?php $devices = \Smart::getCanUseDevices();?>
 
+
+<!-- Tag Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('tag', '命令描述:') !!}
+    {!! Form::text('tag', null, ['class' => 'form-control']) !!}
+</div>
+
 <div class="form-group col-sm-6">
     {!! Form::label('device', '请选择可用的设备:') !!}
     <select class="form-control selectDevices">
@@ -34,13 +41,6 @@
     {!! Form::label('agt', 'Agt:') !!}
     {!! Form::text('agt', getSettingValueByKey('agt') , ['class' => 'form-control']) !!}
 </div>
-
-<!-- Tag Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('tag', 'Tag:') !!}
-    {!! Form::text('tag', null, ['class' => 'form-control']) !!}
-</div>
-
 
 
 <?php $scene_id = Request::get('scene_id');?>
