@@ -6,6 +6,7 @@ use App\Models\DevScene;
 use InfyOm\Generator\Common\BaseRepository;
 use App\Models\DevCommand;
 use App\Models\DevLight;
+use Log;
 
 /**
  * Class DevSceneRepository
@@ -101,10 +102,13 @@ class DevSceneRepository extends BaseRepository
                 }
             }
         }
-
-        $commandDatas = json_encode($commandDatas);
-        //发起请求
-        \Smart::mutiControlRequest($commandDatas);
+        if(count($commandDatas))
+        {
+            $commandDatas = json_encode($commandDatas);
+            Log::info('开启场景命令:'.$commandDatas);
+            //发起请求
+            \Smart::mutiControlRequest($commandDatas);
+        }
     }
 
     //关闭当前区域内的场景
@@ -114,7 +118,6 @@ class DevSceneRepository extends BaseRepository
 
         //灯光联动
         $lights = DevLight::where('region_id',$region_id)
-        ->where('is_on',1)
         ->select('me','idx','agt')
         ->get();
 
@@ -131,17 +134,17 @@ class DevSceneRepository extends BaseRepository
                         'type' => '0x80',
                         'val'  => '0'
                     ];
+
             }
         }
 
-        $commandDatas = $lights;
-
-        $commandDatas = json_encode($commandDatas);
-
-        // dd($commandDatas);
-
-        //发起请求
-        \Smart::mutiControlRequest($commandDatas);
+        if(count($commandDatas))
+        {
+            $commandDatas = json_encode($commandDatas);
+            Log::info('关闭场景命令:'.$commandDatas);
+            //发起请求
+            \Smart::mutiControlRequest($commandDatas);
+        }
 
     }
 

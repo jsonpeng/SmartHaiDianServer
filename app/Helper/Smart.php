@@ -8,6 +8,7 @@ use App\Models\DevScene;
 
 use Cache as SmartCache;
 use Config as SmartConfig;
+use Log as SmartLog;
 
 class Smart{
 
