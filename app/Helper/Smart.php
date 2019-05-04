@@ -646,6 +646,7 @@ trait SmartHelper{
                 $url_suffix = substr($url_suffix,0,strlen($url_suffix)-1); 
             }
             $url .= $url_suffix;
+            SmartLog::info('请求地址:'.$url);
             $response = $client->request($method, $url);
             return $response->getBody();
         }catch(Exception $e){
