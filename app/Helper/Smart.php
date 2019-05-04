@@ -54,7 +54,8 @@ trait SmartContent{
     [
         'SL_SPOT'    ,
         'SL_LI_RGBW' ,
-        'SL_CT_RGBW' 
+        'SL_CT_RGBW' ,
+        'SL_SC_CP'
     ];
 
     //灯光设备模型
@@ -188,7 +189,7 @@ trait SmartDataShow{
                         'class'      => '智能灯光设备',
                         'image'      => $light->image,
                         'me'         => $light->me,
-                        'support_switch' => 1,
+                        'support_switch' =>self::getDeviceWhetherSupportSwitch($light->model),
                         'is_on'     => $light->is_on,
                         'support_idx'=> self::getLightSupportIdx($light),
                         'region_name' => self::getRegionDescByName($light->region_name),
@@ -218,8 +219,8 @@ trait SmartDataShow{
                         'class'      => '智能传感器设备',
                         'image'      => $sensor->image,
                         'me'         => $sensor->me,
-                        'support_switch' => 0,
-                        'is_on'     => 1,
+                        'support_switch' => self::getDeviceWhetherSupportSwitch($sensor->model),
+                        'is_on'     => 0,
                         'support_idx'=> '',
                         'region_name' => self::getRegionDescByName($sensor->region_name),
                         'state'      => self::getDeviceState($sensor),
@@ -265,7 +266,7 @@ trait SmartDataShow{
                     'class'      => '智能灯光设备',
                     'image'      => $light->image,
                     'me'         => $light->me,
-                    'support_switch' => 1,
+                    'support_switch' => self::getDeviceWhetherSupportSwitch($light->model),
                     'is_on'     => $light->is_on,
                     'support_idx'=> self::getLightSupportIdx($light),
                     'region_name' => self::getRegionDescByName($light->region_name),
@@ -297,8 +298,8 @@ trait SmartDataShow{
                     'class'      => '智能传感器设备',
                     'image'      => $sensor->image,
                     'me'         => $sensor->me,
-                    'support_switch' => 0,
-                    'is_on'     => 1,
+                    'support_switch' =>self::getDeviceWhetherSupportSwitch($sensor->model),
+                    'is_on'     => 0,
                     'support_idx'=> '',
                     'region_name' => self::getRegionDescByName($sensor->region_name),
                     'state'      => self::getDeviceState($sensor),
@@ -431,7 +432,7 @@ trait SmartControl{
             return zcjy_callback_data('缺少model参数',1);
         }
 
-        if(!in_array($input['model'], self::$switchDeviceModel))
+        if(self::getDeviceWhetherSupportSwitch($input['model']))
         {
             return zcjy_callback_data('当前设备型号不支持控制',1);
         }
@@ -520,6 +521,22 @@ trait SmartHelper{
     public static function getDeviceState($device)
     {
         if(isset($device->state) && (int)($device->state) === 1 && isset($device->agt_state) && (int)($device->agt_state) === 1)
+        {
+            return 1;
+        }
+        else{
+            return 0;
+        }
+    }
+
+    /**
+     * 获取设备是否可以支持控制
+     * @param  [type] $model [description]
+     * @return [type]        [description]
+     */
+    public static function getDeviceWhetherSupportSwitch($model)
+    {
+        if(in_array($model, self::$switchDeviceModel))
         {
             return 1;
         }

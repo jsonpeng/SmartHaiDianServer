@@ -3,6 +3,7 @@
         <tr>
         <th>场景名称</th>
         <th>场景图片</th>
+        <th>场景描述</th>
         <th>是否开启场景</th>
         <th>应用区域(一个区域只能同时开启一个场景)</th>
             <th colspan="3">操作</th>
@@ -13,6 +14,7 @@
         <tr>
             <td>{!! $devScene->name !!}</td>
             <td><img src="{!! $devScene->image !!}" style="max-width: 100px;height: auto;" /></td>
+            <td>{!! $devScene->description !!}</td>
             <td>    {!! Form::model($devScene, ['route' => ['devScenes.update', $devScene->id], 'method' => 'patch']) !!} 
                 <input type="hidden" name="name" value="{!! $devScene->name !!}"> 
                 <input type="hidden" name="enabled" value="{!! $devScene->enabled  ? '0' : '1' !!}">
