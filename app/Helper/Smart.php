@@ -22,7 +22,7 @@ class Smart{
 trait SmartContent{
 
      //java 多个控制接口
-    public static $smartUrl = "http://picc.nat300.top/api/device/";
+    public static $javaRequestUrl = "http://picc.nat300.top/api/device/";
 
     //传感器类型
     public static $sensorType = 
@@ -137,8 +137,6 @@ trait SmartContent{
         'sf' => '书房',
         'dm' => '大门'
     ];
-
-
 
  }
 
@@ -368,6 +366,14 @@ trait SmartCacheService{
             return getSettingValueByKey('agt');
         });
     }
+
+     //java server请求地址
+    public static function smartRequestUrl()
+    {
+        return SmartCache::remember('smart_java_request',SmartConfig::get('smart.java_request_time'),function(){
+            return getSettingValueByKey('java_request_url') ?  : self::$javaRequestUrl;
+        });
+    }
 }
 
 /**
@@ -422,7 +428,7 @@ trait SmartControl{
     public static function addDeviceRequest()
     {
         $input = ['agt'=>self::getCacheAgt()];
-        $result = self::simpleGuzzleRequest(self::$smartUrl.'add_device','GET',$input);
+        $result = self::simpleGuzzleRequest(self::smartRequestUrl().'add_device','GET',$input);
         return self::returnVarifyJavaResultData($result);
     }
 
@@ -432,7 +438,6 @@ trait SmartControl{
      */
     public static function ControlRequest($request)
     {
-        // dd(1);
         $input = $request->all();
 
         if(!isset($input['me']))
@@ -466,11 +471,11 @@ trait SmartControl{
         $input['val'] = $controlParam[$input['model']]['val'];
 
         $input['agt'] = self::getCacheAgt();
-
-        $result = self::simpleGuzzleRequest(self::$smartUrl.'set_one_device','GET',$input);
+        // return $input;
+        $result = self::simpleGuzzleRequest(self::smartRequestUrl().'set_one_device','GET',$input);
 
         self::updateDeviceStatus($input,$switch);
-
+        
         return self::returnVarifyJavaResultData($result);
     }
 
@@ -486,7 +491,7 @@ trait SmartControl{
             return zcjy_callback_data('缺少控制参数',1);
         }
         $params = ['args'=>$params];
-        $result = self::simpleGuzzleRequest(self::$smartUrl.'set_multi_devices','POST',$params);
+        $result = self::simpleGuzzleRequest(self::smartRequestUrl().'set_multi_devices','POST',$params);
         return self::returnVarifyJavaResultData($result);
     }
 
