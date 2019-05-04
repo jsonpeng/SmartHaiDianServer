@@ -31,7 +31,8 @@ class DevCurtainRepository extends BaseRepository
         'region_id',
         'is_join',
         'join_at',
-        'idx'
+        'idx',
+        'image'
     ];
 
     /**
