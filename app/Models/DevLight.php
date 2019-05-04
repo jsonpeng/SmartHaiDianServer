@@ -57,7 +57,8 @@ class DevLight extends Model
         'support_rgb',
         'support_rgbw',
         'support_dyn',
-        'image'
+        'image',
+        'idx'
     ];
 
     public static $attribute = [
@@ -80,7 +81,8 @@ class DevLight extends Model
         'support_rgb',
         'support_rgbw',
         'support_dyn',
-        'image'
+        'image',
+        'idx'
     ];
 
     /**
@@ -118,7 +120,8 @@ class DevLight extends Model
     public static $rules = [
         'me'   => 'required',
         'name' => 'required',
-        'agt' =>  'required'
+        'agt'  =>  'required',
+        'idx'  => 'required' 
     ];
 
     //设备状态 1在线0离线

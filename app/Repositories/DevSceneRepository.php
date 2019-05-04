@@ -5,6 +5,7 @@ namespace App\Repositories;
 use App\Models\DevScene;
 use InfyOm\Generator\Common\BaseRepository;
 use App\Models\DevCommand;
+use App\Models\DevLight;
 
 /**
  * Class DevSceneRepository
@@ -61,6 +62,9 @@ class DevSceneRepository extends BaseRepository
             //执行关联的操作命令
             $this->startMutiControlRequest($scene->id);
         }
+        else{
+            $this->closeSceneControlRequest($scene->region_id);
+        }
 
         //如果开启了更新
         if($update_enabled){
@@ -83,6 +87,33 @@ class DevSceneRepository extends BaseRepository
         $commandDatas = json_encode($commandDatas);
         //发起请求
         \Smart::mutiControlRequest($commandDatas);
+    }
+
+    //关闭当前区域内的场景
+    public function closeSceneControlRequest($region_id)
+    {
+        //灯光联动
+        $lights = DevLight::where('region_id',$region_id)
+        ->select('me','idx','agt')
+        ->get();
+
+        if(count($lights))
+        {
+            foreach ($lights as $key => $value) {
+                    $value['type'] = '0x80';
+                    $value['val'] = '0';
+            }
+        }
+
+        $commandDatas = $lights;
+
+        $commandDatas = json_encode($commandDatas);
+
+        // dd($commandDatas);
+        
+        //发起请求
+        \Smart::mutiControlRequest($commandDatas);
+
     }
 
 
