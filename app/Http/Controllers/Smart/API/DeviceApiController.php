@@ -39,8 +39,8 @@ class DeviceApiController extends AppBaseController
      *
      * @SWG\Get(path="/api/device/get_model/{model}",
      *   tags={"设备模块"},
-     *   summary="获取指定区域的所有设备",
-     *   description="获取指定区域的所有设备",
+     *   summary="获取指定模型的所有设备",
+     *   description="获取指定模型的所有设备",
      *   operationId="testRecordsStore",
      *   produces={"application/json"},
      *   @SWG\Parameter(

@@ -186,7 +186,7 @@ trait SmartDataShow{
        //灯光设备
         if(in_array($model, self::$lightDeviceModel))
         {
-            $lights = DevLight::orderBy('created_at','desc')->get();
+            $lights = DevLight::where('model',$model)->orderBy('created_at','desc')->get();
             if(count($lights))
             {
                 foreach ($lights as $key => $light) 
