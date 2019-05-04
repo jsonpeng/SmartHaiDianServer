@@ -58,11 +58,13 @@ class DevSceneRepository extends BaseRepository
          */
         if($swith_status)
         {
+            //开启场景把 该区域的其他场景关闭
             $this->updateSceneRegionEnableStatus($scene->region_id,$scene->id);
             //执行关联的操作命令
             $this->startMutiControlRequest($scene->id);
         }
         else{
+            //关闭场景 关闭当前区域的所有设备
             $this->closeSceneControlRequest($scene->region_id);
         }
 
@@ -85,6 +87,7 @@ class DevSceneRepository extends BaseRepository
         ->select('me','idx','type','val','agt')
         ->get();
 
+        //操作DB更新设备状态
         if(count($commandDatas)){
             //批量更新设备开关状态
             foreach ($commandDatas as $key => $command) 
@@ -92,6 +95,9 @@ class DevSceneRepository extends BaseRepository
                 if($command->type == '0x81' || $command->type == '0xff')
                 {
                    DevLight::where('me',$command->me)->update(['is_on'=>1]);
+                }
+                else{
+                  DevLight::where('me',$command->me)->update(['is_on'=>0]);
                 }
             }
         }
@@ -106,12 +112,15 @@ class DevSceneRepository extends BaseRepository
     {
         //灯光联动
         $lights = DevLight::where('region_id',$region_id)
+        ->where('is_on',1)
         ->select('me','idx','agt')
         ->get();
 
+        //操作DB更新设备状态
         if(count($lights))
         {
-            foreach ($lights as $key => $light) {
+            foreach ($lights as $key => $light) 
+            {
                     $light->update(['is_on'=>0]);
                     $light['type'] = '0x80';
                     $light['val'] = '0';
@@ -122,7 +131,7 @@ class DevSceneRepository extends BaseRepository
 
         $commandDatas = json_encode($commandDatas);
 
-        // dd($commandDatas);
+         // dd($commandDatas);
 
         //发起请求
         \Smart::mutiControlRequest($commandDatas);

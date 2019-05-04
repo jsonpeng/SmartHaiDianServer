@@ -32,8 +32,8 @@ class DevLight extends Model
     // use SoftDeletes;
 
     public $table = 'dev_light';
-    
-
+    const UPDATED_AT = null;
+    const DELETED_AT = null;
     // protected $dates = ['deleted_at'];
 
 
