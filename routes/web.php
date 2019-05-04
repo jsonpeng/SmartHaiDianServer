@@ -60,7 +60,11 @@ Route::group(['prefix'=>'smart','namespace'=>"Smart"],function(){
 	Route::resource('devCommands', 'DevCommandController');
 	//传感器管理
 	Route::resource('devSensors', 'DevSensorController');
+	//窗帘电机
+	Route::resource('devCurtains', 'DevCurtainController');
 });
+
+
 
 
 

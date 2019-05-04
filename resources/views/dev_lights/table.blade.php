@@ -7,14 +7,14 @@
         <th>设备状态</th>
         <!-- <th>灯光类型</th> -->
         <th>设定区域</th>
-        <th>开关</th>
+        <th>设备开关状态</th>
         <!-- <th>颜色值</th> -->
         <!-- <th>动态颜色值</th> -->
         <!-- <th>色温</th> -->
         <!-- <th>亮度</th> -->
-        <th>智慧中心ID Agt</th>
+     <!--    <th>智慧中心ID Agt</th>
         <th>智慧中心状态</th>
-        <th>是否已接入</th>
+        <th>是否已接入</th> -->
         <!-- <th>接入时间</th> -->
             <th colspan="3">操作</th>
         </tr>
@@ -33,9 +33,9 @@
             <td>{!! $devLight->dyn !!}</td>
             <td>{!! $devLight->color_temp !!}</td>
             <td>{!! $devLight->bri !!}</td> -->
-            <td>{!! $devLight->agt !!}</td>
+       <!--      <td>{!! $devLight->agt !!}</td>
             <td>{!! Smart::getDisplayName($devLight->agt_state,'state') !!}</td>
-            <td>{!! $devLight->IsJoinStatus !!}</td>
+            <td>{!! $devLight->IsJoinStatus !!}</td> -->
             <!-- <td>{!! $devLight->join_at !!}</td> -->
             <td>
                 {!! Form::open(['route' => ['devLights.destroy', $devLight->id], 'method' => 'delete']) !!}

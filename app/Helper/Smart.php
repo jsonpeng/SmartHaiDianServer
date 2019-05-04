@@ -5,6 +5,7 @@ use App\Models\Region;
 use App\Models\DevLight;
 use App\Models\DevSensor;
 use App\Models\DevScene;
+use App\Models\DevCurtain;
 
 use Cache as SmartCache;
 use Config as SmartConfig;
@@ -56,7 +57,8 @@ trait SmartContent{
         'SL_SPOT'    ,
         'SL_LI_RGBW' ,
         'SL_CT_RGBW' ,
-        'SL_SC_CP'
+        'SL_SC_CP'   ,
+        'SL_DOOYA'
     ];
 
     //灯光设备模型
@@ -108,7 +110,8 @@ trait SmartContent{
         'SL_SPOT'    => 'RGB',
         'SL_LI_RGBW' => 'RGBW',
         'SL_SC_CP'   => 'P3',
-        'SL_CT_RGBW' => 'RGBW'
+        'SL_CT_RGBW' => 'RGBW',
+        'SL_DOOYA'   => 'P2'
     ];
 
     //设备控制开 参数
@@ -117,7 +120,8 @@ trait SmartContent{
         'SL_SPOT'    => ['type'=>'0x81','val'=>'1'],
         'SL_LI_RGBW' => ['type'=>'0x81','val'=>'1'],
         'SL_SC_CP'   => ['type'=>'0x81','val'=>'1'],
-        'SL_CT_RGBW' => ['type'=>'0x81','val'=>'1']
+        'SL_CT_RGBW' => ['type'=>'0x81','val'=>'1'],
+        'SL_DOOYA'   => ['type'=>'0xCF','val'=>'100']
     ];
 
     //设备控制关 参数
@@ -126,7 +130,8 @@ trait SmartContent{
         'SL_SPOT'    => ['type'=>'0x80','val'=>'0'],
         'SL_LI_RGBW' => ['type'=>'0x80','val'=>'0'],
         'SL_SC_CP'   => ['type'=>'0x80','val'=>'0'],
-        'SL_CT_RGBW' => ['type'=>'0x80','val'=>'0']
+        'SL_CT_RGBW' => ['type'=>'0x80','val'=>'0'],
+        'SL_DOOYA'   => ['type'=>'0xCE','val'=>'0x80']
     ];
 
     //区域配置
@@ -318,8 +323,11 @@ trait SmartDataShow{
     {
         $canUseDevices = [];
 
+        $scene = null;
+
         //智能灯光设备
         $lights = DevLight::where('state',1);
+
 
         if($scene_id)
         {
@@ -347,6 +355,60 @@ trait SmartDataShow{
                ];
             }
         }
+
+        //燃气设备
+        $DevSensors = DevSensor::where('type',2)->where('state',1);
+
+        if(!empty($scene))
+        {
+            $DevSensors = $DevSensors->where('region_id',$scene->region_id);
+        }
+
+         $DevSensors = $DevSensors
+        ->where('agt_state',1)
+        ->get();
+
+        if(count($DevSensors))
+        {
+            foreach ($DevSensors as $key => $light) 
+            {
+               $canUseDevices[] = 
+               [
+                    'name'       => $light->name.'(me:'.$light->me.')'.'[智能燃气传感器]',
+                    'me'         => $light->me,
+                    'supportIdx' => 'P3'
+               ];
+            }
+        }
+        
+        /**
+         * 智能窗帘电机
+         * @var [type]
+         */
+        $DevCurtains = DevCurtain::where('state',1);
+
+        if(!empty($scene))
+        {
+            $DevCurtains = $DevCurtains->where('region_id',$scene->region_id);
+        }
+
+         $DevCurtains = $DevCurtains
+        ->where('agt_state',1)
+        ->get();
+
+        if(count($DevCurtains))
+        {
+            foreach ($DevCurtains as $key => $light) 
+            {
+               $canUseDevices[] = 
+               [
+                    'name'       => $light->name.'(me:'.$light->me.')'.'[智能窗帘电机]',
+                    'me'         => $light->me,
+                    'supportIdx' => 'P2'
+               ];
+            }
+        }
+
         return $canUseDevices;
     }
 

@@ -32,7 +32,9 @@ class DevCommand extends Model
     public static $idx = [
         'RGB' => 'RGB',
         'DYN' => 'DYN',
-        'RGBW' => 'RGBW'
+        'RGBW'=> 'RGBW',
+        'P2'  => 'P2',
+        'P3'  => 'P3'
     ];
 
     //设备支持的type
@@ -40,7 +42,9 @@ class DevCommand extends Model
         '0x80' => '0x80',
         '0x81' => '0x81',
         '0xff' => '0xff',
-        '0xfe' => '0xfe'
+        '0xfe' => '0xfe',
+        '0xCE' => '0xCE',
+        '0xCF' => '0xCF'
     ];
 
     public $fillable = [

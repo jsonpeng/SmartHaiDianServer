@@ -6,28 +6,28 @@ use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class DevSensor
+ * Class DevCurtain
  * @package App\Models
- * @version May 2, 2019, 12:12 am CST
+ * @version May 4, 2019, 5:15 pm CST
  *
  * @property string me
  * @property string model
  * @property string name
  * @property integer state
- * @property integer type
- * @property string threshold
- * @property integer alarm_sound
- * @property integer region_id
+ * @property integer motion_type
+ * @property integer percent
  * @property string agt
  * @property integer agt_state
+ * @property integer region_id
  * @property integer is_join
  * @property string join_at
+ * @property string idx
  */
-class DevSensor extends Model
+class DevCurtain extends Model
 {
     // use SoftDeletes;
 
-    public $table = 'dev_sensor';
+    public $table = 'dev_curtain';
     
 
     // protected $dates = ['deleted_at'];
@@ -38,17 +38,16 @@ class DevSensor extends Model
         'model',
         'name',
         'state',
-        'type',
-        'threshold',
-        'alarm_sound',
-        'region_id',
+        'motion_type',
+        'percent',
         'agt',
         'agt_state',
+        'region_id',
+        'region_name',
         'is_join',
         'join_at',
-        'region_name',
-        'image',
-        'idx'
+        'idx',
+        'is_on'
     ];
 
     /**
@@ -61,14 +60,14 @@ class DevSensor extends Model
         'model' => 'string',
         'name' => 'string',
         'state' => 'integer',
-        'type' => 'integer',
-        'threshold' => 'string',
-        'alarm_sound' => 'integer',
-        'region_id' => 'integer',
+        'motion_type' => 'integer',
+        'percent' => 'integer',
         'agt' => 'string',
         'agt_state' => 'integer',
+        'region_id' => 'integer',
         'is_join' => 'integer',
-        'join_at' => 'string'
+        'join_at' => 'string',
+        'idx' => 'string'
     ];
 
     /**
@@ -77,9 +76,11 @@ class DevSensor extends Model
      * @var array
      */
     public static $rules = [
-         'me' => 'required',
+        'me' => 'required',
         'model' => 'required',
         'name' => 'required',
+        'state' => 'required',
+        'idx' => 'required',
         'agt' => 'required',
     ];
 
