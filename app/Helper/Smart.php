@@ -316,12 +316,24 @@ trait SmartDataShow{
      * 用于可添加的设备列表
      * @return [type] [description]
      */
-    public static function getCanUseDevices()
+    public static function getCanUseDevices($scene_id = null)
     {
         $canUseDevices = [];
 
         //智能灯光设备
-        $lights = DevLight::where('state',1)
+        $lights = DevLight::where('state',1);
+
+        if($scene_id)
+        {
+            $scene = DevScene::find($scene_id);
+
+            if(!empty($scene))
+            {
+                $lights = $lights->where('region_id',$scene->region_id);
+            }
+        }
+
+        $lights = $lights
         ->where('agt_state',1)
         ->get();
 

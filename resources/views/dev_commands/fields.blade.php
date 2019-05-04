@@ -1,4 +1,4 @@
-<?php $devices = \Smart::getCanUseDevices();?>
+<?php $devices = \Smart::getCanUseDevices(Request::get('scene_id'));?>
 
 
 <!-- Tag Field -->
