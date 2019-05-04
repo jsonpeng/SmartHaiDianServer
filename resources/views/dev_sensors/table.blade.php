@@ -12,7 +12,7 @@
         <th>智慧中心ID</th>
         <th>智慧中心状态</th>
         <th>是否已接入</th>
-        <th>接入时间</th>
+        <!-- <th>接入时间</th> -->
             <th colspan="3">操作</th>
         </tr>
     </thead>
@@ -30,7 +30,7 @@
             <td>{!! $devSensor->agt !!}</td>
             <td>{!! Smart::getDisplayName($devSensor->agt_state,'state') !!}</td>
             <td>{!! Smart::getDisplayName($devSensor->is_join,'is_join') !!}</td>
-            <td>{!! $devSensor->join_at !!}</td>
+            <!-- <td>{!! $devSensor->join_at !!}</td> -->
             <td>
                 {!! Form::open(['route' => ['devSensors.destroy', $devSensor->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>

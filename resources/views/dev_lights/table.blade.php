@@ -15,7 +15,7 @@
         <th>智慧中心ID Agt</th>
         <th>智慧中心状态</th>
         <th>是否已接入</th>
-        <th>接入时间</th>
+        <!-- <th>接入时间</th> -->
             <th colspan="3">操作</th>
         </tr>
     </thead>
@@ -36,7 +36,7 @@
             <td>{!! $devLight->agt !!}</td>
             <td>{!! Smart::getDisplayName($devLight->agt_state,'state') !!}</td>
             <td>{!! $devLight->IsJoinStatus !!}</td>
-            <td>{!! $devLight->join_at !!}</td>
+            <!-- <td>{!! $devLight->join_at !!}</td> -->
             <td>
                 {!! Form::open(['route' => ['devLights.destroy', $devLight->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>
