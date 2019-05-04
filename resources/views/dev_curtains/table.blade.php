@@ -4,6 +4,7 @@
         <th>智慧设备唯一ID</th>
         <th>型号</th>
         <th>名称</th>
+        <th>设备图片</th>
         <th>设备开关状态</th>
         <th>设备状态</th>
     <!--     <th>智慧中心ID Agt</th>
@@ -21,6 +22,7 @@
             <td>{!! $devCurtain->me !!}</td>
             <td>{!! $devCurtain->model !!}</td>
             <td>{!! $devCurtain->name !!}</td>
+              <td><img src="{!! $devCurtain->image !!}" style="max-width: 100px;height: auto;" /></td>
             <td>{!! $devCurtain->is_on ? '开启' : '关闭' !!}</td>
             <td>{!! $devCurtain->state ? '在线' : '离线' !!}</td>
         <!--     <td>{!! $devCurtain->agt !!}</td>

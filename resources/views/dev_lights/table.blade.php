@@ -4,6 +4,7 @@
         <th>智慧设备唯一ID</th>
         <th>型号</th>
         <th>名称</th>
+        <th>设备图片</th>
         <th>设备状态</th>
         <!-- <th>灯光类型</th> -->
         <th>设定区域</th>
@@ -25,6 +26,7 @@
             <td>{!! $devLight->me !!}</td>
             <td>{!! $devLight->model !!}</td>
             <td>{!! $devLight->name !!}</td>
+            <td><img src="{!! $devLight->image !!}" style="max-width: 100px;height: auto;" /></td>
             <td>{!! $devLight->StateStatus !!}</td>
             <!-- <td>{!! $devLight->type !!}</td> -->
             <td>{!! app("common")->RegionRepo()->getNameById($devLight->region_id) !!}</td>

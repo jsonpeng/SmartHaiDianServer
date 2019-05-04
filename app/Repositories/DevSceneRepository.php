@@ -6,6 +6,8 @@ use App\Models\DevScene;
 use InfyOm\Generator\Common\BaseRepository;
 use App\Models\DevCommand;
 use App\Models\DevLight;
+use App\Models\DevCurtain;
+use App\Models\DevSensor;
 use Log;
 
 /**
@@ -65,6 +67,7 @@ class DevSceneRepository extends BaseRepository
             $this->startMutiControlRequest($scene->id);
         }
         else{
+            // Log::info('关闭了场景');
             //关闭场景 关闭当前区域的所有设备
             $this->closeSceneControlRequest($scene->region_id);
         }
@@ -138,6 +141,50 @@ class DevSceneRepository extends BaseRepository
             }
         }
 
+        //燃气传感器
+        $sensors = DevSensor::where('region_id',$region_id)
+        ->where('type',2)
+        ->where('state',1)
+        ->get();
+
+         if(count($sensors))
+        {
+            foreach ($sensors as $key => $sensor) 
+            {
+                    $commandDatas[] = [
+                        'me'   => $sensor->me,
+                        'idx'  => $sensor->idx,
+                        'agt'  => $sensor->agt,
+                        'type' => '0x80',
+                        'val'  => '0'
+                    ];
+            }
+        }
+
+        //窗帘电机
+        $dooyas = DevCurtain::where('region_id',$region_id)->where('state',1)->get();
+
+        if(count($dooyas))
+        {
+            foreach ($dooyas as $key => $dooya) 
+            {
+                    // $commandDatas[] = [
+                    //     'me'   => $dooya->me,
+                    //     'idx'  => $dooya->idx,
+                    //     'agt'  => $dooya->agt,
+                    //     'type' => '0xCF',
+                    //     'val'  => '0'
+                    // ];
+                    $commandDatas[] = [
+                        'me'   => $dooya->me,
+                        'idx'  => $dooya->idx,
+                        'agt'  => $dooya->agt,
+                        'type' => '0xCE',
+                        'val'  => '0x80'
+                    ];
+            }
+        }
+      
         if(count($commandDatas))
         {
             $commandDatas = json_encode($commandDatas);

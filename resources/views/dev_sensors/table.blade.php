@@ -4,6 +4,7 @@
         <th>智慧设备唯一ID</th>
         <th>型号</th>
         <th>名称</th>
+        <th>设备图片</th>
         <th>设备状态</th>
         <th>传感器类型</th>
         <th>告警门限</th>
@@ -22,6 +23,7 @@
             <td>{!! $devSensor->me !!}</td>
             <td>{!! $devSensor->model !!}</td>
             <td>{!! $devSensor->name !!}</td>
+            <td><img src="{!! $devSensor->image !!}" style="max-width: 100px;height: auto;" /></td>
             <td>{!! Smart::getDisplayName($devSensor->state,'state') !!}</td>
             <td>{!! Smart::getDisplayName($devSensor->type) !!}</td>
             <td>{!! $devSensor->threshold !!}</td>

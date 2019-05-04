@@ -81,6 +81,12 @@ trait SmartContent{
         'SL_SC_CQ'
     ];
 
+    //窗帘电机模型
+    public static $dooyaDeviceModel = 
+    [
+        'SL_DOOYA'
+    ];
+
     /**
      * 模型类型
      * @var [type]
@@ -235,7 +241,34 @@ trait SmartDataShow{
             return $allDevices;
        }
 
-       //
+       //窗帘电机
+       if(in_array($model, self::$dooyaDeviceModel))
+       {
+           $dooyas = DevCurtain::orderBy('created_at','desc')->get();
+
+            if(count($dooyas))
+            {
+                foreach ($dooyas as $key => $dooya) 
+                {
+                   $allDevices[] = 
+                   [
+                        'name'       => $dooya->name,
+                        'model'      => $dooya->model,
+                        'model_name' => self::getModelName($dooya->model),
+                        'class'      => '智能窗帘电机设备',
+                        'image'      => $dooya->image,
+                        'me'         => $dooya->me,
+                        'support_switch' => 1,
+                        'is_on'     => $dooya->is_on,
+                        'support_idx'=> 'P2',
+                        'region_name' => self::getRegionDescByName($dooya->region_name),
+                        'state'      => self::getDeviceState($dooya),
+                        'created_at' => $dooya->created_at
+                   ];
+                }
+            }
+            return $allDevices;
+       }
 
        return $allDevices;
     }
@@ -308,6 +341,36 @@ trait SmartDataShow{
                     'region_name' => self::getRegionDescByName($sensor->region_name),
                     'state'      => self::getDeviceState($sensor),
                     'created_at' => $sensor->created_at
+               ];
+            }
+        }
+
+        $dooyas = DevCurtain::orderBy('created_at','desc');
+
+        if($region_name)
+        {
+            $dooyas = $dooyas->where('region_name',$region_name);
+        }
+
+        $dooyas = $dooyas->get();
+        if(count($dooyas))
+        {
+            foreach ($dooyas as $key => $dooya) 
+            {
+               $allDevices[] = 
+               [
+                    'name'       => $dooya->name,
+                    'model'      => $dooya->model,
+                    'model_name' => self::getModelName($dooya->model),
+                    'class'      => '智能窗帘电机设备',
+                    'image'      => $dooya->image,
+                    'me'         => $dooya->me,
+                    'support_switch' => 1,
+                    'is_on'     => $dooya->is_on,
+                    'support_idx'=> 'P2',
+                    'region_name' => self::getRegionDescByName($dooya->region_name),
+                    'state'      => self::getDeviceState($dooya),
+                    'created_at' => $dooya->created_at
                ];
             }
         }

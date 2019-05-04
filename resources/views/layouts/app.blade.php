@@ -147,7 +147,7 @@
     <script type="text/javascript" src="{{ asset('vendor/tinymce/jquery.tinymce.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('vendor/tinymce/tinymce.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('vendor/vue/vue.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('vendor/jquery.nestable.js') }}"></script>
+    <!-- <script type="text/javascript" src="{{ asset('vendor/jquery.nestable.js') }}"></script> -->
     <script src="https://cdn.bootcss.com/element-ui/1.4.3/index.js"></script>
     <script type="text/javascript" src="{{ asset('js/admin.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/zcjy.js') }}"></script>

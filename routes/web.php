@@ -33,7 +33,7 @@ Route::group(['prefix'=>'smart_data','namespace'=>'Smart'],function(){
 
 //前端路由
 Route::get('/', function(){
-	return redirect('/smart');
+	// return redirect('/smart');
 });
 
 /**
