@@ -49,6 +49,14 @@ trait SmartContent{
         '1' => '报警'
     ];
 
+   //支持控制的设备模型
+    public static $switchDeviceModel =
+    [
+        'SL_SPOT'    ,
+        'SL_LI_RGBW' ,
+        'SL_CT_RGBW' 
+    ];
+
     //灯光设备模型
     public static $lightDeviceModel =
     [
@@ -423,7 +431,7 @@ trait SmartControl{
             return zcjy_callback_data('缺少model参数',1);
         }
 
-        if(!in_array($input['model'], self::$deviceModel))
+        if(!in_array($input['model'], self::$switchDeviceModel))
         {
             return zcjy_callback_data('当前设备型号不支持控制',1);
         }

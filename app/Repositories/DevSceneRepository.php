@@ -84,6 +84,18 @@ class DevSceneRepository extends BaseRepository
         $commandDatas = DevCommand::where('scene_id',$scene_id)
         ->select('me','idx','type','val','agt')
         ->get();
+
+        if(count($commandDatas)){
+            //批量更新设备开关状态
+            foreach ($commandDatas as $key => $command) 
+            {
+                if($command->type == '0x81' || $command->type == '0xff')
+                {
+                   DevLight::where('me',$command->me)->update(['is_on'=>1]);
+                }
+            }
+        }
+
         $commandDatas = json_encode($commandDatas);
         //发起请求
         \Smart::mutiControlRequest($commandDatas);
@@ -99,9 +111,10 @@ class DevSceneRepository extends BaseRepository
 
         if(count($lights))
         {
-            foreach ($lights as $key => $value) {
-                    $value['type'] = '0x80';
-                    $value['val'] = '0';
+            foreach ($lights as $key => $light) {
+                    $light->update(['is_on'=>0]);
+                    $light['type'] = '0x80';
+                    $light['val'] = '0';
             }
         }
 
@@ -110,7 +123,7 @@ class DevSceneRepository extends BaseRepository
         $commandDatas = json_encode($commandDatas);
 
         // dd($commandDatas);
-        
+
         //发起请求
         \Smart::mutiControlRequest($commandDatas);
 
