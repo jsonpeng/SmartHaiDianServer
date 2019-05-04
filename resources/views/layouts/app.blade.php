@@ -283,7 +283,9 @@
         //     type = 1;
         // }
         // area = ['100%', '1080px'];
-        
+         if($(window).width()<479){
+            area = ['100%', '100%'];
+        }
          layer.open({
             type: type,
             title:title,

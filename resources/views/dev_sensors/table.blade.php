@@ -2,13 +2,13 @@
     <thead>
         <tr>
         <th>智慧设备唯一ID</th>
-        <th>型号</th>
+        <th class="hidden-xs">型号</th>
         <th>名称</th>
-        <th>设备图片</th>
-        <th>设备状态</th>
-        <th>传感器类型</th>
-        <th>告警门限</th>
-        <th>告警音状态</th>
+        <th class="hidden-xs">设备图片</th>
+        <th >设备状态</th>
+        <th class="hidden-xs">传感器类型</th>
+        <th class="hidden-xs">告警门限</th>
+        <th class="hidden-xs">告警音状态</th>
         <th>区域</th>
     <!--     <th>智慧中心ID</th>
         <th>智慧中心状态</th>
@@ -21,13 +21,13 @@
     @foreach($devSensors as $devSensor)
         <tr>
             <td>{!! $devSensor->me !!}</td>
-            <td>{!! $devSensor->model !!}</td>
+            <td class="hidden-xs">{!! $devSensor->model !!}</td>
             <td>{!! $devSensor->name !!}</td>
-            <td><img src="{!! $devSensor->image !!}" style="max-width: 100px;height: auto;" /></td>
+            <td class="hidden-xs"><img src="{!! $devSensor->image !!}" style="max-width: 100px;height: auto;" /></td>
             <td>{!! Smart::getDisplayName($devSensor->state,'state') !!}</td>
-            <td>{!! Smart::getDisplayName($devSensor->type) !!}</td>
-            <td>{!! $devSensor->threshold !!}</td>
-            <td>{!! Smart::getDisplayName($devSensor->alarm_sound,'alarm_sound') !!}</td>
+            <td class="hidden-xs">{!! Smart::getDisplayName($devSensor->type) !!}</td>
+            <td class="hidden-xs">{!! $devSensor->threshold !!}</td>
+            <td class="hidden-xs">{!! Smart::getDisplayName($devSensor->alarm_sound,'alarm_sound') !!}</td>
             <td>{!! Smart::getRegionName($devSensor->region_id) !!}</td>
   <!--           <td>{!! $devSensor->agt !!}</td>
             <td>{!! Smart::getDisplayName($devSensor->agt_state,'state') !!}</td>

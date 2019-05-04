@@ -7,7 +7,7 @@
         <th>Idx</th>
         <th>Type</th>
         <th>Val</th>
-        <th>Agt</th>
+        <th class="hidden-xs">Agt</th>
             <th colspan="3">操作</th>
         </tr>
     </thead>
@@ -20,7 +20,7 @@
             <td>{!! $devCommand->idx !!}</td>
             <td>{!! $devCommand->type !!}</td>
             <td>{!! $devCommand->val !!}</td>
-            <td>{!! $devCommand->agt !!}</td>
+            <td class="hidden-xs">{!! $devCommand->agt !!}</td>
             <td>
                 {!! Form::open(['route' => ['devCommands.destroy', $devCommand->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>
