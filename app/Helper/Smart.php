@@ -22,7 +22,7 @@ class Smart{
 trait SmartContent{
 
      //java 多个控制接口
-    public static $smartUrl = "http://40.73.66.252:8080/api/device/";
+    public static $smartUrl = "http://picc.nat300.top/api/device/";
 
     //传感器类型
     public static $sensorType = 
