@@ -110,6 +110,8 @@ class DevSceneRepository extends BaseRepository
     //关闭当前区域内的场景
     public function closeSceneControlRequest($region_id)
     {
+        $commandDatas = [];
+
         //灯光联动
         $lights = DevLight::where('region_id',$region_id)
         ->where('is_on',1)
@@ -122,8 +124,13 @@ class DevSceneRepository extends BaseRepository
             foreach ($lights as $key => $light) 
             {
                     $light->update(['is_on'=>0]);
-                    $light['type'] = '0x80';
-                    $light['val'] = '0';
+                    $commandDatas[] = [
+                        'me'   => $light->me,
+                        'idx'  => $light->idx,
+                        'agt'  => $light->agt,
+                        'type' => '0x80',
+                        'val'  => '0'
+                    ];
             }
         }
 
@@ -131,7 +138,7 @@ class DevSceneRepository extends BaseRepository
 
         $commandDatas = json_encode($commandDatas);
 
-         // dd($commandDatas);
+        // dd($commandDatas);
 
         //发起请求
         \Smart::mutiControlRequest($commandDatas);
