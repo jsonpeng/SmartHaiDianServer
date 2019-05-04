@@ -432,7 +432,7 @@ trait SmartControl{
             return zcjy_callback_data('缺少model参数',1);
         }
 
-        if(self::getDeviceWhetherSupportSwitch($input['model']))
+        if(!self::getDeviceWhetherSupportSwitch($input['model']))
         {
             return zcjy_callback_data('当前设备型号不支持控制',1);
         }
