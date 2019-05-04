@@ -44,7 +44,7 @@ class DevCommandController extends AppBaseController
         }
 
         $devCommands = $devCommands   
-        ->orderBy('created_at','asc')
+        ->orderBy('created_at','desc')
         ->paginate(15);
 
         return view('dev_commands.index')
