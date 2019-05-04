@@ -39,12 +39,12 @@ class DevCommand extends Model
 
     //设备支持的type
     public static $type = [
-        '0x80' => '0x80',
-        '0x81' => '0x81',
-        '0xff' => '0xff',
-        '0xfe' => '0xfe',
-        '0xCE' => '0xCE',
-        '0xCF' => '0xCF'
+        '0x80' => '0x80(灯光/燃气关闭)',
+        '0x81' => '0x81(灯光/燃气关闭)',
+        '0xff' => '0xff(灯光调动态色,开启)',
+        '0xfe' => '0xfe(灯光调动态色,关闭)',
+        '0xCE' => '0xCE(停止窗帘)',
+        '0xCF' => '0xCF(启动窗帘)'
     ];
 
     public $fillable = [
