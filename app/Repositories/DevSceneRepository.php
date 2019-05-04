@@ -95,10 +95,14 @@ class DevSceneRepository extends BaseRepository
         if(count($commandDatas)){
             //批量更新设备开关状态
             foreach ($commandDatas as $key => $command) 
-            {
+            {   
+                //灯光
                 if($command->type == '0x81' || $command->type == '0xff')
                 {
                    DevLight::where('me',$command->me)->update(['is_on'=>1]);
+                }//窗帘
+                else if($command->type == '0xCF'){
+                    DevCurtain::where('me',$command->me)->update(['is_on'=>1]);
                 }
                 else{
                   DevLight::where('me',$command->me)->update(['is_on'=>0]);
@@ -182,6 +186,7 @@ class DevSceneRepository extends BaseRepository
                         'type' => '0xCE',
                         'val'  => '0x80'
                     ];
+                    $dooya->update(['is_on'=>0]);
             }
         }
       

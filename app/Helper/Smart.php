@@ -512,10 +512,20 @@ trait SmartControl{
      */
     public static function updateDeviceStatus($input,$switch)
     {
+        $switch = (int)$switch;
+        //灯光
         $light = DevLight::where('me',$input['me'])->first();
         if(!empty($light))
         {
-            $light->update(['is_on'=>(int)$switch]);
+            $light->update(['is_on'=>$switch]);
+            return;
+        }
+        //窗帘
+        $doorya = DevCurtain::where('me',$input['me'])->first();
+        if(!empty($doorya))
+        {
+            $doorya->update(['is_on'=>$switch]);
+            return;
         }
     }
 
