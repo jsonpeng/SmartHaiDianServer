@@ -35,7 +35,7 @@
     {!! Form::label('val', 'Val:') !!}
     {!! Form::text('val', null, ['class' => 'form-control']) !!}
     <div class="row">
-    <div class="col-sm-6 col-xs-12">
+    <div class="col-sm-6 col-xs-5">
         <p>精选颜色(适用RGBW[灯泡,灯带]):</p>
         <p>橙色:16734720</p>
         <p>红色:16720896 16717312</p>
@@ -47,6 +47,13 @@
         <p>精选颜色(适用RGB[超级碗]):</p>
         <p>白色:16645629 10333693</p>
     </div>
+    <div class="col-sm-6 col-xs-5">
+        <p>窗帘电机控制:</p>
+        <p>完全打开，则下发:type=0xCF,val=100</p>
+        <p>完全关闭，则下发:type=0xCF,val=0</p>
+        <p>停⽌窗帘，则下发:type=0xCE,val=0x80</p>
+        <p>开到百分⽐，则下发：type=0xCF,val=percent percent取值:[0,100]</p>
+    </div> 
     <div class="col-sm-6 col-xs-12">
         <p>精选动态光(仅适用DYN超级碗也可以用)</p>
         <p>青草  0x8218cc80</p>
