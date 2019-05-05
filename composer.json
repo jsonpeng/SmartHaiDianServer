@@ -53,7 +53,8 @@
             "App\\": "app/"
         },
         "files": [
-            "app/Helper/Helper.php"
+            "app/Helper/Helper.php",
+            "app/Helper/Smart/Smart.php"
         ]
     },
     "autoload-dev": {

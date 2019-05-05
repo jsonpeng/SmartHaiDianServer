@@ -12,6 +12,7 @@
 */
 
 Route::get('test',function(){
+		dd(\Zcjy::form()->getConfig());
 		dd(app('common')->DevSceneRepo()->startMutiControlRequest(1));
 		dd(curl_post("https://api.ilifesmart.com/app/auth.RegisterUser",[]));
 		dd(time());

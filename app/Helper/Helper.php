@@ -1,6 +1,6 @@
 <?php
 include_once 'Shop.php';
-include_once 'Smart.php';
+
 use App\User;
 
 

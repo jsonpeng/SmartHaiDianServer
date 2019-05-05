@@ -172,7 +172,7 @@ trait ZcjyFormTrait{
      * 基础配置
      * @return [type] [description]
      */
-    private function getConfig()
+    public function getConfig()
     {
         return $this->config;
     }
