@@ -107,7 +107,7 @@
 
                                     </div> --}}
                                     <div class="pull-right">
-                                        <a href="{!! url('/zcjy/logout') !!}" class="btn btn-default btn-flat">
+                                        <a href="{!! url('/smart/logout') !!}" class="btn btn-default btn-flat">
                                             退出
                                         </a>
                                    {{--      <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">

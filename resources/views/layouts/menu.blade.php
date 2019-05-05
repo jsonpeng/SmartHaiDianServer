@@ -2,10 +2,10 @@
     <a href="/" target="_blank"><i class="fa fa-home"></i><span>网站首页</span></a>
 </li> -->
 
-<li class="header">说明文档</li>
+<!-- <li class="header">说明文档</li>
  <li class="{{ Request::is('smart/doc')  ? 'active' : '' }}">
       <a href="/smart/doc"><i class="fa fa-cog"></i><span>系统说明文档</span></a>
-</li>
+</li> -->
 
 <li class="header">系统设置</li>
     <li class="{{ Request::is('smart/settings/setting*') || Request::is('smart') ? 'active' : '' }}">

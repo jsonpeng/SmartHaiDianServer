@@ -31,7 +31,7 @@
                                     <input type="text" class="form-control" name="name" maxlength="60" placeholder="系统名称" value="{{ getSettingValueByKey('name') }}"></div>
                             </div>
 
-                            <div class="form-group">
+                     <!--        <div class="form-group">
                                 <label for="logo" class="col-sm-3 control-label">系统LOGO</label>
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control" id="image1" name="logo" placeholder="系统LOGO" value="{{ getSettingValueByKey('logo') }}">
@@ -40,18 +40,18 @@
                                         <img src="@if(getSettingValueByKey('logo')) {{ getSettingValueByKey('logo') }} @endif" style="max-width: 100%; max-height: 150px; display: block;"></div>
                                     <p class="help-block">默认系统首页LOGO,通用头部显示，最佳显示尺寸为240*60像素</p>
                                 </div>
-                            </div>
+                            </div> -->
               
                              <div class="form-group">
                                 <label for="agt" class="col-sm-3 control-label">当前智慧中心agt</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="agt" maxlength="60" placeholder="当前智慧中心agt(设备添加控制的时候必须的参数)" value="{{ getSettingValueByKey('agt') }}"></div>
+                                    <input type="text" class="form-control"  name="agt" maxlength="60" readonly="readonly" placeholder="当前智慧中心agt(设备添加控制的时候必须的参数)" value="{{ getSettingValueByKey('agt') }}"></div>
                             </div>
 
                               <div class="form-group">
                                 <label for="agt" class="col-sm-3 control-label">java服务接口地址</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="java_request_url" maxlength="60" placeholder="java服务接口地址" value="{{ getSettingValueByKey('java_request_url') }}"></div>
+                                    <input type="text" class="form-control" name="java_request_url" maxlength="60" readonly="readonly"  placeholder="java服务接口地址" value="{{ getSettingValueByKey('java_request_url') }}"></div>
                             </div>
 
                         </form>

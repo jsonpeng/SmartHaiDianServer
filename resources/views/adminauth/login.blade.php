@@ -48,11 +48,11 @@
             @include('admin.partials.error')
             @include('admin.partials.message')
             <p class="login-box-msg">{!! getSettingValueByKeyCache("name") !!}管理后台</p>
-            <form action="/zcjy/login" method="post">
+            <form action="/smart/login" method="post">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="form-group has-feedback">
-                    <input type="email" name="email" value="{{ old('email') }}" class="form-control" placeholder="邮箱" />
-                    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                    <input type="text" name="username" value="{{ old('username') }}" class="form-control" placeholder="用户名" />
+                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
                 </div>
                 <div class="form-group has-feedback">
                     <input type="password" name="password" class="form-control" placeholder="密码" />

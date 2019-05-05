@@ -37,13 +37,20 @@ Route::get('/', function(){
 	// return redirect('/smart');
 });
 
+//管理员
+Route::group([ 'prefix' => 'smart'], function () {
+	Route::get('login', 'Auth\AdminAuthController@showLoginForm');
+	Route::post('login', 'Auth\AdminAuthController@login');
+	Route::get('logout', 'Auth\AdminAuthController@logout');
+});
+
 /**
  *后台
  */
 //刷新缓存
 Route::post('/clearCache','AppBaseController@clearCache');
 
-Route::group(['prefix'=>'smart','namespace'=>"Smart"],function(){
+Route::group(['middleware' => ['web', 'auth.admin'],'prefix'=>'smart','namespace'=>"Smart"],function(){
 	//说明文档
 	Route::get('/doc', 'SettingController@settingDoc');
 	//后台首页

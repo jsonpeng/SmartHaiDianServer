@@ -24,8 +24,7 @@ class Smart{
      use SmartDataShow,SmartControl,SmartHelper;
      //引入本文件中缓存服务及常量管理
      use SmartCacheService,SmartContent;
-
- }
+}
 
 /**
  * 常量管理
