@@ -121,7 +121,7 @@ trait SmartControl{
         $result = self::simpleGuzzleRequest(self::smartRequestUrl().'set_one_device','GET',$input);
 
         //更新DB
-        self::updateDeviceStatus($input,$switch);
+        // self::updateDeviceStatus($input,$switch);
         
         return self::returnVarifyJavaResultData($result);
     }
@@ -140,6 +140,40 @@ trait SmartControl{
         $params = ['args'=>$params];
         $result = self::simpleGuzzleRequest(self::smartRequestUrl().'set_multi_devices','POST',$params);
         return self::returnVarifyJavaResultData($result);
+    }
+
+    /**
+     * 获取所有的真实设备
+     * @return [type] [description]
+     */
+    public static function getAllCurrentDevices()
+    {
+        $result = self::simpleGuzzleRequest(self::smartRequestUrl().'get_all_devices','GET');
+        $result = json_decode($result,1);
+        $allDevices = [];
+        if(isset($result['code']) && (int)$result['code'] === 0)
+        {
+            $devices = $result['data'];
+            //只取stat是1 并且 agt是当前DB存的
+            foreach ($devices as $key => $device) 
+            {
+                if((int)$device['stat'] === 1 && $device['agt'] == self::getCacheAgt())
+                {
+                     $allDevices[] = $device;
+                }
+            }
+        }
+        return $allDevices;
+    }
+
+    /**
+     * 更新所有设备的状态
+     * @return [type] [description]
+     */
+    public static function updateAllDeviceStatus()
+    {
+       $allDevices = self::getAllCurrentDevices();
+       return $allDevices;
     }
 
 }
