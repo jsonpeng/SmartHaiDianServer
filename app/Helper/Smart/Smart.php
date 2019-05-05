@@ -106,7 +106,8 @@ trait SmartContent{
         'SL_LI_RGBW' => '智能灯光设备',
         'SL_SC_CP'   => '燃气传感器',
         'SL_SC_CQ'   => '环境传感器',
-        'SL_CT_RGBW' => '智能灯光设备'
+        'SL_CT_RGBW' => '智能灯光设备',
+        'SL_DOOYA'   => '窗帘电机'
     ];
 
     //设备状态对应的类型
@@ -116,7 +117,8 @@ trait SmartContent{
         'SL_LI_RGBW' => '幻彩灯泡',
         'SL_SC_CP'   => '燃气传感器',
         'SL_SC_CQ'   => '环境传感器',
-        'SL_CT_RGBW' => '灯带'
+        'SL_CT_RGBW' => '灯带',
+        'SL_DOOYA'   => '窗帘电机'
     ];
 
     //设备控制idx类型
@@ -177,7 +179,10 @@ trait SmartCacheService{
         });
     }
 
-     //java server请求地址
+  /**
+   * java server请求地址
+   * @return [type] [description]
+   */
     public static function smartRequestUrl()
     {
         return SmartCache::remember('smart_java_request',SmartConfig::get('smart.java_request_time'),function(){
