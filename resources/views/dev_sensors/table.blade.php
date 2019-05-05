@@ -7,7 +7,7 @@
         <th class="hidden-xs">设备图片</th>
         <th >设备状态</th>
         <th class="hidden-xs">传感器类型</th>
-        <th class="hidden-xs">告警门限</th>
+        <!-- <th class="hidden-xs">告警门限</th> -->
         <th class="hidden-xs">告警音状态</th>
         <th>区域</th>
     <!--     <th>智慧中心ID</th>
@@ -26,7 +26,7 @@
             <td class="hidden-xs"><img src="{!! $devSensor->image !!}" style="max-width: 100px;height: auto;" /></td>
             <td>{!! Smart::getDisplayName($devSensor->state,'state') !!}</td>
             <td class="hidden-xs">{!! Smart::getDisplayName($devSensor->type) !!}</td>
-            <td class="hidden-xs">{!! $devSensor->threshold !!}</td>
+            <!-- <td class="hidden-xs">{!! $devSensor->threshold !!}</td> -->
             <td class="hidden-xs">{!! Smart::getDisplayName($devSensor->alarm_sound,'alarm_sound') !!}</td>
             <td>{!! Smart::getRegionName($devSensor->region_id) !!}</td>
   <!--           <td>{!! $devSensor->agt !!}</td>
