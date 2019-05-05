@@ -520,6 +520,14 @@ trait SmartControl{
             $light->update(['is_on'=>$switch]);
             return;
         }
+
+        //燃气感应器
+        $sensor = DevSensor::where('me',$input['me'])->first();
+        if(!empty($sensor))
+        {
+            $sensor->update(['alarm_sound'=>$switch]);
+        }
+
         //窗帘
         $doorya = DevCurtain::where('me',$input['me'])->first();
         if(!empty($doorya))
@@ -609,6 +617,7 @@ trait SmartControl{
         // return $input;
         $result = self::simpleGuzzleRequest(self::smartRequestUrl().'set_one_device','GET',$input);
 
+        //更新DB
         self::updateDeviceStatus($input,$switch);
         
         return self::returnVarifyJavaResultData($result);
