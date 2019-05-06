@@ -9,6 +9,14 @@ use App\Models\DevCurtain;
  * 智能数据显示
  */
 trait SmartDataShow{
+    /**
+     * 获取所有得区域
+     * @return [type] [description]
+     */
+    public static function getReionAll()
+    {
+        return Region::all();
+    }
 
     /**
      * 获取所有场景

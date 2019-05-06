@@ -21,6 +21,15 @@ $api->version('v1', function ($api) {
 		$api->group(['namespace' => 'App\Http\Controllers\Smart\API','middleware' => 'acces'], function ($api) {
 
 		/**
+		 * 区域相关api
+		 */
+		$api->group(['prefix' => 'region'], function ($api) {
+			//获取所有设备
+			$api->get('all','RegionApiController@getRegionAll');
+		});
+
+
+		/**
 		 * 设备相关api
 		 */
 	    $api->group(['prefix' => 'device'], function ($api) {
@@ -49,5 +58,6 @@ $api->version('v1', function ($api) {
 			$api->get('switch/{scene_id}/{action}','SceneApiControlller@swithScene');
 
 	    });
+
 	});
 });
