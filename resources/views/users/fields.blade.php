@@ -12,7 +12,7 @@
 
 <!-- Pwd Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('pwd', '密码:') !!}
+    {!! Form::label('pwd', '开锁密码:') !!}
     {!! Form::text('pwd', null, ['class' => 'form-control']) !!}
 </div>
 
