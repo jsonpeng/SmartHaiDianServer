@@ -43,15 +43,15 @@
                             </div> -->
               
                              <div class="form-group">
-                                <label for="agt" class="col-sm-3 control-label">当前智慧中心agt</label>
+                                <label for="agt" class="col-sm-3 control-label">当前智慧中心agt(注:不要轻易修改!)</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control"  name="agt" maxlength="60" readonly="readonly" placeholder="当前智慧中心agt(设备添加控制的时候必须的参数)" value="{{ getSettingValueByKey('agt') }}"></div>
+                                    <input type="text" class="form-control"  name="agt" maxlength="60"  placeholder="当前智慧中心agt(设备添加控制的时候必须的参数)" value="{{ getSettingValueByKey('agt') }}"></div>
                             </div>
 
                               <div class="form-group">
-                                <label for="agt" class="col-sm-3 control-label">java服务接口地址</label>
+                                <label for="agt" class="col-sm-3 control-label">java服务接口地址(注:不要轻易修改!)</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="java_request_url" maxlength="60" readonly="readonly"  placeholder="java服务接口地址" value="{{ getSettingValueByKey('java_request_url') }}"></div>
+                                    <input type="text" class="form-control" name="java_request_url" maxlength="60"   placeholder="java服务接口地址" value="{{ getSettingValueByKey('java_request_url') }}"></div>
                             </div>
 
                         </form>

@@ -18,6 +18,7 @@ if (is_file(__DIR__ . '/Trait/SmartHelper.php')) {
     require_once __DIR__ . '/Trait/SmartHelper.php';
 }
 
+use App\Models\DevDoorLock;
 
 class Smart{
      //引入外链trait
@@ -187,6 +188,17 @@ trait SmartCacheService{
     {
         return SmartCache::remember('smart_java_request',SmartConfig::get('smart.java_request_time'),function(){
             return getSettingValueByKey('java_request_url') ?  : self::$javaRequestUrl;
+        });
+    }
+
+    /**
+     * 获取门锁的me信息
+     * @return [type] [description]
+     */
+    public static function getCacheDoorMe()
+    {
+        return SmartCache::remember('smart_door_me',SmartConfig::get('smart.smart_door_time'),function(){
+            return optional(DevDoorLock::first())->me;
         });
     }
 }

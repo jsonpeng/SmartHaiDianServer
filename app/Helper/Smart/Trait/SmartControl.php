@@ -176,4 +176,35 @@ trait SmartControl{
        return $allDevices;
     }
 
+
+    /**
+     * 设置门锁临时用户
+     * @param string $action [description]
+     * @param [type] $input  [description]
+     * @param [type] $id     [description]
+     */
+    public static function setTempDoorUser($action = "create",$input = [],$id)
+    {   
+        $requestParam = [];
+      
+        if($action == 'create' || $action == 'modify')
+        {
+            $requestParam['agt'] = self::getCacheAgt();
+            $requestParam['me'] = self::getCacheDoorMe();
+            $requestParam['name'] = $input['name'];
+            $requestParam['pwd'] = $input['pwd'];
+        }
+        else if($action == 'delete'){
+            
+        }
+        else{
+            return;
+        }
+        $requestParam['oper'] = $action;
+        $requestParam['sn'] = $id;
+        $result = self::simpleGuzzleRequest(self::smartRequestUrl().'set_temp_door','GET',$requestParam);
+        return self::returnVarifyJavaResultData($result);
+    }
+
+
 }

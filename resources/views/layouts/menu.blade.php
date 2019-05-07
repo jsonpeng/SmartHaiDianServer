@@ -30,6 +30,15 @@
     <a href="{!! route('devCurtains.index') !!}"><i class="fa fa-edit"></i><span>窗帘电机</span></a>
 </li>
 
+<li class="{{ Request::is('smart/devDoorLocks*') ? 'active' : '' }}">
+    <a href="{!! route('devDoorLocks.index') !!}"><i class="fa fa-edit"></i><span>智能门锁设备管理</span></a>
+</li>
+
+<li class="header">用户设置</li>
+<li class="{{ Request::is('smart/users*') ? 'active' : '' }}">
+    <a href="{!! route('users.index') !!}"><i class="fa fa-edit"></i><span>智能门锁用户管理</span></a>
+</li>
+
 <li class="header">联动设置</li>
 <li class="{{ Request::is('smart/devScenes*') ? 'active' : '' }}">
     <a href="{!! route('devScenes.index') !!}"><i class="fa fa-edit"></i><span>场景管理</span></a>
@@ -43,6 +52,9 @@
 <li class="">
     <a href="javascript:;" id="refresh"><i class="fa fa-refresh"></i><span>刷新缓存</span></a>
 </li>
+
+
+
 
 
 

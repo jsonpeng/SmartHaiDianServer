@@ -70,7 +70,13 @@ Route::group(['middleware' => ['web', 'auth.admin'],'prefix'=>'smart','namespace
 	Route::resource('devSensors', 'DevSensorController');
 	//窗帘电机
 	Route::resource('devCurtains', 'DevCurtainController');
+	//智能门锁设备管理
+	Route::resource('devDoorLocks', 'DevDoorLockController');
+	//门锁用户管理
+	Route::resource('users', 'UserController');
 });
+
+
 
 
 
