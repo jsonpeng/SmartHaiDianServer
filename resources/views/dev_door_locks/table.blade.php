@@ -21,7 +21,7 @@
             <td>{!! $devDoorLock->me !!}</td>
             <td  class="hidden-xs">{!! $devDoorLock->model !!}</td>
             <td>{!! $devDoorLock->name !!}</td>
-            <td  class="hidden-xs">{!! $devDoorLock->image !!}</td>
+            <td  class="hidden-xs"><img src="{!! $devDoorLock->image !!}" style="max-width: 100px;height: auto;" /></td>
             <td>{!! Smart::getDisplayName($devDoorLock->state,'state') !!}</td>
             <td>{!! $devDoorLock->battery !!}</td>
              <td>{!! app("common")->RegionRepo()->getNameById($devDoorLock->region_id) !!}</td>
