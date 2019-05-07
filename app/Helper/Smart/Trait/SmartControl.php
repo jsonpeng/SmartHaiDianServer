@@ -189,8 +189,6 @@ trait SmartControl{
       
         if($action == 'create' || $action == 'modify')
         {
-            $requestParam['agt'] = self::getCacheAgt();
-            $requestParam['me'] = self::getCacheDoorMe();
             $requestParam['name'] = $input['name'];
             $requestParam['pwd'] = $input['pwd'];
         }
@@ -200,6 +198,8 @@ trait SmartControl{
         else{
             return;
         }
+        $requestParam['agt'] = self::getCacheAgt();
+        $requestParam['me'] = self::getCacheDoorMe();
         $requestParam['oper'] = $action;
         $requestParam['sn'] = $id;
         $result = self::simpleGuzzleRequest(self::smartRequestUrl().'set_temp_door','GET',$requestParam);
