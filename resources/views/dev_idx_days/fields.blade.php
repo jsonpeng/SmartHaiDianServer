@@ -1,7 +1,11 @@
 <!-- Idx Field -->
 <div class="form-group col-sm-12">
     {!! Form::label('idx', '设备类型:') !!}
-    {!! Form::text('idx', null, ['class' => 'form-control']) !!}
+    <select name="idx" class="form-control">
+    	@foreach($configIdx as $key => $item)
+    		<option value="{!! $key !!}" @if(isset($devIdxDay)) selected="selected" @endif>{!! $item !!}</option>
+    	@endforeach
+    </select>
 </div>
 
 <!-- Val Field -->

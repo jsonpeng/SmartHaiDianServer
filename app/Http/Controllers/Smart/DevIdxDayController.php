@@ -15,6 +15,11 @@ class DevIdxDayController extends AppBaseController
 {
     /** @var  DevIdxDayRepository */
     private $devIdxDayRepository;
+    private $configIdx = [
+        'temp' => '温度',
+        'hum'  => '湿度',
+        'pm25' => 'pm2.5'
+    ];
 
     public function __construct(DevIdxDayRepository $devIdxDayRepo)
     {
@@ -31,8 +36,9 @@ class DevIdxDayController extends AppBaseController
     {
         $this->devIdxDayRepository->pushCriteria(new RequestCriteria($request));
         $devIdxDays = $this->devIdxDayRepository
-        ->orderBy('record_at','asc')
-        ->paginate(15);
+        ->orderBy('record_at','asc');
+
+        $devIdxDays = $devIdxDays->paginate(15);
 
         return view('dev_idx_days.index')
             ->with('devIdxDays', $devIdxDays);
@@ -46,7 +52,8 @@ class DevIdxDayController extends AppBaseController
     public function create()
     {
         return view('dev_idx_days.create')
-        ->with('model_required',modelRequiredParam($this->devIdxDayRepository));
+        ->with('model_required',modelRequiredParam($this->devIdxDayRepository))
+        ->with('configIdx',$this->configIdx);
     }
 
     /**
@@ -59,8 +66,6 @@ class DevIdxDayController extends AppBaseController
     public function store(CreateDevIdxDayRequest $request)
     {
         $input = $request->all();
-
-
 
         $devIdxDay = db('dev_idx_day')->insert([
             'idx' => $input['idx'],
@@ -112,6 +117,7 @@ class DevIdxDayController extends AppBaseController
 
         return view('dev_idx_days.edit')
         ->with('devIdxDay', $devIdxDay)
+        ->with('configIdx',$this->configIdx)
         ->with('model_required',modelRequiredParam($this->devIdxDayRepository));
     }
 
