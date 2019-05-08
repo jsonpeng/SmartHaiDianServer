@@ -21,9 +21,9 @@ class DevIdxDay extends Model
     public $table = 'dev_idx_day';
     
     const UPDATED_AT = null;
-    const DELETED_AT = null;
+    // const DELETED_AT = null;
     const CREATED_AT = null;
-
+    // const CREATED_AT = 'create_at';
     // protected $dates = ['deleted_at'];
 
 
@@ -39,9 +39,7 @@ class DevIdxDay extends Model
      * @var array
      */
     protected $casts = [
-        'idx' => 'string',
-        'val' => 'string',
-        'record_at' => 'string'
+      
     ];
 
     /**

@@ -228,7 +228,7 @@
                                 <label for="name" class="col-sm-3 control-label">告警
 </label>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control" name="env_gj" maxlength="60" placeholder="告警" value="{{ getSettingValueByKey('env_gj') }}"></div>
+                                    <input type="text" class="form-control" name="dev_gj" maxlength="60" placeholder="告警" value="{{ getSettingValueByKey('dev_gj') }}"></div>
                             </div>
             
                         </form>

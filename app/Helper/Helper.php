@@ -2,7 +2,11 @@
 include_once 'Shop.php';
 
 use App\User;
+use Illuminate\Support\Facades\DB;
 
+function db($table){
+  return DB::table($table);
+}
 
 function zcjy_data($data=null)
 {

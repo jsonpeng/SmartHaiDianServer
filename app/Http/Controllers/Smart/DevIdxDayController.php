@@ -60,7 +60,13 @@ class DevIdxDayController extends AppBaseController
     {
         $input = $request->all();
 
-        $devIdxDay = $this->devIdxDayRepository->model()::create($input);
+
+
+        $devIdxDay = db('dev_idx_day')->insert([
+            'idx' => $input['idx'],
+            'val' => $input['val'],
+            'record_at' => $input['record_at']
+        ]);
 
         Flash::success('添加成功.');
 
