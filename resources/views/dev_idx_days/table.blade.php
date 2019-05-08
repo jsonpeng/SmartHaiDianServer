@@ -10,7 +10,7 @@
     <tbody>
     @foreach($devIdxDays as $devIdxDay)
         <tr>
-            <td>{!! $devIdxDay->idx !!}</td>
+            <td>{!! $devIdxDay->idxName !!}</td>
             <td>{!! $devIdxDay->val !!}</td>
             <td>{!! $devIdxDay->record_at !!}</td>
             <td>

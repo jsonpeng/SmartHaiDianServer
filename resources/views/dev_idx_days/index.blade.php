@@ -9,7 +9,38 @@
     </section>
     <div class="content">
         <div class="clearfix"></div>
-
+        <?php $tools = 1;?>
+        <div class="box box-default box-solid mb10-xs @if(!$tools) collapsed-box @endif">
+                        <div class="box-header with-border">
+                          <h3 class="box-title">查询</h3>
+                          <div class="box-tools pull-right">
+                            <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-{!! !$tools?'plus':'minus' !!}"></i></button>
+                          </div><!-- /.box-tools -->
+                        </div><!-- /.box-header -->
+                        <div class="box-body">
+                            <form id="order_search">
+                               
+                                <div class="form-group col-lg-2 col-md-3 col-sm-6 col-xs-6">
+                                    <label for="shelf">指标类型</label>
+                                    <select class="form-control" name="idx">
+                                        <option value="" @if (!array_key_exists('idx', $input)) selected="selected" @endif>全部</option>
+                                      @foreach($configIdx as $key => $item)
+                                        <option value="{!! $key !!}" @if(isset($input['idx']) && $input['idx'] == $key) selected="selected" @endif>{!! $item !!}</option>
+                                    @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group col-lg-1 col-md-1 hidden-xs hidden-sm" style="padding-top: 25px;">
+                                    <button type="submit" class="btn btn-primary pull-right " onclick="search()">查询</button>
+                                </div>
+                                <div class="form-group col-lg-1 col-md-1 hidden-xs hidden-sm" style="padding-top: 25px;">
+                                    <a href="{!! route('devIdxDays.index') !!}" class="btn btn-primary pull-right " >重置</a>
+                                </div>
+                                <div class="form-group col-xs-6 visible-xs visible-sm" >
+                                    <button type="submit" class="btn btn-primary pull-left " onclick="search()">查询</button>
+                                </div>
+                            </form>
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->
         @include('flash::message')
 
         <div class="clearfix"></div>

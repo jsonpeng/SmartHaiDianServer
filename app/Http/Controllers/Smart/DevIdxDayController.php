@@ -35,13 +35,31 @@ class DevIdxDayController extends AppBaseController
     public function index(Request $request)
     {
         $this->devIdxDayRepository->pushCriteria(new RequestCriteria($request));
-        $devIdxDays = $this->devIdxDayRepository
-        ->orderBy('record_at','asc');
 
-        $devIdxDays = $devIdxDays->paginate(15);
+        $devIdxDays = $this->devIdxDayRepository
+        ->model()::where('id','>',0);
+
+        $input = $request->all();
+
+        if(isset($input['idx']))
+        {
+            $devIdxDays = $devIdxDays->where('idx',$input['idx']);
+        }
+
+        $devIdxDays = $devIdxDays
+        ->orderBy('record_at','asc')
+        ->paginate(15);
+
+        //处理设备类型
+        foreach ($devIdxDays as $key => $item) 
+        {
+            $item['idxName'] = isset($this->configIdx[$item->idx]) ? $this->configIdx[$item->idx] : '未知';
+        }
 
         return view('dev_idx_days.index')
-            ->with('devIdxDays', $devIdxDays);
+            ->with('input',$input)
+            ->with('devIdxDays', $devIdxDays)
+            ->with('configIdx',$this->configIdx);
     }
 
     /**

@@ -3,7 +3,7 @@
     {!! Form::label('idx', '设备类型:') !!}
     <select name="idx" class="form-control">
     	@foreach($configIdx as $key => $item)
-    		<option value="{!! $key !!}" @if(isset($devIdxDay)) selected="selected" @endif>{!! $item !!}</option>
+    		<option value="{!! $key !!}" @if(isset($devIdxDay) && $devIdxDay->idx == $key) selected="selected" @endif>{!! $item !!}</option>
     	@endforeach
     </select>
 </div>
