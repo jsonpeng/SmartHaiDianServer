@@ -2,6 +2,7 @@
     <thead>
         <tr>
         <th>地区name</th>
+        <th>区域图片</th>
         <th>地区描述</th>
         <th colspan="3">操作</th>
         </tr>
@@ -10,6 +11,7 @@
     @foreach($regions as $region)
         <tr>
             <td>{!! $region->name !!}</td>
+            <td><img src="{!! $region->image !!}" style="max-width: 100px;height: auto;" /></td>
             <td>{!! $region->desc !!}</td>
             <td>
                 {!! Form::open(['route' => ['regions.destroy', $region->id], 'method' => 'delete']) !!}

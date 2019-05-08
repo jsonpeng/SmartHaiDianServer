@@ -26,7 +26,8 @@ class Region extends Model
 
     public $fillable = [
         'name',
-        'desc'
+        'desc',
+        'image'
     ];
 
     /**
