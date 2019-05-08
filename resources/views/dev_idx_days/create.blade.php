@@ -22,3 +22,5 @@
         </div>
     </div>
 @endsection
+
+@include('dev_idx_days.js')

@@ -13,7 +13,7 @@
 <!-- Record At Field -->
 <div class="form-group col-sm-12">
     {!! Form::label('record_at', '纪录时间:') !!}
-    {!! Form::text('record_at', null, ['class' => 'form-control']) !!}
+    {!! Form::text('record_at', null, ['class' => 'form-control','id'=>'record_at']) !!}
 </div>
 
 <!-- Submit Field -->

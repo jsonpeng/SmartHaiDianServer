@@ -15,7 +15,7 @@
     
     <link rel="stylesheet" href="https://cdn.bootcss.com/ionicons/2.0.1/css/ionicons.min.css">
     <link href="https://cdn.bootcss.com/element-ui/1.4.3/theme-default/index.css" rel="stylesheet">
-    
+    <link rel="stylesheet" href="{{ asset('vendor/datepicke/css/bootstrap-datepicker.min.css') }}">
 
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
     <style type="text/css">
@@ -149,6 +149,8 @@
     <script type="text/javascript" src="{{ asset('vendor/vue/vue.min.js') }}"></script>
     <!-- <script type="text/javascript" src="{{ asset('vendor/jquery.nestable.js') }}"></script> -->
     <script src="https://cdn.bootcss.com/element-ui/1.4.3/index.js"></script>
+    <script type="text/javascript" src="{{ asset('vendor/datepicke/js/bootstrap-datepicker.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('vendor/datepicke/locales/bootstrap-datepicker.zh-CN.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/admin.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/zcjy.js') }}"></script>
     <script type="text/javascript">

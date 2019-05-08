@@ -60,7 +60,7 @@ class DevIdxDayController extends AppBaseController
     {
         $input = $request->all();
 
-        $devIdxDay = $this->devIdxDayRepository->create($input);
+        $devIdxDay = $this->devIdxDayRepository->model()::create($input);
 
         Flash::success('添加成功.');
 
@@ -127,7 +127,7 @@ class DevIdxDayController extends AppBaseController
             return redirect(route('devIdxDays.index'));
         }
 
-        $devIdxDay = $this->devIdxDayRepository->update($request->all(), $id);
+        $devIdxDay->update($request->all());
 
         Flash::success('更新成功.');
 
