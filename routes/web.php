@@ -12,7 +12,7 @@
 */
 
 Route::get('test',function(){
-		dd(\Smart::updateAllDeviceStatus());
+		dd(\Smart::getAllTempDoorUser());
 		dd(app('common')->DevSceneRepo()->startMutiControlRequest(1));
 		dd(curl_post("https://api.ilifesmart.com/app/auth.RegisterUser",[]));
 		dd(time());
@@ -47,6 +47,13 @@ Route::group([ 'prefix' => 'smart'], function () {
 /**
  *后台
  */
+
+//后台ajax
+Route::group(['prefix' => 'ajax'], function () {
+		//文件上传
+		Route::post('uploads', 'AppBaseController@uploads');
+});
+
 //刷新缓存
 Route::post('/clearCache','AppBaseController@clearCache');
 
@@ -74,7 +81,13 @@ Route::group(['middleware' => ['web', 'auth.admin'],'prefix'=>'smart','namespace
 	Route::resource('devDoorLocks', 'DevDoorLockController');
 	//门锁用户管理
 	Route::resource('users', 'UserController');
+	//设备数据管理
+	 Route::resource('devIdxDays', 'DevIdxDayController');
+	//用户偏好设置
+	//Route::resource('preferences', 'PreferenceController');
 });
+
+
 
 
 

@@ -5,6 +5,7 @@ namespace App\Repositories;
 
 use App\Repositories\RegionRepository;
 use App\Repositories\DevSceneRepository;
+use App\Repositories\PreferenceRepository;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Config;
 
@@ -30,12 +31,15 @@ class CommonRepository
 {
      private $RegionRepository;
      private $DevSceneRepository;
+     private $PreferenceRepository;
      public function __construct(
         RegionRepository $RegionRepo,
-        DevSceneRepository $DevSceneRepo
+        DevSceneRepository $DevSceneRepo,
+        PreferenceRepository $PreferenceRepo
     ){
         $this->RegionRepository = $RegionRepo;
         $this->DevSceneRepository = $DevSceneRepo;
+        $this->PreferenceRepository = $PreferenceRepo;
      }
 
      public function DevSceneRepo()
@@ -46,6 +50,11 @@ class CommonRepository
      public function RegionRepo()
      {
       return $this->RegionRepository;
+     }
+
+     public function PreferenceRepo()
+     {
+      return $this->PreferenceRepository;
      }
 
 

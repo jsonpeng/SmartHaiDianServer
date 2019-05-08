@@ -178,30 +178,66 @@ trait SmartControl{
 
 
     /**
+     * 获取门锁所有得临时用户
+     * @return [type] [description]
+     */
+    public static function getAllTempDoorUser()
+    {
+        $requestParam = [
+            'agt' => self::getCacheAgt(),
+            'me'  => self::getCacheDoorMe()
+        ];  
+        $result = self::simpleGuzzleRequest(self::smartRequestUrl().'get_door_set_users','GET',$requestParam);
+        $result = json_decode($result,1);
+        $allUsers = [];
+        if(isset($result['code']) && (int)$result['code'] === 0)
+        {
+            $users = $result['data'];
+            
+            //只取stat是1 并且 agt是当前DB存的
+            foreach ($users as $key => $user) 
+            {
+              if($user['ty'] == 'R')
+              {
+                $allUsers[] = $user;
+              }
+            }
+        }
+        return $allUsers;
+    }
+
+    /**
      * 设置门锁临时用户
      * @param string $action [description]
      * @param [type] $input  [description]
      * @param [type] $id     [description]
      */
-    public static function setTempDoorUser($action = "create",$input = [],$id)
+    public static function setTempDoorUser($action = "create",$user)
     {   
         $requestParam = [];
-      
-        if($action == 'create' || $action == 'modify')
+
+        if(!in_array($action, ['create','modify','delete']))
         {
-            $requestParam['name'] = $input['name'];
-            $requestParam['pwd'] = $input['pwd'];
-        }
-        else if($action == 'delete'){
-            
-        }
-        else{
             return;
         }
+      
+        $requestParam['name'] = $user->name;
+        $requestParam['pwd'] = $user->pwd;
         $requestParam['agt'] = self::getCacheAgt();
         $requestParam['me'] = self::getCacheDoorMe();
         $requestParam['oper'] = $action;
-        $requestParam['sn'] = $id;
+
+        //编辑得话直接是自己得
+        if($action == 'modify' || $action == 'delete')
+        {
+           
+                $requestParam['sn'] = $user->sn;
+        }#添加序号累加
+        else{
+                $requestParam['sn'] = count(self::getAllTempDoorUser()) + 1;
+                $user->update(['sn'=>$requestParam['sn']]);
+        }
+
         $result = self::simpleGuzzleRequest(self::smartRequestUrl().'set_temp_door','GET',$requestParam);
         return self::returnVarifyJavaResultData($result);
     }

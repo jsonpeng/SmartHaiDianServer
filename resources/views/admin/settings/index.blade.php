@@ -14,9 +14,21 @@
                 <a href="#tab_1" data-toggle="tab">系统设置</a>
             </li>
             
-        {{--     <li>
-                <a href="#tab_2" data-toggle="tab">小屋设置</a>
-            </li> --}}
+            <li>
+                <a href="#tab_2" data-toggle="tab">环境参数设置</a>
+            </li> 
+
+            <li>
+                <a href="#tab_3" data-toggle="tab">能量参数设置</a>
+            </li>
+
+            <li>
+                <a href="#tab_4" data-toggle="tab">设备参数设置</a>
+            </li>  
+
+            <li>
+                <a href="#tab_5" data-toggle="tab">环境idx参数设置</a>
+            </li>  
 
         </ul>
         <div class="tab-content">
@@ -27,13 +39,13 @@
                         <form class="form-horizontal" id="form1">
                             <div class="form-group">
                                 <label for="name" class="col-sm-3 control-label">系统名称</label>
-                                <div class="col-sm-9">
+                                <div class="col-sm-6">
                                     <input type="text" class="form-control" name="name" maxlength="60" placeholder="系统名称" value="{{ getSettingValueByKey('name') }}"></div>
                             </div>
 
                      <!--        <div class="form-group">
                                 <label for="logo" class="col-sm-3 control-label">系统LOGO</label>
-                                <div class="col-sm-9">
+                                <div class="col-sm-6">
                                     <input type="text" class="form-control" id="image1" name="logo" placeholder="系统LOGO" value="{{ getSettingValueByKey('logo') }}">
                                     <div class="input-append">
                                         <a data-toggle="modal" href="javascript:;" data-target="#myModal" class="btn" type="button" onclick="changeImageId('image1')">选择图片</a>
@@ -44,13 +56,13 @@
               
                              <div class="form-group">
                                 <label for="agt" class="col-sm-3 control-label">当前智慧中心agt(注:不要轻易修改!)</label>
-                                <div class="col-sm-9">
+                                <div class="col-sm-6">
                                     <input type="text" class="form-control"  name="agt" maxlength="60"  placeholder="当前智慧中心agt(设备添加控制的时候必须的参数)" value="{{ getSettingValueByKey('agt') }}"></div>
                             </div>
 
                               <div class="form-group">
                                 <label for="agt" class="col-sm-3 control-label">java服务接口地址(注:不要轻易修改!)</label>
-                                <div class="col-sm-9">
+                                <div class="col-sm-6">
                                     <input type="text" class="form-control" name="java_request_url" maxlength="60"   placeholder="java服务接口地址" value="{{ getSettingValueByKey('java_request_url') }}"></div>
                             </div>
 
@@ -70,7 +82,47 @@
                     <!-- form start -->
                     <div class="box-body">
                         <form class="form-horizontal" id="form2">
-                   
+                            
+                            <div class="form-group">
+                                <label for="name" class="col-sm-3 control-label">光照指数</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" name="env_gz" maxlength="60" placeholder="光照指数" value="{{ getSettingValueByKey('env_gz') }}"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="name" class="col-sm-3 control-label">体感温度
+</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" name="env_tg" maxlength="60" placeholder="体感温度" value="{{ getSettingValueByKey('env_tg') }}"></div>
+                            </div>
+
+                           <div class="form-group">
+                                <label for="name" class="col-sm-3 control-label">声环境指数
+</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" name="env_sy" maxlength="60" placeholder="声环境指数
+" value="{{ getSettingValueByKey('env_sy') }}"></div>
+                            </div>
+
+                           <div class="form-group">
+                                <label for="name" class="col-sm-3 control-label">紫外线指数</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" name="env_zwx" maxlength="60" placeholder="紫外线指数" value="{{ getSettingValueByKey('env_zwx') }}"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="name" class="col-sm-3 control-label">空气质量
+</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" name="env_kq" maxlength="60" placeholder="空气质量" value="{{ getSettingValueByKey('env_kq') }}"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="name" class="col-sm-3 control-label">穿衣指数
+</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" name="env_cy" maxlength="60" placeholder="穿衣指数" value="{{ getSettingValueByKey('env_cy') }}"></div>
+                            </div>
 
                        {{--      <div class="form-inline">
                                 <label for="feie_sn" class="col-sm-3 control-label">距离结束时间</label>
@@ -83,6 +135,176 @@
                     </div>
                     <div class="box-footer">
                         <button type="submit" class="btn btn-primary pull-left" onclick="saveForm(2)">保存</button>
+                    </div>
+                </div>
+            </div>
+
+              <div class="tab-pane" id="tab_3">
+                <div class="box box-info form">
+                    <!-- form start -->
+                    <div class="box-body">
+                        <form class="form-horizontal" id="form3">
+                            
+                            <div class="form-group">
+                                <label for="name" class="col-sm-3 control-label">C02减排量
+</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" name="co2" maxlength="60" placeholder="C02减排量
+" value="{{ getSettingValueByKey('co2') }}"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="name" class="col-sm-3 control-label">节约煤碳量
+</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" name="mt" maxlength="60" placeholder="节约煤碳量
+" value="{{ getSettingValueByKey('mt') }}"></div>
+                            </div>
+
+                           <div class="form-group">
+                                <label for="name" class="col-sm-3 control-label">减少树木砍伐量
+
+</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" name="tree" maxlength="60" placeholder="减少树木砍伐量" value="{{ getSettingValueByKey('tree') }}"></div>
+                            </div>
+
+                       
+
+                        </form>
+                    </div>
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary pull-left" onclick="saveForm(3)">保存</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane" id="tab_4">
+                <div class="box box-info form">
+                    <!-- form start -->
+                    <div class="box-body">
+                        <form class="form-horizontal" id="form4">
+                            
+                            <div class="form-group">
+                                <label for="name" class="col-sm-3 control-label">物业
+</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" name="dev_wy" maxlength="60" placeholder="物业
+" value="{{ getSettingValueByKey('dev_wy') }}"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="name" class="col-sm-3 control-label">厂商
+
+</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" name="dev_cs" maxlength="60" placeholder="厂商
+" value="{{ getSettingValueByKey('dev_cs') }}"></div>
+                            </div>
+
+                           <div class="form-group">
+                                <label for="name" class="col-sm-3 control-label">维修
+
+</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" name="dev_wx" maxlength="60" placeholder="维修" value="{{ getSettingValueByKey('dev_wx') }}"></div>
+                            </div>
+
+                           <div class="form-group">
+                                <label for="name" class="col-sm-3 control-label">保养
+</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" name="dev_by" maxlength="60" placeholder="保养" value="{{ getSettingValueByKey('dev_by') }}"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="name" class="col-sm-3 control-label">运行
+</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" name="dev_yy" maxlength="60" placeholder="运行" value="{{ getSettingValueByKey('dev_yy') }}"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="name" class="col-sm-3 control-label">告警
+</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" name="env_gj" maxlength="60" placeholder="告警" value="{{ getSettingValueByKey('env_gj') }}"></div>
+                            </div>
+            
+                        </form>
+                    </div>
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary pull-left" onclick="saveForm(4)">保存</button>
+                    </div>
+                </div>
+            </div>
+
+                  <div class="tab-pane" id="tab_5">
+                <div class="box box-info form">
+                    <!-- form start -->
+                    <div class="box-body">
+                        <form class="form-horizontal" id="form5">
+                            
+                            <div class="form-group">
+                                <label for="name" class="col-sm-3 control-label">洗车指数</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" name="idx_xc" maxlength="60" placeholder="物业
+" value="{{ getSettingValueByKey('idx_xc') }}"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="name" class="col-sm-3 control-label">污染指数
+</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" name="idx_wr" maxlength="60" placeholder="污染指数" value="{{ getSettingValueByKey('idx_wr') }}"></div>
+                            </div>
+
+                           <div class="form-group">
+                                <label for="name" class="col-sm-3 control-label">紫外线指数
+
+</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" name="idx_zwx" maxlength="60" placeholder="紫外线指数" value="{{ getSettingValueByKey('idx_zwx') }}"></div>
+                            </div>
+
+                           <div class="form-group">
+                                <label for="name" class="col-sm-3 control-label">穿衣指数
+</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" name="idx_cy" maxlength="60" placeholder="穿衣指数" value="{{ getSettingValueByKey('idx_cy') }}"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="name" class="col-sm-3 control-label">舒适度
+</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" name="idx_shd" maxlength="60" placeholder="舒适度" value="{{ getSettingValueByKey('idx_shd') }}"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="name" class="col-sm-3 control-label">阵雨指数
+</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" name="idx_zy" maxlength="60" placeholder="阵雨指数" value="{{ getSettingValueByKey('idx_zy') }}"></div>
+                            </div>
+
+                               <div class="form-group">
+                                <label for="name" class="col-sm-3 control-label">感冒指数
+</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" name="idx_gm" maxlength="60" placeholder="感冒指数" value="{{ getSettingValueByKey('idx_gm') }}"></div>
+                            </div>
+
+                                    <div class="form-group">
+                                <label for="name" class="col-sm-3 control-label">晾晒指数</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" name="idx_ls" maxlength="60" placeholder="晾晒指数" value="{{ getSettingValueByKey('idx_ls') }}"></div>
+                            </div>
+            
+                        </form>
+                    </div>
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary pull-left" onclick="saveForm(5)">保存</button>
                     </div>
                 </div>
             </div>

@@ -44,7 +44,8 @@ class UserController extends AppBaseController
     public function create()
     {
         return view('users.create')
-        ->with('model_required',modelRequiredParam($this->userRepository));
+        ->with('model_required',modelRequiredParam($this->userRepository))
+        ->with('scenes',app('common')->DevSceneRepo()->all());
     }
 
     /**
@@ -60,7 +61,9 @@ class UserController extends AppBaseController
         $input['uuid'] = md5($input['pwd']);
         $user = $this->userRepository->create($input);
         //设置门锁临时用户
-        \Smart::setTempDoorUser('create',$input,$user->id);
+        \Smart::setTempDoorUser('create',$user);
+        //更新用户偏好
+        app('common')->PreferenceRepo()->actionUserPreferenceScene('create',$user->id,$input['scene_id']);
 
         Flash::success('新用户创建成功.');
 
@@ -106,7 +109,8 @@ class UserController extends AppBaseController
 
         return view('users.edit')
         ->with('user', $user)
-        ->with('model_required',modelRequiredParam($this->userRepository));
+        ->with('model_required',modelRequiredParam($this->userRepository))
+        ->with('scenes',app('common')->DevSceneRepo()->all());
     }
 
     /**
@@ -127,11 +131,29 @@ class UserController extends AppBaseController
             return redirect(route('users.index'));
         }
         $input = $request->all();
+
+        if(strlen($input['pwd']) < 6)
+        {
+            return redirect(route('users.edit',$id))
+                   ->withInput($input)
+                   ->withErrors('密码不得少于6个字符');
+        }
+
+        if($this->userRepository->model()::where('id','<>',$id)->where('pwd',$input['pwd'])->count())
+        {
+            return redirect(route('users.edit',$id))
+                   ->withInput($input)
+                   ->withErrors('该密码已被使用过,请更换密码');
+        }
+
         $input['uuid'] = md5($input['pwd']);
         $user = $this->userRepository->update($input, $id);
 
         //设置门锁临时用户
-        \Smart::setTempDoorUser('modify',$input,$id);
+        \Smart::setTempDoorUser('modify',$user);
+
+        //更新用户偏好
+         app('common')->PreferenceRepo()->actionUserPreferenceScene('update',$user->id,$input['scene_id']);
 
         Flash::success('更新成功.');
 
@@ -155,10 +177,12 @@ class UserController extends AppBaseController
             return redirect(route('users.index'));
         }
 
-        $this->userRepository->delete($id);
-
         //设置门锁临时用户
-        \Smart::setTempDoorUser('delete',[],$id);
+        \Smart::setTempDoorUser('delete',$user);
+        //更新用户偏好
+        app('common')->PreferenceRepo()->actionUserPreferenceScene('delete',$user->id);
+
+        $this->userRepository->delete($id);
 
         Flash::success('删除成功.');
 

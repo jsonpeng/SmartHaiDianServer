@@ -6,25 +6,26 @@ use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class Setting
+ * Class Preference
  * @package App\Models
- * @version August 4, 2017, 11:30 am CST
+ * @version May 8, 2019, 2:40 pm CST
+ *
+ * @property integer user_id
+ * @property integer scene_id
  */
-class Setting extends Model
+class Preference extends Model
 {
-    use SoftDeletes;
+    // use SoftDeletes;
 
-    public $table = 'setting';
+    public $table = 'preference';
     
 
-    protected $dates = ['deleted_at'];
+    // protected $dates = ['deleted_at'];
 
 
     public $fillable = [
-        'name',
-        'value',
-        'groups',
-        'des'
+        'user_id',
+        'scene_id'
     ];
 
     /**
@@ -33,7 +34,8 @@ class Setting extends Model
      * @var array
      */
     protected $casts = [
-
+        'user_id' => 'integer',
+        'scene_id' => 'integer'
     ];
 
     /**

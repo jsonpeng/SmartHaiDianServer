@@ -17,6 +17,11 @@
     <a href="{!! route('regions.index') !!}"><i class="fa fa-edit"></i><span>区域管理</span></a>
 </li>
 
+<li class="header">数据及模拟管理</li>
+<li class="{{ Request::is('smart/devIdxDays*') ? 'active' : '' }}">
+    <a href="{!! route('devIdxDays.index') !!}"><i class="fa fa-edit"></i><span>设备数据管理</span></a>
+</li>
+
 <li class="header">智能设备管理</li>
 <li class="{{ Request::is('smart/devLights*') ? 'active' : '' }}">
     <a href="{!! route('devLights.index') !!}"><i class="fa fa-edit"></i><span>灯光设备</span></a>
@@ -36,7 +41,7 @@
 
 <li class="header">用户设置</li>
 <li class="{{ Request::is('smart/users*') ? 'active' : '' }}">
-    <a href="{!! route('users.index') !!}"><i class="fa fa-edit"></i><span>智能门锁用户管理</span></a>
+    <a href="{!! route('users.index') !!}"><i class="fa fa-edit"></i><span>门锁用户及偏好管理</span></a>
 </li>
 
 <li class="header">联动设置</li>
@@ -52,6 +57,7 @@
 <li class="">
     <a href="javascript:;" id="refresh"><i class="fa fa-refresh"></i><span>刷新缓存</span></a>
 </li>
+
 
 
 

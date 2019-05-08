@@ -31,7 +31,7 @@ class DevLightController extends AppBaseController
     {
         $this->devLightRepository->pushCriteria(new RequestCriteria($request));
         $devLights = $this->devLightRepository->all();
-
+        
         return view('dev_lights.index')
             ->with('devLights', $devLights);
     }

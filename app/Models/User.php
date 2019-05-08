@@ -35,7 +35,8 @@ class User extends Model
         'welcome_sound_url',
         'mobile',
         'sex',
-        'welcome'
+        'welcome',
+        'sn'
     ];
 
     /**
@@ -60,7 +61,7 @@ class User extends Model
      */
     public static $rules = [
         'name' => 'required',
-        'pwd' => 'required|unique:users',
+        'pwd' => 'required|min:6|unique:users',
         'welcome' => 'required'
     ];
 

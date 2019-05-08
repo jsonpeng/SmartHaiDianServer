@@ -37,7 +37,7 @@ class SettingRepository extends BaseRepository
     public function valueOfKey($key){
         $setting = Setting::where('name', $key)->first();
         if (empty($setting)) {
-            $setting = Setting::create(['name' => $key, 'value' => '', 'group' => '', 'des' => '']);
+            $setting = Setting::create(['name' => $key, 'value' => '', 'groups' => '', 'des' => '']);
         }
         return $setting->value;
     }
@@ -51,7 +51,7 @@ class SettingRepository extends BaseRepository
     public function settingByKey($key){
         $setting = Setting::where('name', $key)->first();
         if (empty($setting)) {
-            $setting = Setting::create(['name' => $key, 'value' => '', 'group' => '', 'des' => '']);
+            $setting = Setting::create(['name' => $key, 'value' => '', 'groups' => '', 'des' => '']);
         }
         return $setting;
     }

@@ -7,6 +7,7 @@
         <!-- <th>欢迎语音频地址</th> -->
         <th>性别</th>
         <th>欢迎语</th>
+        <th>用户偏好场景</th>
             <th colspan="3">操作</th>
         </tr>
     </thead>
@@ -20,6 +21,7 @@
             <!-- <td>{!! $user->mobile !!}</td> -->
             <td>{!! $user->sex ? '男' : '女' !!}</td>
             <td>{!! $user->welcome !!}</td>
+            <td>{!! app('common')->PreferenceRepo()->userPreferenceSceneName($user->id) !!}</td>
             <td>
                 {!! Form::open(['route' => ['users.destroy', $user->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>

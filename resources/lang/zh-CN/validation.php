@@ -152,7 +152,9 @@ return [
         'me '                   => '智慧设备唯一ID',
         'model'                 => '型号',
         'pwd'                   => '门锁密码',
-        'welcome'               => '欢迎语'
+        'welcome'               => '欢迎语',
+        'val'                   => '取值',
+        'record_at'             => '纪录时间'
     ],
 
 ];
