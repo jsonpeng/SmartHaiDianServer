@@ -111,6 +111,18 @@ trait SmartContent{
         'SL_DOOYA'   => '窗帘电机'
     ];
 
+    //设备模型
+    public static $deviceModel = 
+    [
+        'SL_SPOT'    => 'SL_SPOT',
+        'SL_LI_RGBW' => 'SL_LI_RGBW',
+        'SL_SC_CP'   => 'SL_SC_CP',
+        'SL_SC_CQ'   => 'SL_SC_CQ',
+        'SL_CT_RGBW' => 'SL_CT_RGBW',
+        'SL_DOOYA'   => 'SL_DOOYA',
+        'SL_LK_LS'   => 'SL_LK_LS'
+    ];
+
     //设备状态对应的类型
     public static $deviceType = 
     [
@@ -119,7 +131,8 @@ trait SmartContent{
         'SL_SC_CP'   => '燃气传感器',
         'SL_SC_CQ'   => '环境传感器',
         'SL_CT_RGBW' => '灯带',
-        'SL_DOOYA'   => '窗帘电机'
+        'SL_DOOYA'   => '窗帘电机',
+        'SL_LK_LS'   => '可视门锁'
     ];
 
     //设备控制idx类型

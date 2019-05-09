@@ -7,7 +7,9 @@
 <!-- Model Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('model', '型号:') !!}
-    {!! Form::text('model', null, ['class' => 'form-control']) !!}
+    <?php $deviceModel = Smart::$deviceModel;?>
+
+    {!! Form::select('model',$deviceModel,null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Name Field -->
@@ -31,7 +33,11 @@
 
 <div class="form-group col-sm-6">
     {!! Form::label('idx', '控制idx:') !!}
-    {!! Form::text('idx', null, ['class' => 'form-control']) !!}
+    @if(isset($devLight))
+        {!! Form::text('idx', null, ['class' => 'form-control']) !!}
+    @else
+        {!! Form::text('idx', 'RGBW', ['class' => 'form-control']) !!}
+    @endif
 </div>
 
 <!-- State Field -->
