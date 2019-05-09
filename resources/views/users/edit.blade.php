@@ -21,3 +21,5 @@
        </div>
    </div>
 @endsection
+
+@include('users.js')
