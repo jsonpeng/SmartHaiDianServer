@@ -35,11 +35,11 @@
 </li>
 
 <li class="{{ Request::is('smart/devCurtains*') ? 'active' : '' }}">
-    <a href="{!! route('devCurtains.index') !!}"><i class="fa fa-edit"></i><span>窗帘电机</span></a>
+    <a href="{!! route('devCurtains.index') !!}"><i class="fa fa-edit"></i><span>窗帘电机设备</span></a>
 </li>
 
 <li class="{{ Request::is('smart/devDoorLocks*') ? 'active' : '' }}">
-    <a href="{!! route('devDoorLocks.index') !!}"><i class="fa fa-edit"></i><span>智能门锁设备管理</span></a>
+    <a href="{!! route('devDoorLocks.index') !!}"><i class="fa fa-edit"></i><span>门锁设备管理</span></a>
 </li>
 
 <li class="header">用户设置</li>
