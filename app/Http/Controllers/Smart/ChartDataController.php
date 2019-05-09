@@ -56,12 +56,16 @@ class ChartDataController extends AppBaseController
 
         $chartDatas = $this->chartDataRepository->model()::where('id','>',0);
 
+        $input = array_filter( $input, function($v, $k) {
+            return $v != '';
+        }, ARRAY_FILTER_USE_BOTH );
+
         if(isset($input['idx']))
         {
             $chartDatas = $chartDatas->where('idx',$input['idx']);
         }
 
-        if(isset($input['time_span']) || array_key_exists('time_span', $input) && (int)($input['time_span']) == 0)
+        if(isset($input['time_span']))
         {
             $chartDatas = $chartDatas->where('time_span',$input['time_span']);
         }
