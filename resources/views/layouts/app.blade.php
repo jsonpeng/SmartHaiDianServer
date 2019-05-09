@@ -279,7 +279,7 @@
      * @param  {Function} callback [description]
      * @return {[type]}            [description]
      */
-    zcjyFrameOpen:function(url,title='智慧海淀',area=['60%', '680px'],callback=null){
+    zcjyFrameOpen:function(url,title='智慧海淀',area=['680px', '680px'],callback=null){
         var type =2;
         // if(url.length > 50){
         //     type = 1;
