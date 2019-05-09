@@ -153,7 +153,7 @@ class UserController extends AppBaseController
         \Smart::setTempDoorUser('modify',$user);
 
         //更新用户偏好
-         app('common')->PreferenceRepo()->actionUserPreferenceScene('update',$user->id,$input['scene_id']);
+         app('common')->PreferenceRepo()->actionUserPreferenceScene('update',$id,$input['scene_id']);
 
         Flash::success('更新成功.');
 
