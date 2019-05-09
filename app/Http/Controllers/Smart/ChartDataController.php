@@ -67,8 +67,8 @@ class ChartDataController extends AppBaseController
         }
 
         $chartDatas = $chartDatas
-        ->orderBy('record_date','asc')
-        ->orderBy('record_time','asc')
+        ->orderBy('record_date','desc')
+        ->orderBy('record_time','desc')
         ->paginate(15);
 
         return view('chart_datas.index')
