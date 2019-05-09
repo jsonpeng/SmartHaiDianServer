@@ -31,7 +31,7 @@ class ChartData extends Model
 
     public $fillable = [
         'idx',
-        'desc',
+        'description',
         'val',
         'time_span',
         'record_date',
@@ -45,7 +45,7 @@ class ChartData extends Model
      */
     protected $casts = [
         'idx' => 'string',
-        'desc' => 'string',
+        'description' => 'string',
         'val' => 'string',
         'time_span' => 'integer',
         'record_date' => 'string',

@@ -17,6 +17,7 @@ use App\User;
 use App\Models\Post;
 use App\Models\PostAttention;
 use Request;
+use Excel;
 
 /**
  * Class ClientRepository
@@ -57,6 +58,54 @@ class CommonRepository
       return $this->PreferenceRepository;
      }
 
+     /**
+      * 生成chart数据
+      * @param  [type] $files [description]
+      * @return [type]        [description]
+      */
+     public function generateChartData($files)
+     {
+       $res= $this->loadExcels($files);
+        
+        if(count($res) > 1)
+        {
+            for ($i=1; $i < count($res); $i++) 
+            { 
+                //$name = $res[$i][1];
+                //0=>idx 1=>description 2=>val 3=>time_span 4=>record_date 
+                $input = [];
+                $input['idx'] = $res[$i][0];
+                $input['description'] = $res[$i][1];
+                $input['val'] = $res[$i][2];
+                $input['time_span'] = $res[$i][3];
+                $input['record_date'] = $res[$i][4];
+                $input['record_time'] = $res[$i][5];
+                db('chart_data')->insert([
+                  'idx' => $input['idx'],
+                  'val' => $input['val'],
+                  'description'=> $input['description'],
+                  'time_span' => $input['time_span'],
+                  'record_date' => $input['record_date'],
+                  'record_time' => $input['record_time']
+              ]);
+            }
+          }
+          return zcjy_callback_data('生成数据成功!',0,'web');
+        
+     }
+
+     public function loadExcels($files){
+       if (!file_exists($files)){
+          //return zcjy_callback_data('没有找到该文件',1);
+          return false;
+       }
+       $res = [];
+       Excel::load($files, function($reader) use( &$res ) {
+            $reader = $reader->getSheet(0);
+            $res = $reader->toArray();
+       }); 
+       return $res;
+    }
 
      public function autowrap($string,$fontsize=20, $angle=0, $width=760) {
           $fontface = public_path().'/fonts/XinH_CuJW.TTF';

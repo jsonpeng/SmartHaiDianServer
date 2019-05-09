@@ -109,6 +109,7 @@ class ChartDataController extends AppBaseController
         $devIdxDay = db('chart_data')->insert([
             'idx' => $input['idx'],
             'val' => $input['val'],
+            'description'=> $input['description'],
             'time_span' => $input['time_span'],
             'record_date' => $input['record_date'],
             'record_time' => $input['record_time'],
