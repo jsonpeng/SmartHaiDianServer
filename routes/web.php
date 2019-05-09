@@ -12,7 +12,7 @@
 */
 
 Route::get('test',function(){
-		dd(\Smart::getAllTempDoorUser());
+		dd(\Smart::getAllCurrentDevices());
 		dd(app('common')->DevSceneRepo()->startMutiControlRequest(1));
 		dd(curl_post("https://api.ilifesmart.com/app/auth.RegisterUser",[]));
 		dd(time());
@@ -87,7 +87,11 @@ Route::group(['middleware' => ['web', 'auth.admin'],'prefix'=>'smart','namespace
 	//Route::resource('preferences', 'PreferenceController');
 	//图表数据管理
 	Route::resource('chartDatas', 'ChartDataController');
+	//网关设备管理
+	Route::resource('gatewayDevs', 'GatewayDevController');
 });
+
+
 
 
 

@@ -157,7 +157,9 @@ trait SmartControl{
             //只取stat是1 并且 agt是当前DB存的
             foreach ($devices as $key => $device) 
             {
-                if((int)$device['stat'] === 1 && $device['agt'] == self::getCacheAgt())
+                $device['data_encode'] = json_encode($device['data']);
+                //(int)$device['stat'] === 1 &&
+                if($device['agt'] == self::getCacheAgt())
                 {
                      $allDevices[] = $device;
                 }

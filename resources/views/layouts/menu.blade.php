@@ -26,6 +26,11 @@
 </li>
 
 <li class="header">智能设备管理</li>
+
+<li class="{{ Request::is('smart/gatewayDevs*') ? 'active' : '' }}">
+    <a href="{!! route('gatewayDevs.index') !!}"><i class="fa fa-edit"></i><span>当前网关设备列表</span></a>
+</li>
+
 <li class="{{ Request::is('smart/devLights*') ? 'active' : '' }}">
     <a href="{!! route('devLights.index') !!}"><i class="fa fa-edit"></i><span>灯光设备</span></a>
 </li>
@@ -60,6 +65,7 @@
 <li class="">
     <a href="javascript:;" id="refresh"><i class="fa fa-refresh"></i><span>刷新缓存</span></a>
 </li>
+
 
 
 
