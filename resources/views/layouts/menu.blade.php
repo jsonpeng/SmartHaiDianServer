@@ -19,7 +19,10 @@
 
 <li class="header">数据及模拟管理</li>
 <li class="{{ Request::is('smart/devIdxDays*') ? 'active' : '' }}">
-    <a href="{!! route('devIdxDays.index') !!}"><i class="fa fa-edit"></i><span>设备数据管理</span></a>
+    <a href="{!! route('devIdxDays.index') !!}"><i class="fa fa-edit"></i><span>指标数据管理</span></a>
+</li>
+<li class="{{ Request::is('smart/chartDatas*') ? 'active' : '' }}">
+    <a href="{!! route('chartDatas.index') !!}"><i class="fa fa-edit"></i><span>图表数据管理</span></a>
 </li>
 
 <li class="header">智能设备管理</li>
@@ -57,6 +60,8 @@
 <li class="">
     <a href="javascript:;" id="refresh"><i class="fa fa-refresh"></i><span>刷新缓存</span></a>
 </li>
+
+
 
 
 

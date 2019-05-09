@@ -85,7 +85,11 @@ Route::group(['middleware' => ['web', 'auth.admin'],'prefix'=>'smart','namespace
 	 Route::resource('devIdxDays', 'DevIdxDayController');
 	//用户偏好设置
 	//Route::resource('preferences', 'PreferenceController');
+	//图表数据管理
+	Route::resource('chartDatas', 'ChartDataController');
 });
+
+
 
 
 

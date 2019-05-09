@@ -1,7 +1,7 @@
 <table class="table table-responsive" id="devIdxDays-table">
     <thead>
         <tr>
-        <th>设备类型</th>
+        <th>指标类型</th>
         <th>取值</th>
         <th>纪录时间</th>
             <th colspan="3">操作</th>

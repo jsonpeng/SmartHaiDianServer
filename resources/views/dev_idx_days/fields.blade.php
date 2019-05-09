@@ -1,6 +1,6 @@
 <!-- Idx Field -->
 <div class="form-group col-sm-12">
-    {!! Form::label('idx', '设备类型:') !!}
+    {!! Form::label('idx', '指标类型:') !!}
     <select name="idx" class="form-control">
     	@foreach($configIdx as $key => $item)
     		<option value="{!! $key !!}" @if(isset($devIdxDay) && $devIdxDay->idx == $key) selected="selected" @endif>{!! $item !!}</option>
