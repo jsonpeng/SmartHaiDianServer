@@ -61,7 +61,7 @@ class ChartDataController extends AppBaseController
             $chartDatas = $chartDatas->where('idx',$input['idx']);
         }
 
-        if(isset($input['time_span']) || array_key_exists('time_span', $input) && $input['time_span'] == 0)
+        if(isset($input['time_span']) || array_key_exists('time_span', $input) && (int)($input['time_span']) == 0)
         {
             $chartDatas = $chartDatas->where('time_span',$input['time_span']);
         }
