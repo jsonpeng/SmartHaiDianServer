@@ -58,7 +58,7 @@ class UserController extends AppBaseController
     public function store(CreateUserRequest $request)
     {
         $input = $request->all();
-        $input['uuid'] = md5($input['pwd']);
+        // $input['uuid'] = md5($input['pwd']);
         $user = $this->userRepository->create($input);
         //设置门锁临时用户
         \Smart::setTempDoorUser('create',$user);
@@ -146,7 +146,7 @@ class UserController extends AppBaseController
                    ->withErrors('该密码已被使用过,请更换密码');
         }
 
-        $input['uuid'] = md5($input['pwd']);
+        // $input['uuid'] = md5($input['pwd']);
         $user = $this->userRepository->update($input, $id);
 
         //设置门锁临时用户
