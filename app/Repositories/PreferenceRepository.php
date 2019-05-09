@@ -86,9 +86,10 @@ class PreferenceRepository extends BaseRepository
             {
                 $preference = Preference::where('user_id',$user_id)->first();
 
-                if($preference){
+                if($preference)
+                {
                     // dd($scene_id);
-                    $preference->delete();
+                    Preference::where('user_id',$user_id)->delete();
                 }
               
                 Preference::create(['user_id'=>$user_id,'scene_id'=>$scene_id]);
