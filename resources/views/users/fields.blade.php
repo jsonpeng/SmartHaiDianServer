@@ -10,6 +10,12 @@
     {!! Form::text('name', null, ['class' => 'form-control']) !!}
 </div>
 
+
+<div class="form-group col-sm-12">
+    {!! Form::label('uuid', '人脸识别唯一uuid:') !!}
+    {!! Form::text('uuid', null, ['class' => 'form-control']) !!}
+</div>
+
 <!-- Pwd Field -->
 <div class="form-group col-sm-12">
     {!! Form::label('pwd', '开锁密码:') !!}

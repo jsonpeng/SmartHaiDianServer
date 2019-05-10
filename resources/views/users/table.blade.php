@@ -1,7 +1,7 @@
 <table class="table table-responsive" id="users-table">
     <thead>
         <tr>
-            <!-- <th>Uuid</th> -->
+        <th>人脸识别uuid</th>
         <th>姓名</th>
         <th>开锁密码</th>
         <!-- <th>欢迎语音频地址</th> -->
@@ -14,7 +14,7 @@
     <tbody>
     @foreach($users as $user)
         <tr>
-            <!-- <td>{!! $user->uuid !!}</td> -->
+            <td>{!! $user->uuid !!}</td>
             <td>{!! $user->name !!}</td>
             <td>{!! $user->pwd !!}</td>
             <!-- <td>{!! $user->welcome_sound_url !!}</td> -->
