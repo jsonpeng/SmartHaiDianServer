@@ -30,7 +30,9 @@ class DevLightController extends AppBaseController
     public function index(Request $request)
     {
         $this->devLightRepository->pushCriteria(new RequestCriteria($request));
-        $devLights = $this->devLightRepository->all();
+        $devLights = $this->devLightRepository
+        ->orderBy('created_at','desc')
+        ->paginate(15);
         
         return view('dev_lights.index')
             ->with('devLights', $devLights);

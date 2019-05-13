@@ -19,7 +19,7 @@
             </div>
         </div>
         <div class="text-center">
-        
+            {!! $devLights->links() !!}
         </div>
     </div>
 @endsection

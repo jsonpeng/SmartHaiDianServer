@@ -29,6 +29,19 @@
         </div>
 </div>
 
+<!-- <div class="form-group col-sm-6">
+    {!! Form::label('icon', '设备icon:') !!}
+         <div class="form-group">
+
+                <div class="input-append">
+                    {!! Form::text('icon', null, ['class' => 'form-control', 'id' => 'image1']) !!}
+                    <a data-toggle="modal" href="javascript:;" data-target="#myModal" class="btn" type="button" onclick="changeImageId('image1')">选择图片</a>
+                    <img src="@if(isset($devCurtain)) {{$devCurtain->icon}} @endif" style="max-width: 100%; max-height: 150px; display: block;">
+                </div>
+
+        </div>
+</div> -->
+
 <div class="form-group col-sm-6">
     {!! Form::label('idx', '控制idx:') !!}
     {!! Form::text('idx', null, ['class' => 'form-control']) !!}

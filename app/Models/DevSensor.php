@@ -48,7 +48,8 @@ class DevSensor extends Model
         'join_at',
         'region_name',
         'image',
-        'idx'
+        'idx',
+        'icon'
     ];
 
     /**

@@ -48,7 +48,8 @@ class DevCurtain extends Model
         'join_at',
         'idx',
         'is_on',
-        'image'
+        'image',
+        'icon'
     ];
 
     /**

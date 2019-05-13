@@ -35,7 +35,8 @@ class DevLightRepository extends BaseRepository
         'agt_state',
         'agt_state',
         'is_join',
-        'join_at'
+        'join_at',
+        'icon'
     ];
 
     /**

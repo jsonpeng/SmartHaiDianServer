@@ -58,7 +58,8 @@ class DevLight extends Model
         'support_rgbw',
         'support_dyn',
         'image',
-        'idx'
+        'idx',
+        'icon'
     ];
 
     public static $attribute = [
