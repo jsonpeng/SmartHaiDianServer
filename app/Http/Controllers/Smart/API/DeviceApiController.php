@@ -173,12 +173,12 @@ class DeviceApiController extends AppBaseController
 	}
 
     /**
-     * 发起灯光控制调色
+     * 发起灯光无极控制调色
      *
      * @SWG\Get(path="/api/device/light_control",
      *   tags={"设备模块"},
-     *   summary="发起灯光控制调色",
-     *   description="发起灯光控制调色,需要设备的me信息",
+     *   summary="发起灯光无极控制调色",
+     *   description="发起灯光无极控制调色,需要设备的me信息",
      *   operationId="testRecordsStore",
      *   produces={"application/json"},
      *   @SWG\Parameter(
@@ -192,7 +192,7 @@ class DeviceApiController extends AppBaseController
      *     in="query",
      *     name="color",
      *     type="integer",
-     *     description="0=>关闭 1=>橙色 2=>红色 3=>黄色 4=>紫色 5=>绿色 6 =>蓝色 7=>白色",
+     *     description="0=>关闭 其他的请传入转换后的十六进制RGB数值",
      *     required=true,
      *   ),
      *     @SWG\Response(

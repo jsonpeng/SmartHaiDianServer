@@ -148,23 +148,23 @@ trait SmartControl{
 
         $input['idx'] = 'RGBW';
 
-        if($input['color'] == 0)
+        if((int)$input['color'] === 0 && strlen($input['color']) == 1)
         {
             $input['type'] = '0x80';
             $input['val'] = '0';
         }
         else{
             $input['type'] = '0xff';
-            $colorArr = [
-                    '1' => '16734720',  //橙色
-                    '2' => '16720896',  //红色
-                    '3' => '16755200',  //黄色
-                    '4' => '16711760',  //紫色
-                    '5' => '1376000',   //绿色
-                    '6' => '65520',     //蓝色
-                    '7' => '4278196580' //白色
-            ];
-            $input['val'] = isset($colorArr[$input['color']]) ? $colorArr[$input['color']] : '0';
+            // $colorArr = [
+            //         '1' => '16734720',  //橙色
+            //         '2' => '16720896',  //红色
+            //         '3' => '16755200',  //黄色
+            //         '4' => '16711760',  //紫色
+            //         '5' => '1376000',   //绿色
+            //         '6' => '65520',     //蓝色
+            //         '7' => '4278196580' //白色
+            // ];
+            $input['val'] = $input['color'];
         }
 
         $input['agt'] = self::getCacheAgt();
