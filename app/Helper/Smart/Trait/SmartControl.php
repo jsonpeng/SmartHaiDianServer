@@ -126,6 +126,55 @@ trait SmartControl{
         return self::returnVarifyJavaResultData($result);
     }
 
+
+    /**
+     * 控制灯光请求
+     * @param  [type] $request [description]
+     * @return [type]          [description]
+     */
+    public static function controlLightRequest($request)
+    {
+        $input = $request->all();
+
+        if(!isset($input['me']))
+        {
+            return zcjy_callback_data('缺少me参数',1);
+        }
+
+        if(!isset($input['color']))
+        {
+            return zcjy_callback_data('缺少color参数',1);
+        }
+
+        $input['idx'] = 'RGBW';
+
+        if($input['color'] == 0)
+        {
+            $input['type'] = '0x80';
+            $input['val'] = '0';
+        }
+        else{
+            $input['type'] = '0xff';
+            $colorArr = [
+                    '1' => '16734720',  //橙色
+                    '2' => '16720896',  //红色
+                    '3' => '16755200',  //黄色
+                    '4' => '16711760',  //紫色
+                    '5' => '1376000',   //绿色
+                    '6' => '65520',     //蓝色
+                    '7' => '4278196580' //白色
+            ];
+            $input['val'] = isset($colorArr[$input['color']]) ? $colorArr[$input['color']] : '0';
+        }
+
+        $input['agt'] = self::getCacheAgt();
+     
+        $result = self::simpleGuzzleRequest(self::smartRequestUrl().'set_one_device','GET',$input);
+        
+        return self::returnVarifyJavaResultData($result);
+    }
+
+
     /**
      * 多个设备控制请求
      * @param  [type] $params [description]

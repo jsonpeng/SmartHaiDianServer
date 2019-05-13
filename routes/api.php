@@ -41,6 +41,8 @@ $api->version('v1', function ($api) {
 			$api->get('get_model/{model}','DeviceApiController@getModelDevices');
 			//发起设备控制
 			$api->get('control','DeviceApiController@controlDevice');
+			//灯光控制
+			$api->get('light_control','DeviceApiController@controlLight');
 			//发起设备添加
 			$api->get('add','DeviceApiController@addDevice');
 			$api->post('control_muti','DeviceApiController@controlMutiDevice');

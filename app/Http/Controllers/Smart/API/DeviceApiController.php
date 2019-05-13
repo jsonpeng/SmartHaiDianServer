@@ -172,6 +172,44 @@ class DeviceApiController extends AppBaseController
 		return \Smart::ControlRequest($request);
 	}
 
+    /**
+     * 发起灯光控制调色
+     *
+     * @SWG\Get(path="/api/device/light_control",
+     *   tags={"设备模块"},
+     *   summary="发起灯光控制调色",
+     *   description="发起灯光控制调色,需要设备的me信息",
+     *   operationId="testRecordsStore",
+     *   produces={"application/json"},
+     *   @SWG\Parameter(
+     *     in="query",
+     *     name="me",
+     *     type="string",
+     *     description="设备唯一id,通过获取所有设备列表获取",
+     *     required=true,
+     *   ),
+     *   @SWG\Parameter(
+     *     in="query",
+     *     name="color",
+     *     type="integer",
+     *     description="0=>关闭 1=>橙色 2=>红色 3=>黄色 4=>紫色 5=>绿色 6 =>蓝色 7=>白色",
+     *     required=true,
+     *   ),
+     *     @SWG\Response(
+     *         response=200,
+     *         description="status_code=0请求成功,status_code=1请求失败(缺少请求参数,参数验证失败等),data返回操作结果",
+     *     ),
+     *     @SWG\Response(
+     *         response=500,
+     *         description="服务器出错",
+     *     ),
+     * )
+     */
+     public function controlLight(Request $request)
+     {
+          return \Smart::controlLightRequest($request);
+     }
+
 	/**
      * 发起多个设备控制
      *
