@@ -29,7 +29,7 @@
         </div>
 </div>
 
-<!-- <div class="form-group col-sm-6">
+<div class="form-group col-sm-6">
     {!! Form::label('icon', '设备icon:') !!}
          <div class="form-group">
 
@@ -40,7 +40,7 @@
                 </div>
 
         </div>
-</div> -->
+</div>
 
 <div class="form-group col-sm-6">
     {!! Form::label('idx', '控制idx:') !!}
