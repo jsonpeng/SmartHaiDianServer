@@ -208,10 +208,16 @@ trait SmartControl{
             {
                 $device['data_encode'] = json_encode($device['data']);
                 //(int)$device['stat'] === 1 &&
-                if($device['agt'] == self::getCacheAgt())
+               
+                if($device['agt'] != self::getCacheAgt())
                 {
-                     $allDevices[] = $device;
+                    $device['agt_status'] = '不在线';
                 }
+                else{
+                    $device['agt_status'] = '在线';
+                }
+
+                $allDevices[] = $device;
             }
         }
         return $allDevices;
