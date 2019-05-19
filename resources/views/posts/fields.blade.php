@@ -34,13 +34,13 @@
             <img src="@if(isset($post)) {{$post->image}} @endif" style="max-width: 100%; max-height: 150px; display: block;">
         </div>
     </div>
-    
+
 </div>
 
 <!-- Content Field -->
 <div class="form-group col-sm-12 col-lg-12">
     {!! Form::label('content', '详情:') !!}
-    {!! Form::textarea('content', null, ['class' => 'form-control']) !!}
+    {!! Form::textarea('content', null, ['class' => 'form-control intro']) !!}
 </div>
 
 <!-- Video Url Field -->
