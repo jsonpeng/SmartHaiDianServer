@@ -2,7 +2,7 @@
     <thead>
         <tr>
         <th>新闻标题</th>
-        <th>描述</th>
+        <!-- <th>描述</th> -->
         <th>图片</th>
         <!-- <th>Content</th> -->
         <!-- <th>Video Url</th> -->
@@ -13,7 +13,7 @@
     @foreach($posts as $post)
         <tr>
             <td>{!! $post->name !!}</td>
-            <td>{!! $post->des !!}</td>
+            <!-- <td>{!! $post->des !!}</td> -->
             <td>{!! $post->image !!}</td>
             <!-- <td>{!! $post->content !!}</td> -->
             <!-- <td>{!! $post->video_url !!}</td> -->
