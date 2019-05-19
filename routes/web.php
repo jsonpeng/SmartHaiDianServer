@@ -12,6 +12,7 @@
 */
 
 Route::get('test',function(){
+		dd(\Smart::getAllGatewaies());
 		dd(\Smart::getAllCurrentDevices());
 		dd(app('common')->DevSceneRepo()->startMutiControlRequest(1));
 		dd(curl_post("https://api.ilifesmart.com/app/auth.RegisterUser",[]));
@@ -29,7 +30,6 @@ Route::group(['prefix' => 'swagger'], function () {
 Route::group(['prefix'=>'smart_data','namespace'=>'Smart'],function(){
 	//前端路由
 	Route::get('/', 'MainController@index');
-
 });
 
 //前端路由
@@ -91,7 +91,17 @@ Route::group(['middleware' => ['web', 'auth.admin'],'prefix'=>'smart','namespace
 	Route::resource('chartDatas', 'ChartDataController');
 	//网关设备管理
 	Route::resource('gatewayDevs', 'GatewayDevController');
+	//网关智慧中心管理
+	Route::resource('gateways', 'GatewayController');
+	//分类管理
+	Route::resource('cats', 'CatController');
+	//文章管理
+	Route::resource('posts', 'PostController');
 });
+
+
+
+
 
 
 

@@ -2,9 +2,9 @@
 
 @section('content')
     <section class="content-header">
-        <h1 class="pull-left">当前网关设备</h1>
+        <h1 class="pull-left">文章列表</h1>
         <h1 class="pull-right">
-           <a class="btn btn-primary pull-right seeDetail" style="margin-top: -10px;margin-bottom: 5px" href="javascript:;">查看详细</a>
+           <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{!! route('posts.create') !!}">添加</a>
         </h1>
     </section>
     <div class="content">
@@ -15,20 +15,12 @@
         <div class="clearfix"></div>
         <div class="box box-primary">
             <div class="box-body">
-                    @include('gateway_devs.table')
+                    @include('posts.table')
             </div>
         </div>
         <div class="text-center">
-        
+            {!! $posts->links() !!}
         </div>
     </div>
 @endsection
 
-@section('scripts')
-<script type="text/javascript">
-    $('.seeDetail').click(function(){
-        $('tr>th:last').toggle();
-        $('.detailTd').toggle();
-    });
-</script>
-@endsection

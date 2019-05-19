@@ -27,8 +27,12 @@
 
 <li class="header">智能设备管理</li>
 
+<li class="{{ Request::is('smart/gateways*') ? 'active' : '' }}">
+    <a href="{!! route('gateways.index') !!}"><i class="fa fa-edit"></i><span>网关智慧中心管理</span></a>
+</li>
+
 <li class="{{ Request::is('smart/gatewayDevs*') ? 'active' : '' }}">
-    <a href="{!! route('gatewayDevs.index') !!}"><i class="fa fa-edit"></i><span>当前网关设备列表</span></a>
+    <a href="{!! route('gatewayDevs.index') !!}"><i class="fa fa-edit"></i><span>网关设备列表</span></a>
 </li>
 
 <li class="{{ Request::is('smart/devLights*') ? 'active' : '' }}">
@@ -61,11 +65,18 @@
     <a href="{!! route('devCommands.index') !!}"><i class="fa fa-edit"></i><span>联动命令管理</span></a>
 </li>
 
+<li class="header">文案设置</li>
+<li class="{{ Request::is('smart/cats*') ? 'active' : '' }}">
+    <a href="{!! route('cats.index') !!}"><i class="fa fa-edit"></i><span>文案分类</span></a>
+</li>
+
+<li class="{{ Request::is('smart/posts*') ? 'active' : '' }}">
+    <a href="{!! route('posts.index') !!}"><i class="fa fa-edit"></i><span>文章</span></a>
+</li>
 
 <li class="">
     <a href="javascript:;" id="refresh"><i class="fa fa-refresh"></i><span>刷新缓存</span></a>
 </li>
-
 
 
 

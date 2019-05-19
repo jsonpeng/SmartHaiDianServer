@@ -61,5 +61,15 @@ $api->version('v1', function ($api) {
 
 	    });
 
+	    /**
+	     * 文案相关api
+	     */
+	    $api->group(['prefix' => 'posts'], function ($api) {
+	    	//获取指定分类的文章
+	    	$api->get('get_slug/{cat_slug}','PostApiController@getCatSlugPosts');
+	    	//获取文章详情
+	    	$api->get('detail/{id}','PostApiController@getPostDetail');
+	    });
+
 	});
 });

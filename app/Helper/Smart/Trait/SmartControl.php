@@ -224,6 +224,35 @@ trait SmartControl{
     }
 
     /**
+     * 获取所有的网关列表
+     * @return [type] [description]
+     */
+    public static function getAllGatewaies()
+    {
+        $result = self::simpleGuzzleRequest(self::smartRequestUrl().'get_all_agts','GET');
+        $result = json_decode($result,1);
+        $allGatewaies = [];
+        if(isset($result['code']) && (int)$result['code'] === 0)
+        {
+            $gatewaies = $result['data'];
+            //只取stat是1 并且 agt是当前DB存的
+            foreach ($gatewaies as $key => $gatewaie) 
+            {
+                if((int)$gatewaie['stat'] === 0)
+                {
+                    $gatewaie['stat_status'] = '不在线';
+                }
+                else{
+                    $gatewaie['stat_status'] = '在线';
+                }
+
+                $allGatewaies[] = $gatewaie;
+            }
+        }
+        return $allGatewaies;
+    }
+
+    /**
      * 更新所有设备的状态
      * @return [type] [description]
      */

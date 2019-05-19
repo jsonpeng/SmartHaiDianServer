@@ -9,7 +9,7 @@
             <td>智慧中心信息</td>
             <!-- <th>lHeart</th> -->
             <!-- <th>lDbm</th> -->
-            <th>详细</th>
+            <th style="display: none;">详细</th>
             <!-- <th colspan="3">操作</th> -->
         </tr>
     </thead>
@@ -26,11 +26,13 @@
                 <td>{!! $gatewayDev['name'] !!}</td>
                 <td>{!! $gatewayDev['me'] !!}</td>
                 <td>{!! $gatewayDev['stat'] ? '在线' : '<span style=color:red;>'.'离线'.'</span>' !!}</td>
-                <td>{!! $gatewayDev['agt'] !!} @if($gatewayDev['agt_status'] == '不在线') <span style="color: red;">[{!! $gatewayDev['agt_status'] !!}]</span> @else [{!! $gatewayDev['agt_status'] !!}] @endif</td>
+                <td>{!! $gatewayDev['agt'] !!} 
+                    {{--@if($gatewayDev['agt_status'] == '不在线') <span style="color: red;">[{!! $gatewayDev['agt_status'] !!}]</span> @else [{!! $gatewayDev['agt_status'] !!}] @endif--}}
+                </td>
 
                 <!-- <td>{!! $gatewayDev['lHeart'] !!}</td> -->
                 <!-- <td>{!! $gatewayDev['lDbm'] !!}</td> -->
-                <td style="width: 300px;">{!! $gatewayDev['data_encode'] !!}</td>
+                <td class="detailTd" style="width: 300px;display: none;">{!! $gatewayDev['data_encode'] !!}</td>
             </tr>
             @endforeach
         @endif
