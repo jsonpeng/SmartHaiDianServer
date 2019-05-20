@@ -18,9 +18,9 @@
 </li>
 
 <li class="header">数据及模拟管理</li>
-<li class="{{ Request::is('smart/devIdxDays*') ? 'active' : '' }}">
+<!-- <li class="{{ Request::is('smart/devIdxDays*') ? 'active' : '' }}">
     <a href="{!! route('devIdxDays.index') !!}"><i class="fa fa-edit"></i><span>指标数据管理</span></a>
-</li>
+</li> -->
 <li class="{{ Request::is('smart/chartDatas*') ? 'active' : '' }}">
     <a href="{!! route('chartDatas.index') !!}"><i class="fa fa-edit"></i><span>图表数据管理</span></a>
 </li>
