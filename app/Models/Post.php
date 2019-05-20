@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\Cat;
 
 /**
  * Class Post
@@ -57,6 +58,12 @@ class Post extends Model
         'name'    => 'required',
         'content' => 'required'
     ];
+
+    public function getCatNameAttribute()
+    {
+        $cat = Cat::where('slug',$this->cat_slug)->first();
+        return optional($cat)->name;
+    }
 
     
 }

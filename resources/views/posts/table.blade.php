@@ -1,8 +1,8 @@
 <table class="table table-responsive" id="posts-table">
     <thead>
         <tr>
-        <th>新闻标题</th>
-        <!-- <th>描述</th> -->
+        <th>标题</th>
+        <th>分类</th>
         <th>图片</th>
         <!-- <th>Content</th> -->
         <!-- <th>Video Url</th> -->
@@ -13,8 +13,8 @@
     @foreach($posts as $post)
         <tr>
             <td>{!! $post->name !!}</td>
-            <!-- <td>{!! $post->des !!}</td> -->
-            <td>{!! $post->image !!}</td>
+            <td>{!! $post->CatName !!}</td>
+            <td><img src="{!! $post->image !!}"  style="max-width: 100px;height: auto;" /></td>
             <!-- <td>{!! $post->content !!}</td> -->
             <!-- <td>{!! $post->video_url !!}</td> -->
             <td>
