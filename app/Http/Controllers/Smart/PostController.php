@@ -62,6 +62,12 @@ class PostController extends AppBaseController
     {
         $input = $request->all();
 
+        if (array_key_exists('content', $input)) {
+            $input['content'] = str_replace("../../../", $request->getSchemeAndHttpHost().'/' ,$input['content']);
+            $input['content'] = str_replace("../../", $request->getSchemeAndHttpHost().'/' ,$input['content']);
+        }
+
+
         $post = $this->postRepository->create($input);
 
         Flash::success('添加成功.');
@@ -130,7 +136,14 @@ class PostController extends AppBaseController
             return redirect(route('posts.index'));
         }
 
-        $post = $this->postRepository->update($request->all(), $id);
+        $input = $request->all();
+
+        if (array_key_exists('content', $input)) {
+            $input['content'] = str_replace("../../../", $request->getSchemeAndHttpHost().'/' ,$input['content']);
+            $input['content'] = str_replace("../../", $request->getSchemeAndHttpHost().'/' ,$input['content']);
+        }
+
+        $post = $this->postRepository->update($input,$id);
 
         Flash::success('更新成功.');
 
