@@ -46,7 +46,13 @@
 <!-- Video Url Field -->
 <div class="form-group col-sm-12">
     {!! Form::label('video_url', '视频链接地址:') !!}
+ 
     {!! Form::text('video_url', null, ['class' => 'form-control']) !!}
+   <div class="input-append attach type_files" style="display:  block;" data-type="question">
+            <a href="javascript:;"  class="btn upload_file" type="button" >点击选择视频文件或拖拽到这里</a>
+       
+            <audio src="@if(isset($post)) {!! $post->video_url !!} @endif" controls="controls" style="@if(isset($post) && !empty($post->video_url)) display：block; @else display:none; @endif"> </audio>
+    </div>
 </div>
 
 <!-- Submit Field -->

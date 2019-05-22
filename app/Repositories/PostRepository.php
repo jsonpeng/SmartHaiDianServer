@@ -43,7 +43,14 @@ class PostRepository extends BaseRepository
      */
     public function getCatSlugPosts($cat_slug)
     {
-        return Post::where('cat_slug',$cat_slug)->get();
+        $posts = Post::where('cat_slug',$cat_slug)->get();
+        if(count($posts))
+        {
+            foreach ($posts as $key => $post) {
+                $post['post_url'] = \Request::root().'/post/'.$post->id;
+            }
+        }
+        return $posts;
     }
 
     /**

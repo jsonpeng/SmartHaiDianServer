@@ -37,6 +37,8 @@ Route::get('/', function(){
 	// return redirect('/smart');
 });
 
+Route::get('/post/{id}','Smart\MainController@post');
+
 //管理员
 Route::group([ 'prefix' => 'smart'], function () {
 	Route::get('login', 'Auth\AdminAuthController@showLoginForm');

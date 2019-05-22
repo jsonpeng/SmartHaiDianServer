@@ -10,6 +10,8 @@ use App\Models\DevGasesRecord;
 use App\Models\DevEnvRecord;
 //空气净化器类
 use App\Models\DevPurifierRecord;
+//文章
+use App\Models\Post;
 
 class MainController extends Controller
 {
@@ -27,6 +29,17 @@ class MainController extends Controller
 			'purifier'	   => $this->purifierData()
 		];
 		return zcjy_data($data);
+	}
+
+
+	public function post($id)
+	{
+		$post = Post::find($id);
+		if(empty($post))
+		{
+			return redirect('/');
+		}
+		return view('front.post.index',compact('post'));
 	}
 
 	/**

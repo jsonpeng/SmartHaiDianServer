@@ -44,7 +44,8 @@
 
 
 @section('content')
-	<h1>文章详情页</h1>
+	<h1 style="text-align: center;">{!! $post->name !!}</h1>
+	<div style="text-align: center;padding-top: 50px;">{!! $post->content !!}</div>
 @endsection
 
 @section('js')

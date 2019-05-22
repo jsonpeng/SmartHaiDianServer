@@ -22,3 +22,5 @@
    </div>
    @include('admin.partial.imagemodel')
 @endsection
+
+@include('posts.js')
