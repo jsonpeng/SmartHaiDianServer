@@ -54,6 +54,8 @@ $api->version('v1', function ($api) {
 			$api->group(['prefix' => 'chart'], function ($api) {
 				//获取设备总数-在线数
 				$api->get('online_and_total','DeviceApiController@getDevAllNumAndOnlineNum');
+				//获取各区域内的设备在线数量
+				$api->get('regions_online_total','DeviceApiController@getAllRegionDev');
 			});
 	    });
 

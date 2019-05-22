@@ -57,7 +57,8 @@ class DevDoorLockController extends AppBaseController
      */
     public function store(CreateDevDoorLockRequest $request)
     {
-        $input = $request->all();
+        //$input = $request->all();
+        $input = app('common')->RegionRepo()->attachReginNameByInputId($request->all());
 
         $devDoorLock = $this->devDoorLockRepository->create($input);
 
@@ -127,7 +128,9 @@ class DevDoorLockController extends AppBaseController
             return redirect(route('devDoorLocks.index'));
         }
 
-        $devDoorLock = $this->devDoorLockRepository->update($request->all(), $id);
+        $input = app('common')->RegionRepo()->attachReginNameByInputId($request->all());
+
+        $devDoorLock = $this->devDoorLockRepository->update($input, $id);
 
         Flash::success('更新成功.');
 

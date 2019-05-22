@@ -349,9 +349,45 @@ class DeviceApiController extends AppBaseController
      *     ),
      * )
      */
-     public function getRegionDev(Request $request)
+     public function getAllRegionDev(Request $request)
      {
+          $allDevices = \Smart::getAllDevicesAndByRegionName();
           
+          $xuanguanNum = 0;
+          $ketingNum = 0;
+          $shufangNum = 0;
+          $chufangNum = 0;
+
+          if(count($allDevices))
+          {
+               foreach ($allDevices as $key => $dev) 
+               {
+                   if($dev['region_name'] == '玄关')
+                   {
+                    $xuanguanNum++;
+                   }
+                   elseif($dev['region_name'] == '客厅')
+                   {
+                    $ketingNum++;
+                   }
+                   elseif($dev['region_name'] == '书房')
+                   {
+                    $shufangNum++;
+                   }
+                   elseif($dev['region_name'] == '厨房')
+                   {
+                    $chufangNum++;
+                   }
+               }
+          }
+
+          $allRegionDev = [
+               ['value' => ['玄关',$xuanguanNum]],
+               ['value' => ['客厅',$ketingNum]],
+               ['value' => ['书房',$shufangNum]],
+               ['value' => ['厨房',$chufangNum]]
+          ];
+          return $this->returnChartData($allRegionDev);
      }
 
 }
