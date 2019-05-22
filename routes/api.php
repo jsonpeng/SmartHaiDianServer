@@ -45,7 +45,16 @@ $api->version('v1', function ($api) {
 			$api->get('light_control','DeviceApiController@controlLight');
 			//发起设备添加
 			$api->get('add','DeviceApiController@addDevice');
+			//发起多个设备控制
 			$api->post('control_muti','DeviceApiController@controlMutiDevice');
+
+			/**
+			 * chart图表
+			 */
+			$api->group(['prefix' => 'chart'], function ($api) {
+				//获取设备总数-在线数
+				$api->get('online_and_total','DeviceApiController@getDevAllNumAndOnlineNum');
+			});
 	    });
 
 	    /**

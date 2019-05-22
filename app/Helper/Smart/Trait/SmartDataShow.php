@@ -4,6 +4,7 @@ use App\Models\DevLight;
 use App\Models\DevSensor;
 use App\Models\DevScene;
 use App\Models\DevCurtain;
+use App\Models\DevDoorLock;
 
 /**
  * 智能数据显示
@@ -212,6 +213,7 @@ trait SmartDataShow{
             }
         }
 
+        //窗帘电机
         $dooyas = DevCurtain::orderBy('created_at','desc');
 
         if($region_name)
@@ -238,6 +240,38 @@ trait SmartDataShow{
                     'support_idx'=> 'P2',
                     'region_name' => self::getRegionDescByName($dooya->region_name),
                     'state'      => self::getDeviceState($dooya),
+                    'created_at' => $dooya->created_at
+               ];
+            }
+        }
+
+        //可视门锁
+        $locks = DevDoorLock::orderBy('created_at','desc');
+
+        if($region_name)
+        {
+            $locks = $locks->where('region_name',$region_name);
+        }
+
+        $locks = $locks->get();
+        if(count($locks))
+        {
+            foreach ($locks as $key => $lock) 
+            {
+               $allDevices[] = 
+               [
+                    'name'       => $lock->name,
+                    'model'      => $lock->model,
+                    'model_name' => self::getModelName($lock->model),
+                    'class'      => '智能可视门锁',
+                    'image'      => $lock->image,
+                    'icon'       => $lock->icon,
+                    'me'         => $lock->me,
+                    'support_switch' => 1,
+                    'is_on'     => 1,
+                    'support_idx'=> '',
+                    'region_name' => self::getRegionDescByName($lock->region_name),
+                    'state'      => self::getDeviceState($lock),
                     'created_at' => $dooya->created_at
                ];
             }

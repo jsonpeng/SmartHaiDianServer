@@ -5,6 +5,15 @@ namespace App\Http\Controllers\Smart\API;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 
+//灯光设备
+use App\Models\DevLight;
+//窗帘电机
+use App\Models\DevCurtain;
+//传感器
+use App\Models\DevSensor;
+//智能门锁
+use App\Models\DevDoorLock;
+
 class DeviceApiController extends AppBaseController
 {
 
@@ -241,6 +250,16 @@ class DeviceApiController extends AppBaseController
 		return \Smart::mutiControlRequest($request->get('param'));
 	}
 
+
+     /**
+      * 返回chart数据格式
+      * @return [type] [description]
+      */
+     private function returnChartData($data)
+     {
+          return response()->json(['code'=>0,'data'=>$data,'msg'=>null]);
+     }
+
     /**
      * 获取设备总数-在线数
      *
@@ -262,7 +281,52 @@ class DeviceApiController extends AppBaseController
      */
      public function getDevAllNumAndOnlineNum(Request $request)
      {
+          $devItem = 
+          [
+               'name'   => '',
+               'online' => 0,
+               'total'  => 0,
+               'data'   => []
+          ];
 
+          $devAll = [];
+
+          //智能电表数量
+          $devItem['name']   = '智能电表';
+          $devItem['online'] = 4;
+          $devItem['total']  = 4;
+          $devAll[] = $devItem;
+
+          //智能灯泡/灯带
+          $devItem['name']   = '智能灯泡/灯带';
+          $devItem['online'] = DevLight::where('state',1)->count();
+          $devItem['total']  = DevLight::count();
+          $devAll[] = $devItem;
+
+          //智能窗帘电机
+          $devItem['name']   = '智能窗帘电机';
+          $devItem['online'] = DevCurtain::where('state',1)->count();
+          $devItem['total']  = DevCurtain::count();
+          $devAll[] = $devItem;
+
+          //净水器
+          $devItem['name']   = '净水器';
+          $devItem['online'] = 1;
+          $devItem['total']  = 1;
+          $devAll[] = $devItem;
+
+          //传感器
+          $devItem['name']   = '传感器';
+          $devItem['online'] = DevSensor::where('state',1)->count();
+          $devItem['total']  = DevSensor::count();
+          $devAll[] = $devItem;
+          
+          //智能门锁
+          $devItem['name']   = '智能门锁';
+          $devItem['online'] = DevDoorLock::where('state',1)->count();
+          $devItem['total']  = DevDoorLock::count();
+          $devAll[] = $devItem;
+          return $this->returnChartData($devAll);
      }
 
 
@@ -287,7 +351,7 @@ class DeviceApiController extends AppBaseController
      */
      public function getRegionDev(Request $request)
      {
-
+          
      }
 
 }
