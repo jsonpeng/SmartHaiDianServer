@@ -241,4 +241,53 @@ class DeviceApiController extends AppBaseController
 		return \Smart::mutiControlRequest($request->get('param'));
 	}
 
+    /**
+     * 获取设备总数-在线数
+     *
+     * @SWG\Get(path="/api/device/chart/online_and_total",
+     *   tags={"设备模块"},
+     *   summary="获取设备总数-在线数",
+     *   description="获取设备总数-在线数",
+     *   operationId="testRecordsStore",
+     *   produces={"application/json"},
+     *     @SWG\Response(
+     *         response=200,
+     *         description="status_code=0请求成功,status_code=1请求失败(缺少请求参数,参数验证失败等),data返回设备分类及数量",
+     *     ),
+     *     @SWG\Response(
+     *         response=500,
+     *         description="服务器出错",
+     *     ),
+     * )
+     */
+     public function getDevAllNumAndOnlineNum(Request $request)
+     {
+
+     }
+
+
+    /**
+     * 获取各区域内的设备在线数量
+     *
+     * @SWG\Get(path="/api/device/chart/regions_online_total",
+     *   tags={"设备模块"},
+     *   summary="获取各区域内的设备在线数量",
+     *   description="获取各区域内的设备在线数量",
+     *   operationId="testRecordsStore",
+     *   produces={"application/json"},
+     *     @SWG\Response(
+     *         response=200,
+     *         description="status_code=0请求成功,status_code=1请求失败(缺少请求参数,参数验证失败等),data返回设备分类及数量",
+     *     ),
+     *     @SWG\Response(
+     *         response=500,
+     *         description="服务器出错",
+     *     ),
+     * )
+     */
+     public function getRegionDev(Request $request)
+     {
+
+     }
+
 }

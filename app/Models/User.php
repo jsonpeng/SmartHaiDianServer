@@ -36,7 +36,8 @@ class User extends Model
         'mobile',
         'sex',
         'welcome',
-        'sn'
+        'sn',
+        'image'
     ];
 
     /**

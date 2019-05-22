@@ -45,6 +45,17 @@
     {!! Form::text('mobile', null, ['class' => 'form-control']) !!}
 </div>
 
+<div class="form-group col-sm-12">
+    {!! Form::label('image', '人脸识别图像:') !!}
+    <div class="form-group">
+        <div class="input-append">
+            {!! Form::text('image', null, ['class' => 'form-control', 'id' => 'image']) !!}
+            <a data-toggle="modal" href="javascript:;" data-target="#myModal" class="btn" type="button" onclick="changeImageId('image')">选择图片</a>
+            <img src="@if(isset($user)) {{$user->image}} @endif" style="max-width: 100%; max-height: 150px; display: block;">
+        </div>
+    </div>
+</div>
+
 <!-- Sex Field -->
 <div class="form-group col-sm-12">
     {!! Form::label('sex', '性别:') !!}

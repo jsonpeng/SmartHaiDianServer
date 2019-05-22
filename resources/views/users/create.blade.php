@@ -21,6 +21,7 @@
             </div>
         </div>
     </div>
+    @include('admin.partial.imagemodel')
 @endsection
 
 @include('users.js')
