@@ -99,7 +99,11 @@ Route::group(['middleware' => ['web', 'auth.admin'],'prefix'=>'smart','namespace
 	Route::resource('cats', 'CatController');
 	//文章管理
 	Route::resource('posts', 'PostController');
+	//设备模型管理
+	Route::resource('devModels', 'DevModelController');
 });
+
+
 
 
 

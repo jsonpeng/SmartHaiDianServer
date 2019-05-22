@@ -69,7 +69,7 @@
 </li>
  -->
 
-<?php $deviceAllActive = Request::is('smart/gateways*') || Request::is('smart/gatewayDevs*') || Request::is('smart/devLights*') || Request::is('smart/devSensors*') || Request::is('smart/devCurtains*') || Request::is('smart/devDoorLocks*');?>
+<?php $deviceAllActive = Request::is('smart/gateways*') || Request::is('smart/gatewayDevs*') || Request::is('smart/devLights*') || Request::is('smart/devSensors*') || Request::is('smart/devCurtains*') || Request::is('smart/devModels*') || Request::is('smart/devDoorLocks*');?>
 
 <li class="treeview @if($deviceAllActive) active @endif">
     <a href="#">
@@ -84,6 +84,10 @@
         </li>
         <li class="{{ Request::is('smart/gatewayDevs*') ? 'active' : '' }}">
             <a href="{!! route('gatewayDevs.index') !!}"><i class="fa fa-edit"></i><span>网关设备列表</span></a>
+        </li>
+
+        <li class="{{ Request::is('smart/devModels*') ? 'active' : '' }}">
+            <a href="{!! route('devModels.index') !!}"><i class="fa fa-edit"></i><span>设备模型分类</span></a>
         </li>
 
         <li class="{{ Request::is('smart/devLights*') ? 'active' : '' }}">
@@ -210,6 +214,8 @@
 <li class="">
     <a href="javascript:;" id="refresh"><i class="fa fa-refresh"></i><span>刷新缓存</span></a>
 </li>
+
+
 
 
 

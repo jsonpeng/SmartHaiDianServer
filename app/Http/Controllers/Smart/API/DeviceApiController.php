@@ -354,9 +354,9 @@ class DeviceApiController extends AppBaseController
           $allDevices = \Smart::getAllDevicesAndByRegionName();
           
           $xuanguanNum = 0;
-          $ketingNum = 0;
-          $shufangNum = 0;
-          $chufangNum = 0;
+          $ketingNum   = 0;
+          $shufangNum  = 0;
+          $chufangNum  = 0;
 
           if(count($allDevices))
           {
