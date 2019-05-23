@@ -5,16 +5,17 @@
     <title>{!! getSettingValueByKeyCache("name") !!}</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdn.bootcss.com/select2/4.0.3/css/select2.min.css">
-    <link rel="stylesheet" href="https://cdn.bootcss.com/iCheck/1.0.2/skins/all.css">
+    <link rel="stylesheet" href="{{ asset('static/css/bootstrap.min.css') }}">
+    <!-- <link rel="stylesheet" href="{{ asset('static/css/font-awesome.min.css') }}"> -->
+    <link rel="stylesheet" href="{{ asset('static/css/select2.min.css') }}">
+    <!-- <link rel="stylesheet" href="{{ asset('static/css/all.css') }}"> -->
     <link rel="stylesheet" href="{{ asset('vendor/adminLTE/css/AdminLTE.min.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/adminLTE/css/skins/skin-blue.min.css') }}">
 
     
-    <link rel="stylesheet" href="https://cdn.bootcss.com/ionicons/2.0.1/css/ionicons.min.css">
-    <link href="https://cdn.bootcss.com/element-ui/1.4.3/theme-default/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('static/css/ionicons.min.css') }}">
+
+    <link href="{{ asset('static/css/index.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('vendor/datetimepicker/css/bootstrap-datetimepicker.min.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/datepicke/css/bootstrap-datepicker.min.css') }}">
 
@@ -140,16 +141,16 @@
    
 
 
-    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script src="https://cdn.bootcss.com/select2/4.0.3/js/select2.min.js"></script>
-    <script src="https://cdn.bootcss.com/iCheck/1.0.2/icheck.min.js"></script>
+    <script src="{{ asset('static/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('static/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('static/js/select2.min.js') }}"></script>
+    <script src="{{ asset('static/js/icheck.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('vendor/adminLTE/js/app.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('vendor/tinymce/jquery.tinymce.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('vendor/tinymce/tinymce.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('vendor/vue/vue.min.js') }}"></script>
     <!-- <script type="text/javascript" src="{{ asset('vendor/jquery.nestable.js') }}"></script> -->
-    <script src="https://cdn.bootcss.com/element-ui/1.4.3/index.js"></script>
+    <script src="{{ asset('static/js/index.js') }}"></script>
     <script type="text/javascript" src="{{ asset('vendor/datepicke/js/bootstrap-datepicker.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('vendor/datepicke/locales/bootstrap-datepicker.zh-CN.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('vendor/datetimepicker/js/bootstrap-datetimepicker.min.js') }}"></script>

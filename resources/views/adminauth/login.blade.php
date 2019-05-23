@@ -8,10 +8,11 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
-    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdn.bootcss.com/ionicons/2.0.1/css/ionicons.min.css">
-    <link rel="stylesheet" href="https://cdn.bootcss.com/iCheck/1.0.2/skins/all.css">
+    <link rel="stylesheet" href="{{ asset('static/css/bootstrap.min.css') }}">
+    <!-- <link rel="stylesheet" href="{{ asset('static/css/font-awesome.min.css') }}"> -->
+    <link rel="stylesheet" href="{{ asset('static/css/select2.min.css') }}">
+    <!-- <link rel="stylesheet" href="{{ asset('static/css/all.css') }}"> -->
+
     <link rel="stylesheet" href="{{ asset('vendor/adminLTE/css/AdminLTE.min.css') }}">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -77,11 +78,11 @@
     </div><!-- /.login-box -->
 <!-- /.login-box -->
 
-<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<script src="https://cdn.bootcss.com/iCheck/1.0.2/icheck.min.js"></script>
-<script type="text/javascript" src="{{ asset('vendor/adminLTE/js/app.min.js') }}"></script>
 
+    <script src="{{ asset('static/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('static/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('static/js/select2.min.js') }}"></script>
+    <script src="{{ asset('static/js/icheck.min.js') }}"></script>
 <script>
     $(function () {
         $('input').iCheck({
