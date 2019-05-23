@@ -13,6 +13,8 @@ use App\Models\DevCurtain;
 use App\Models\DevSensor;
 //智能门锁
 use App\Models\DevDoorLock;
+//设备分类
+use App\Models\DevModel;
 
 class DeviceApiController extends AppBaseController
 {
@@ -42,6 +44,30 @@ class DeviceApiController extends AppBaseController
 	{
 		return zcjy_callback_data(\Smart::getAllDevicesAndByRegionName());
 	}
+
+    /**
+     * 获取当前网关的所有设备模型分类
+     *
+     * @SWG\Get(path="/api/device/all_model_cat",
+     *   tags={"设备模块"},
+     *   summary="获取当前网关的所有设备模型分类",
+     *   description="获取当前网关的所有设备模型分类",
+     *   operationId="testRecordsStore",
+     *   produces={"application/json"},
+     *     @SWG\Response(
+     *         response=200,
+     *         description="status_code=0请求成功,status_code=1请求失败(缺少请求参数,参数验证失败等),data返回设备列表",
+     *     ),
+     *     @SWG\Response(
+     *         response=500,
+     *         description="服务器出错",
+     *     ),
+     * )
+     */
+     public function getAllModelDev()
+     {
+          return zcjy_callback_data(DevModel::all());
+     }
 
      /**
      * 获取指定模型的所有设备

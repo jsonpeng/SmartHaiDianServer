@@ -33,6 +33,8 @@ $api->version('v1', function ($api) {
 		 * 设备相关api
 		 */
 	    $api->group(['prefix' => 'device'], function ($api) {
+	    	//获取所有设备分类
+	    	$api->get('all_model_cat','DeviceApiController@getAllModelDev');
 			//获取所有设备
 			$api->get('all','DeviceApiController@getAllDevices');
 			//获取指定区域内的设备
