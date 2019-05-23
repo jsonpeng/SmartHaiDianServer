@@ -34,7 +34,7 @@ class DevSceneController extends AppBaseController
         session(['rediredUrlScene'=>$request->fullUrl()]);
 
         $devScenes = $this->devSceneRepository
-        ->orderBy('created_at','asc')
+        ->orderBy('region_id','asc')
         ->paginate(15);
 
         return view('dev_scenes.index')
