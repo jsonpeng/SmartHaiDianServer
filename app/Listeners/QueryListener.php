@@ -30,6 +30,6 @@ class QueryListener
         
       $sql = str_replace("?", "'%s'", $event->sql);
       $log = vsprintf($sql, $event->bindings);
-      Log::info('laravel 5.5 SQL:'.$log);
+      // Log::info('laravel 5.5 SQL:'.$log);
     }
 }
