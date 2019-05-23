@@ -317,16 +317,16 @@ class DeviceApiController extends AppBaseController
 
           $devAll = [];
 
-          //智能电表数量
-          $devItem['name']   = '智能电表';
-          $devItem['online'] = 4;
-          $devItem['total']  = 4;
+          //智能灯泡
+          $devItem['name']   = '智能灯泡';
+          $devItem['online'] = DevLight::where('model','SL_LI_RGBW')->where('state',1)->count();
+          $devItem['total']  = DevLight::where('model','SL_LI_RGBW')->count();
           $devAll[] = $devItem;
 
           //智能灯泡/灯带
-          $devItem['name']   = '智能灯泡/灯带';
-          $devItem['online'] = DevLight::where('state',1)->count();
-          $devItem['total']  = DevLight::count();
+          $devItem['name']   = '智能灯带';
+          $devItem['online'] = DevLight::where('model','SL_CT_RGBW')->where('state',1)->count();
+          $devItem['total']  = DevLight::where('model','SL_CT_RGBW')->count();
           $devAll[] = $devItem;
 
           //智能窗帘电机
@@ -335,10 +335,10 @@ class DeviceApiController extends AppBaseController
           $devItem['total']  = DevCurtain::count();
           $devAll[] = $devItem;
 
-          //净水器
-          $devItem['name']   = '净水器';
-          $devItem['online'] = 1;
-          $devItem['total']  = 1;
+          //超级碗
+          $devItem['name']   = '超级碗';
+          $devItem['online'] = DevLight::where('model','SL_SPOT')->where('state',1)->count();
+          $devItem['total']  = DevLight::where('model','SL_SPOT')->count();
           $devAll[] = $devItem;
 
           //传感器
