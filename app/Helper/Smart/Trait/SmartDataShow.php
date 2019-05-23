@@ -147,6 +147,70 @@ trait SmartDataShow{
     {
         $allDevices = [];
 
+         //窗帘电机
+        $dooyas = DevCurtain::orderBy('created_at','desc');
+
+        if($region_name)
+        {
+            $dooyas = $dooyas->where('region_name',$region_name);
+        }
+
+        $dooyas = $dooyas->get();
+        if(count($dooyas))
+        {
+            foreach ($dooyas as $key => $dooya) 
+            {
+               $allDevices[] = 
+               [
+                    'name'       => $dooya->name,
+                    'model'      => $dooya->model,
+                    'model_name' => self::getModelName($dooya->model),
+                    'class'      => '智能窗帘电机设备',
+                    'image'      => $dooya->image,
+                    'icon'       => $dooya->icon,
+                    'me'         => $dooya->me,
+                    'support_switch' => 1,
+                    'is_on'     => $dooya->is_on,
+                    'support_idx'=> 'P2',
+                    'region_name' => self::getRegionDescByName($dooya->region_name),
+                    'state'      => self::getDeviceState($dooya),
+                    'created_at' => $dooya->created_at
+               ];
+            }
+        }
+
+        //可视门锁
+        $locks = DevDoorLock::orderBy('created_at','desc');
+
+        if($region_name)
+        {
+            $locks = $locks->where('region_name',$region_name);
+        }
+
+        $locks = $locks->get();
+        if(count($locks))
+        {
+            foreach ($locks as $key => $lock) 
+            {
+               $allDevices[] = 
+               [
+                    'name'       => $lock->name,
+                    'model'      => $lock->model,
+                    'model_name' => self::getModelName($lock->model),
+                    'class'      => '智能可视门锁',
+                    'image'      => $lock->image,
+                    'icon'       => $lock->icon,
+                    'me'         => $lock->me,
+                    'support_switch' => 1,
+                    'is_on'     => 1,
+                    'support_idx'=> '',
+                    'region_name' => self::getRegionDescByName($lock->region_name),
+                    'state'      => self::getDeviceState($lock),
+                    'created_at' => $dooya->created_at
+               ];
+            }
+        }
+        
         //智能灯光设备
         $lights = DevLight::orderBy('created_at','desc');
 
@@ -213,69 +277,7 @@ trait SmartDataShow{
             }
         }
 
-        //窗帘电机
-        $dooyas = DevCurtain::orderBy('created_at','desc');
-
-        if($region_name)
-        {
-            $dooyas = $dooyas->where('region_name',$region_name);
-        }
-
-        $dooyas = $dooyas->get();
-        if(count($dooyas))
-        {
-            foreach ($dooyas as $key => $dooya) 
-            {
-               $allDevices[] = 
-               [
-                    'name'       => $dooya->name,
-                    'model'      => $dooya->model,
-                    'model_name' => self::getModelName($dooya->model),
-                    'class'      => '智能窗帘电机设备',
-                    'image'      => $dooya->image,
-                    'icon'       => $dooya->icon,
-                    'me'         => $dooya->me,
-                    'support_switch' => 1,
-                    'is_on'     => $dooya->is_on,
-                    'support_idx'=> 'P2',
-                    'region_name' => self::getRegionDescByName($dooya->region_name),
-                    'state'      => self::getDeviceState($dooya),
-                    'created_at' => $dooya->created_at
-               ];
-            }
-        }
-
-        //可视门锁
-        $locks = DevDoorLock::orderBy('created_at','desc');
-
-        if($region_name)
-        {
-            $locks = $locks->where('region_name',$region_name);
-        }
-
-        $locks = $locks->get();
-        if(count($locks))
-        {
-            foreach ($locks as $key => $lock) 
-            {
-               $allDevices[] = 
-               [
-                    'name'       => $lock->name,
-                    'model'      => $lock->model,
-                    'model_name' => self::getModelName($lock->model),
-                    'class'      => '智能可视门锁',
-                    'image'      => $lock->image,
-                    'icon'       => $lock->icon,
-                    'me'         => $lock->me,
-                    'support_switch' => 1,
-                    'is_on'     => 1,
-                    'support_idx'=> '',
-                    'region_name' => self::getRegionDescByName($lock->region_name),
-                    'state'      => self::getDeviceState($lock),
-                    'created_at' => $dooya->created_at
-               ];
-            }
-        }
+       
 
         return $allDevices;
     }
