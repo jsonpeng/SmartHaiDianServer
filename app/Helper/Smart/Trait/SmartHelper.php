@@ -117,7 +117,7 @@ trait SmartHelper{
      */
     public static function getRegionName($region_id)
     {
-        return optional(Region::find($region_id))->desc;
+        return optional(Region::find($region_id))->des;
     }
 
     /**
