@@ -78,7 +78,7 @@
           <div class="col-sm-2">
                             <label>
                          {!! Form::checkbox('scene_id[]', $scene->id, in_array($scene->id, $userPreferences)) !!}
-                                {!! $scene->name !!}
+                                {!! $scene->name !!} [{!! app("common")->RegionRepo()->getNameById($scene->region_id) !!}]
                             </label>
             </div>
       @endforeach
