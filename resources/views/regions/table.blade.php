@@ -12,7 +12,7 @@
         <tr>
             <td>{!! $region->name !!}</td>
             <td><img src="{!! $region->image !!}" style="max-width: 100px;height: auto;" /></td>
-            <td>{!! $region->desc !!}</td>
+            <td>{!! $region->des !!}</td>
             <td>
                 {!! Form::open(['route' => ['regions.destroy', $region->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>

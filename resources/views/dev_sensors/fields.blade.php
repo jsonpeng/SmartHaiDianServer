@@ -77,7 +77,7 @@
     {!! Form::label('region_id', '区域:') !!}
     <select name="region_id" class="form-control">
         @foreach($Regions as $item)
-            <option value="{!! $item->id !!}" @if(isset($devSensor) && $devSensor->region_id == $item->id) selected="selected" @endif>{!! $item->desc !!}</option>
+            <option value="{!! $item->id !!}" @if(isset($devSensor) && $devSensor->region_id == $item->id) selected="selected" @endif>{!! $item->des !!}</option>
         @endforeach
     </select>
 </div>

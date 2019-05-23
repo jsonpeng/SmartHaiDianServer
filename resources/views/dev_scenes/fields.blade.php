@@ -38,7 +38,7 @@
     {!! Form::label('region_id', '应用区域(一个区域只能同时开启一个场景):') !!}
     <select name="region_id" class="form-control">
         @foreach($Regions as $item)
-            <option value="{!! $item->id !!}" @if(isset($devScene) && $devScene->region_id == $item->id) selected="selected" @endif>{!! $item->desc !!}</option>
+            <option value="{!! $item->id !!}" @if(isset($devScene) && $devScene->region_id == $item->id) selected="selected" @endif>{!! $item->des !!}</option>
         @endforeach
     </select>
 </div>

@@ -6,8 +6,8 @@
 
 <!-- Desc Field -->
 <div class="form-group col-sm-12 col-lg-12">
-    {!! Form::label('desc', '地区描述:') !!}
-    {!! Form::textarea('desc', null, ['class' => 'form-control']) !!}
+    {!! Form::label('des', '地区描述:') !!}
+    {!! Form::textarea('des', null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group col-sm-6">

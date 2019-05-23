@@ -26,7 +26,7 @@ class Region extends Model
 
     public $fillable = [
         'name',
-        'desc',
+        'des',
         'image'
     ];
 
@@ -37,7 +37,7 @@ class Region extends Model
      */
     protected $casts = [
         'name' => 'string',
-        'desc' => 'string'
+        'des' => 'string'
     ];
 
     /**
@@ -47,7 +47,7 @@ class Region extends Model
      */
     public static $rules = [
         'name' => 'required',
-        'desc' => 'required'
+        'des' => 'required'
     ];
 
     
