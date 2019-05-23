@@ -45,7 +45,8 @@ class UserController extends AppBaseController
     {
         return view('users.create')
         ->with('model_required',modelRequiredParam($this->userRepository))
-        ->with('scenes',app('common')->DevSceneRepo()->all());
+        ->with('scenes',app('common')->DevSceneRepo()->all())
+        ->with('userPreferences',[]);
     }
 
     /**
@@ -110,7 +111,8 @@ class UserController extends AppBaseController
         return view('users.edit')
         ->with('user', $user)
         ->with('model_required',modelRequiredParam($this->userRepository))
-        ->with('scenes',app('common')->DevSceneRepo()->all());
+        ->with('scenes',app('common')->DevSceneRepo()->all())
+        ->with('userPreferences',app('common')->PreferenceRepo()->userPreferenceScenesArr($id));
     }
 
     /**

@@ -65,12 +65,20 @@
 
 <div class="form-group col-sm-12">
     {!! Form::label('scene_id', '用户偏好场景:') !!}
-    <select name="scene_id" class="form-control">
+  <!--   <select name="scene_id" class="form-control">
             <option value="" @if(!isset($user) || isset($user) && empty(app('common')->PreferenceRepo()->userPreferenceScene($user->id))) selected="selected" @endif>无</option>
             @foreach($scenes as $scene)
                 <option value="{!! $scene->id !!}" @if(isset($user) && app('common')->PreferenceRepo()->userPreferenceScene($user->id) == $scene->id) selected="selected" @endif>{!! $scene->name !!} [{!! app("common")->RegionRepo()->getNameById($scene->region_id) !!}]</option>
             @endforeach
-    </select>
+    </select> -->
+      @foreach($scenes as $scene)
+          <div class="col-sm-2">
+                            <label>
+                         {!! Form::checkbox('scene_id[]', $scene->id, in_array($scene->id, $userPreferences)) !!}
+                                {!! $scene->name !!}
+                            </label>
+            </div>
+      @endforeach
 </div>
 
 
