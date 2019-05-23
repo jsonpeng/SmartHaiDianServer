@@ -65,6 +65,9 @@
 
 <div class="form-group col-sm-12">
     {!! Form::label('scene_id', '用户偏好场景:') !!}
+</div>
+
+<div class="form-group col-sm-12">
   <!--   <select name="scene_id" class="form-control">
             <option value="" @if(!isset($user) || isset($user) && empty(app('common')->PreferenceRepo()->userPreferenceScene($user->id))) selected="selected" @endif>无</option>
             @foreach($scenes as $scene)
