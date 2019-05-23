@@ -206,7 +206,7 @@ trait SmartDataShow{
                     'support_idx'=> '',
                     'region_name' => self::getRegionDescByName($lock->region_name),
                     'state'      => self::getDeviceState($lock),
-                    'created_at' => $dooya->created_at
+                    'created_at' => $lock->created_at
                ];
             }
         }
