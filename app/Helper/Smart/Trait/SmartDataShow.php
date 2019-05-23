@@ -16,7 +16,15 @@ trait SmartDataShow{
      */
     public static function getReionAll()
     {
-        return Region::all();
+        $regions =  Region::all();
+        if(count($regions))
+        {
+            foreach ($regions as $key => $region) 
+            {
+                $region['desc'] = $region->des;
+            }
+        }
+        return $regions;
     }
 
     /**

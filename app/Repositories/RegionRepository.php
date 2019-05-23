@@ -39,7 +39,7 @@ class RegionRepository extends BaseRepository
      */
     public function getNameById($region_id)
     {
-        return optional($this->findWithoutFail($region_id))->desc;
+        return optional($this->findWithoutFail($region_id))->des;
     }
 
     /**
