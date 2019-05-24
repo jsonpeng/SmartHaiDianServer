@@ -2,6 +2,7 @@
 use App\Models\DevLight;
 use App\Models\DevSensor;
 use App\Models\DevScene;
+use App\Models\DevLfScene;
 use App\Models\DevCurtain;
 use App\Models\DevCommand;
 //用户偏好
@@ -18,7 +19,14 @@ trait SmartControl{
      */
     public static function closeAllSceneAndDev()
     {
-        DevScene::orderBy('id','asc')->update(['enabled'=>0]);
+        $switch =self::getCacheSceneSwitch();
+        if($switch === 1)
+        {
+            DevScene::orderBy('id','asc')->update(['enabled'=>0]);
+        }
+        else{
+            DevLfScene::orderBy('id','asc')->update(['enabled'=>0]);
+        }
 
         $lights = DevLight::orderBy('region_id','asc')
         ->select('me','idx','agt')
