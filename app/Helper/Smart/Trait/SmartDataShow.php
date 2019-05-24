@@ -209,7 +209,7 @@ trait SmartDataShow{
                     'image'      => $lock->image,
                     'icon'       => $lock->icon,
                     'me'         => $lock->me,
-                    'support_switch' => 1,
+                    'support_switch' => 0,
                     'is_on'     => 1,
                     'support_idx'=> '',
                     'region_name' => self::getRegionDescByName($lock->region_name),
