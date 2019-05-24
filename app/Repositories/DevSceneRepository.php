@@ -79,7 +79,7 @@ class DevSceneRepository extends BaseRepository
                 $this->startMutiControlRequest($scene->id);
             }
             else{
-
+                \Smart::setLfScene($scene);
             }
         }
         else{
