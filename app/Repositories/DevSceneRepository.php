@@ -37,7 +37,7 @@ class DevSceneRepository extends BaseRepository
      **/
     public function model()
     {
-        $switch = self::getCacheSceneSwitch();
+        $switch = \Smart::getCacheSceneSwitch();
         if($switch === 1)
         {
             return DevScene::class;
@@ -79,7 +79,7 @@ class DevSceneRepository extends BaseRepository
                 $this->startMutiControlRequest($scene->id);
             }
             else{
-                
+
             }
         }
         else{
