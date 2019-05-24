@@ -64,7 +64,18 @@
                                 <label for="agt" class="col-sm-3 control-label">java服务接口地址(注:不要轻易修改!)</label>
                                 <div class="col-sm-6">
                                     <input type="text" class="form-control" name="java_request_url" maxlength="60" readonly="readonly"   placeholder="java服务接口地址" value="{{ getSettingValueByKey('java_request_url') }}"></div>
-                            </div>
+                              </div>
+
+
+                              <div class="form-group">
+                                <label for="scene_switch" class="col-sm-3 control-label">场景控制命令切换</label>
+                                <div class="col-sm-6">
+                                    <select name="scene_switch" class="form-control">
+                                        <option value="1" @if(getSettingValueByKey('scene_switch') == '1') selected="selected" @endif>自定义组装</option>
+                                        <option value="2" @if(getSettingValueByKey('scene_switch') == '2') selected="selected" @endif>lifesmart官方</option>
+                                    </select>
+                                </div>
+                              </div>
 
                         </form>
                     </div>

@@ -8,6 +8,7 @@ use App\Models\DevCommand;
 use App\Models\DevLight;
 use App\Models\DevCurtain;
 use App\Models\DevSensor;
+use App\Models\DevLfScene;
 use Log;
 
 /**
@@ -36,7 +37,14 @@ class DevSceneRepository extends BaseRepository
      **/
     public function model()
     {
-        return DevScene::class;
+        $switch = self::getCacheSceneSwitch();
+        if($switch === 1)
+        {
+            return DevScene::class;
+        }
+        else{
+            return DevLfScene::class;
+        }
     }
 
     /**
@@ -63,8 +71,16 @@ class DevSceneRepository extends BaseRepository
         {
             //开启场景把 该区域的其他场景关闭
             $this->updateSceneRegionEnableStatus($scene->region_id,$scene->id);
-            //执行关联的操作命令
-            $this->startMutiControlRequest($scene->id);
+
+            $switch = self::getCacheSceneSwitch();
+            if($switch === 1)
+            {
+                //执行关联的操作命令
+                $this->startMutiControlRequest($scene->id);
+            }
+            else{
+                
+            }
         }
         else{
             // Log::info('关闭了场景');

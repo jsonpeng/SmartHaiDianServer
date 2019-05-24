@@ -193,6 +193,18 @@ trait SmartCacheService{
         });
     }
 
+    /**
+     * 获取场景开关
+     * @return [type] [description]
+     */
+    public static function getCacheSceneSwitch()
+    {
+        return SmartCache::remember('smart_scene',SmartConfig::get('smart.agt_cache_time'),function(){
+            return (int)getSettingValueByKey('scene_switch');
+        });
+    }
+
+
   /**
    * java server请求地址
    * @return [type] [description]

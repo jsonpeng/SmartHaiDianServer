@@ -258,6 +258,23 @@ trait SmartControl{
         return self::returnVarifyJavaResultData($result);
     }
 
+
+    public static function setLfScene($scene)
+    {
+        if(empty($scene))
+        {
+            return;
+        }
+
+        if(empty($scene->uuid))
+        {
+            return;
+        }
+        $params = ['agt'=>self::getCacheAgt(),'uuid'=>$scene->uuid];
+        $result = self::simpleGuzzleRequest(self::smartRequestUrl().'do_scene','GET',$params);
+        return self::returnVarifyJavaResultData($result);
+    }
+
     /**
      * 获取所有的真实设备
      * @return [type] [description]

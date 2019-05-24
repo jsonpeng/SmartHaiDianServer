@@ -5,11 +5,12 @@ use App\Models\DevSensor;
 use App\Models\DevScene;
 use App\Models\DevCurtain;
 use App\Models\DevDoorLock;
-
+use App\Models\DevLfScene;
 /**
  * 智能数据显示
  */
 trait SmartDataShow{
+    
     /**
      * 获取所有得区域
      * @return [type] [description]
@@ -33,7 +34,13 @@ trait SmartDataShow{
      */
     public static function getSceneAll()
     {
-        return DevScene::all();
+        $switch = self::getCacheSceneSwitch();
+        if($switch === 1){
+            return DevScene::all();
+        }
+        else{
+            return DevLfScene::all();
+        }
     }
 
     /**
@@ -43,7 +50,13 @@ trait SmartDataShow{
      */
     public static function getScenesByRegionName($region_name)
     {
-        return DevScene::where('region_name',$region_name)->get();
+        $switch = self::getCacheSceneSwitch();
+        if($switch === 1){
+            return DevScene::where('region_name',$region_name)->get();
+        }
+        else{
+            return DevLfScene::where('region_name',$region_name)->get();
+        }
     }
 
     /**
