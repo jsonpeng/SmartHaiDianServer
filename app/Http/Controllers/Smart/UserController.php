@@ -32,7 +32,7 @@ class UserController extends AppBaseController
         $this->userRepository->pushCriteria(new RequestCriteria($request));
         $users = $this->userRepository
         ->orderBy('created_at','desc')
-        ->paginate(15);
+        ->paginate(10);
 
         return view('users.index')
             ->with('users', $users);
