@@ -48,4 +48,18 @@ class AppBaseController extends Controller
         $input = $request->all();
         return app('common')->generateChartData($input['excel_path'],$input);
     }
+
+    //关闭场景及设备
+    public function closeAllSceneAndDev(Request $request)
+    {
+        \Smart::closeAllSceneAndDev();
+        return zcjy_callback_data('关闭成功',0,'web');
+    }
+
+    //触发用户的偏好场景
+    public function triggerUserMutiScenes($user_id)
+    {
+        \Smart::triggerUserMutiScenes($user_id);
+        return zcjy_callback_data('触发场景成功',0,'web');
+    }
 }

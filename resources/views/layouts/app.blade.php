@@ -81,7 +81,9 @@
 
             <!-- Header Navbar -->
             <nav class="navbar navbar-static-top" role="navigation" style="position: relative;">
-                
+
+                    <a href="javascript:;" class="smartReset" style="margin-left: 30px;position: absolute;left: 10%; top:15px;color:red;font-size: 16px;">关闭场景及设备</a>
+
                 <!-- Sidebar toggle button-->
                 <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
                     <span class="sr-only">Toggle navigation</span>
@@ -405,6 +407,17 @@ $.fn.extend({
 $('input[name=price]').numberInputLimit(6);
     </script>
     <script src="{{ asset('vendor/layer/layer.js') }}"></script>
+
+    <script type="text/javascript">
+        $('.smartReset').click(function(){
+                $.zcjyRequest('/ajax/reset',function(res){
+                    if(res)
+                    {
+                        $.alert(res);
+                    }
+                });
+        });
+    </script>
 
     <script type="text/javascript">
     $('#add_post').click(function(){

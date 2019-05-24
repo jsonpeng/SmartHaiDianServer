@@ -24,3 +24,18 @@
     </div>
 @endsection
 
+
+@section('scripts')
+<script type="text/javascript">
+    $('.triggerUser').click(function(){
+        var user_id = $(this).data('id');
+        $.zcjyRequest('/ajax/trigger_user_pre/'+user_id,function(res){
+            if(res)
+            {
+                $.alert(res);
+            }
+        });
+    });
+</script>
+@endsection
+

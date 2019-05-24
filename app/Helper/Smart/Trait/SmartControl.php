@@ -3,11 +3,78 @@ use App\Models\DevLight;
 use App\Models\DevSensor;
 use App\Models\DevScene;
 use App\Models\DevCurtain;
+use App\Models\DevCommand;
+//用户偏好
+use App\Models\Preference;
 
 /**
  * 智能控制
  */
 trait SmartControl{
+
+    /**
+     * 关闭所有场景及设备
+     * @return [type] [description]
+     */
+    public static function closeAllSceneAndDev()
+    {
+        DevScene::orderBy('id','asc')->update(['enabled'=>0]);
+
+        $lights = DevLight::orderBy('region_id','asc')
+        ->select('me','idx','agt')
+        ->get();
+
+        if(count($lights))
+        {
+            foreach ($lights as $key => $light) 
+            {
+              $light['type'] = '0x80';
+              $light['val'] = '0';
+            }
+
+            $commandDatas = json_encode($lights);
+                // Log::info('开启场景命令:'.$commandDatas);
+            //发起请求
+            self::mutiControlRequest($commandDatas);
+        }
+
+    }
+
+
+    /**
+     * 触发用户多个场景
+     * @param  [type] $user_id [description]
+     * @return [type]          [description]
+     */
+    public static function triggerUserMutiScenes($user_id)
+    {
+        $scenes = Preference::where('user_id',$user_id)->get();
+
+        if(count($scenes))
+        {
+
+            $sceneIdArr = [];
+
+            foreach ($scenes as $key => $scene) 
+            {
+                $sceneIdArr[] = $scene->id;
+            }
+
+            $commandDatas = DevCommand::whereIn('scene_id',$sceneIdArr)
+            ->select('me','idx','type','val','agt')
+            ->get();
+
+            if(count($commandDatas))
+            {
+                $commandDatas = json_encode($commandDatas);
+                // Log::info('开启场景命令:'.$commandDatas);
+                //发起请求
+                self::mutiControlRequest($commandDatas);
+            }
+
+        }
+    }
+
     /**
      * 更新设备状态
      * @param  [type] $input [description]
