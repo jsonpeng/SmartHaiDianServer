@@ -97,9 +97,10 @@ class PreferenceRepository extends BaseRepository
             return $this->userPreferenceScene($user_id);
         }elseif($action == 'create')
         {
-            if(count($scene_id))
+            if(count($scene_id) && !empty($scene_id))
             {
-                foreach ($scene_id as $key => $scene) {
+                foreach ($scene_id as $key => $scene) 
+                {
                       Preference::create(['user_id'=>$user_id,'scene_id'=>$scene]);
                 }
             }
@@ -110,7 +111,7 @@ class PreferenceRepository extends BaseRepository
         }
         elseif($action == 'update')
         {
-            if(count($scene_id))
+            if(count($scene_id) && !empty($scene_id))
             {
             
                 Preference::where('user_id',$user_id)->delete();
