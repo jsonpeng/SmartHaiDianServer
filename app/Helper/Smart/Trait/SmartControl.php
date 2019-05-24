@@ -52,24 +52,35 @@ trait SmartControl{
 
         if(count($scenes))
         {
+         
+                $sceneIdArr = [];
 
-            $sceneIdArr = [];
+                foreach ($scenes as $key => $scene) 
+                {
+                    $sceneIdArr[] = $scene->id;
+                }
 
-            foreach ($scenes as $key => $scene) 
+            $switch = \Smart::getCacheSceneSwitch();
+            if($switch === 1)
             {
-                $sceneIdArr[] = $scene->id;
+                $commandDatas = DevCommand::whereIn('scene_id',$sceneIdArr)
+                ->select('me','idx','type','val','agt')
+                ->get();
+
+                if(count($commandDatas))
+                {
+                    $commandDatas = json_encode($commandDatas);
+                    // Log::info('开启场景命令:'.$commandDatas);
+                    //发起请求
+                    self::mutiControlRequest($commandDatas);
+                }
+
             }
-
-            $commandDatas = DevCommand::whereIn('scene_id',$sceneIdArr)
-            ->select('me','idx','type','val','agt')
-            ->get();
-
-            if(count($commandDatas))
-            {
-                $commandDatas = json_encode($commandDatas);
-                // Log::info('开启场景命令:'.$commandDatas);
-                //发起请求
-                self::mutiControlRequest($commandDatas);
+            else{
+                $scenes = DevScene::whereIn('id',$sceneIdArr)->get();
+                foreach ($scenes as $key => $scene) {
+                    self::setLfScene($scene);
+                }
             }
 
         }
