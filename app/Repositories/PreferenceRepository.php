@@ -101,7 +101,10 @@ class PreferenceRepository extends BaseRepository
             {
                 foreach ($scene_id as $key => $scene) 
                 {
+                    if(!empty($scene))
+                    {
                       Preference::create(['user_id'=>$user_id,'scene_id'=>$scene]);
+                    }
                 }
             }
         }
@@ -118,7 +121,10 @@ class PreferenceRepository extends BaseRepository
             
                 foreach ($scene_id as $key => $scene) 
                 {
-                  Preference::create(['user_id'=>$user_id,'scene_id'=>$scene]);
+                    if(!empty($scene))
+                    {
+                        Preference::create(['user_id'=>$user_id,'scene_id'=>$scene]);
+                    }
                 }
                 
             }
