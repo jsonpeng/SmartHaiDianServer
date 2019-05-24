@@ -64,7 +64,7 @@ class UserController extends AppBaseController
         // $input['uuid'] = md5($input['pwd']);
         $user = $this->userRepository->create($input);
         //设置门锁临时用户
-        \Smart::setTempDoorUser('create',$user);
+        // \Smart::setTempDoorUser('create',$user);
         //更新用户偏好
         app('common')->PreferenceRepo()->actionUserPreferenceScene('create',$user->id,$input['scene_id']);
 
@@ -154,7 +154,7 @@ class UserController extends AppBaseController
         $user = $this->userRepository->update($input, $id);
 
         //设置门锁临时用户
-        \Smart::setTempDoorUser('modify',$user);
+        // \Smart::setTempDoorUser('modify',$user);
 
         //更新用户偏好
          app('common')->PreferenceRepo()->actionUserPreferenceScene('update',$id,$input['scene_id']);
@@ -182,7 +182,7 @@ class UserController extends AppBaseController
         }
 
         //设置门锁临时用户
-        \Smart::setTempDoorUser('delete',$user);
+        // \Smart::setTempDoorUser('delete',$user);
         //更新用户偏好
         app('common')->PreferenceRepo()->actionUserPreferenceScene('delete',$user->id);
 

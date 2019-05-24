@@ -62,7 +62,7 @@ class User extends Model
      */
     public static $rules = [
         'name' => 'required',
-        'pwd' => 'required|min:6|unique:users',
+        'pwd' => 'required|min:6',//|unique:users
         'welcome' => 'required'
     ];
 
