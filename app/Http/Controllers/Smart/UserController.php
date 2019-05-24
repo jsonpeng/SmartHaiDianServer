@@ -66,7 +66,7 @@ class UserController extends AppBaseController
         //设置门锁临时用户
         // \Smart::setTempDoorUser('create',$user);
         //更新用户偏好
-        app('common')->PreferenceRepo()->actionUserPreferenceScene('create',$user->id,$input['scene_id']);
+        app('common')->PreferenceRepo()->actionUserPreferenceScene('create',$user->id,$request->get('scene_id'));
 
         Flash::success('新用户创建成功.');
 
@@ -157,7 +157,7 @@ class UserController extends AppBaseController
         // \Smart::setTempDoorUser('modify',$user);
 
         //更新用户偏好
-         app('common')->PreferenceRepo()->actionUserPreferenceScene('update',$id,$input['scene_id']);
+         app('common')->PreferenceRepo()->actionUserPreferenceScene('update',$id,$request->get('scene_id'));
 
         Flash::success('更新成功.');
 
