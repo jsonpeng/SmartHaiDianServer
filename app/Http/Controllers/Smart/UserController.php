@@ -143,12 +143,12 @@ class UserController extends AppBaseController
                    ->withErrors('密码不得少于6个字符');
         }
 
-        if($this->userRepository->model()::where('id','<>',$id)->where('pwd',$input['pwd'])->count())
-        {
-            return redirect(route('users.edit',$id))
-                   ->withInput($input)
-                   ->withErrors('该密码已被使用过,请更换密码');
-        }
+        // if($this->userRepository->model()::where('id','<>',$id)->where('pwd',$input['pwd'])->count())
+        // {
+        //     return redirect(route('users.edit',$id))
+        //            ->withInput($input)
+        //            ->withErrors('该密码已被使用过,请更换密码');
+        // }
 
         // $input['uuid'] = md5($input['pwd']);
         $user = $this->userRepository->update($input, $id);
