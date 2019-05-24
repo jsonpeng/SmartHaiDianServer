@@ -266,11 +266,11 @@ trait SmartControl{
             return;
         }
 
-        if(empty($scene->uuid))
+        if(empty($scene->me))
         {
             return;
         }
-        $params = ['agt'=>self::getCacheAgt(),'uuid'=>$scene->uuid];
+        $params = ['agt'=>self::getCacheAgt(),'me'=>$scene->me];
         $result = self::simpleGuzzleRequest(self::smartRequestUrl().'do_scene','GET',$params);
         return self::returnVarifyJavaResultData($result);
     }

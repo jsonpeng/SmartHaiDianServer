@@ -32,7 +32,7 @@ class DevLfScene extends Model
         'region_id',
         'image',
         'region_name',
-        'uuid'
+        'me'
     ];
 
     /**
