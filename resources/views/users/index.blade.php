@@ -19,7 +19,7 @@
             </div>
         </div>
         <div class="text-center">
-        
+            {!! $users->links() !!}
         </div>
     </div>
 @endsection
