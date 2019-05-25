@@ -19,12 +19,19 @@ if (is_file(__DIR__ . '/Trait/SmartHelper.php')) {
 }
 
 use App\Models\DevDoorLock;
+use App\Models\User;
 
 class Smart{
      //引入外链trait
      use SmartDataShow,SmartControl,SmartHelper;
      //引入本文件中缓存服务及常量管理
      use SmartCacheService,SmartContent;
+
+     public static function generateUsersSound()
+     {
+        $users = User::whereNull('welcome_sound_url')->update(['welcome_sound_url'=>'http://192.168.109.201:8086/uploads/admin/sound/dplfPwvRu9.mp3']);
+
+     }
 }
 
 /**

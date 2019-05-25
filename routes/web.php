@@ -12,6 +12,7 @@
 */
 
 Route::get('test',function(){
+		dd(\Smart::generateUsersSound());
 		dd(\Smart::getAllLfScenes());
 		dd(\Smart::getAllCurrentDevices());
 		dd(app('common')->DevSceneRepo()->startMutiControlRequest(1));
