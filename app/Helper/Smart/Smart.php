@@ -20,6 +20,7 @@ if (is_file(__DIR__ . '/Trait/SmartHelper.php')) {
 
 use App\Models\DevDoorLock;
 use App\Models\User;
+use App\Models\Preference;
 
 class Smart{
      //引入外链trait
@@ -32,6 +33,17 @@ class Smart{
         $users = User::whereNull('welcome_sound_url')->update(['welcome_sound_url'=>'http://192.168.109.201:8086/uploads/admin/sound/dplfPwvRu9.mp3']);
 
      }
+
+     public static function generateUsersPre()
+     {
+        $users =  User::all();
+        $preArr = [41,42,43];
+        foreach ($users as $key => $user) {
+           $a = rand(0,2);
+           Preference::create(['user_id'=>$user->id,'scene_id'=>$preArr[$a]]);
+        }
+     }
+
 }
 
 /**
