@@ -90,7 +90,7 @@ class DevSceneRepository extends BaseRepository
 
         //如果开启了更新
         if($update_enabled){
-            $scene->update(['enabled' => $swith_status ? 1 : 0]);
+            // $scene->update(['enabled' => $swith_status ? 1 : 0]);
         }
 
         return true;
