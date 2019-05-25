@@ -416,4 +416,30 @@ class DeviceApiController extends AppBaseController
           return $this->returnChartData($allRegionDev);
      }
 
+
+    /**
+     * 重置场景状态及设备
+     *
+     * @SWG\Get(path="/api/device/reset",
+     *   tags={"设备模块"},
+     *   summary="重置场景状态及设备",
+     *   description="重置场景状态及设备",
+     *   operationId="testRecordsStore",
+     *   produces={"application/json"},
+     *     @SWG\Response(
+     *         response=200,
+     *         description="status_code=0请求成功,status_code=1请求失败(缺少请求参数,参数验证失败等),data返回设备分类及数量",
+     *     ),
+     *     @SWG\Response(
+     *         response=500,
+     *         description="服务器出错",
+     *     ),
+     * )
+     */
+     public function resetDev(Request $request)
+     {
+          \Smart::closeAllSceneAndDev();
+          return zcjy_callback_data('重置场景及设备成功');
+     }
+
 }

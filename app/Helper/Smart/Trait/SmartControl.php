@@ -29,8 +29,12 @@ trait SmartControl{
         }
 
         $lights = DevLight::orderBy('region_id','asc')
+        ->where('state',1)
+        ->where('is_on',1)
         ->select('me','idx','agt')
         ->get();
+
+        $commandDatas = collect([]);
 
         if(count($lights))
         {
@@ -40,10 +44,30 @@ trait SmartControl{
               $light['val'] = '0';
             }
 
-            $commandDatas = json_encode($lights);
-                // Log::info('开启场景命令:'.$commandDatas);
-            //发起请求
-            self::mutiControlRequest($commandDatas);
+            $commandDatas = $commandDatas->concat($lights);
+
+            //窗帘电机
+            $curtains = DevCurtain::orderBy('region_id','asc')
+            ->where('state',1)
+            ->select('me','idx','agt')
+            ->get();
+
+            if(count($curtains))
+            {
+                foreach ($curtains as $key => $curtain) 
+                {
+                  $curtain['type'] = '0xCE';
+                  $curtain['val'] = '0x80';
+                }
+                $commandDatas = $commandDatas->concat($curtains);
+            }
+        }
+
+        if(count($commandDatas))
+        {
+             $commandDatas = json_encode($commandDatas);
+             //发起请求
+             self::mutiControlRequest($commandDatas);
         }
 
     }

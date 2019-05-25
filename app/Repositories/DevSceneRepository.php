@@ -70,7 +70,7 @@ class DevSceneRepository extends BaseRepository
         if($swith_status)
         {
             //开启场景把 该区域的其他场景关闭
-            $this->updateSceneRegionEnableStatus($scene->region_id,$scene->id);
+            // $this->updateSceneRegionEnableStatus($scene->region_id,$scene->id);
 
             $switch = \Smart::getCacheSceneSwitch();
             if($switch === 1)

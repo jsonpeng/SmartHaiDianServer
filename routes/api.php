@@ -50,6 +50,9 @@ $api->version('v1', function ($api) {
 			//发起多个设备控制
 			$api->post('control_muti','DeviceApiController@controlMutiDevice');
 
+			//重置场景及设备
+			$api->get('reset','DeviceApiController@resetDev');
+
 			/**
 			 * chart图表
 			 */
