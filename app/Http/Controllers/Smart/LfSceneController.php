@@ -30,7 +30,15 @@ class LfSceneController extends AppBaseController
     public function index(Request $request)
     {
         $this->lfSceneRepository->pushCriteria(new RequestCriteria($request));
-        $lfScenes = \Smart::getAllLfScenes();
+
+        $agt = \Smart::getCacheAgt();
+
+        if($request->has('agt'))
+        {
+            $agt = $request->get('agt');
+        }
+
+        $lfScenes = \Smart::getAllLfScenes($agt);
 
         return view('lf_scenes.index')
             ->with('lfScenes', $lfScenes);
