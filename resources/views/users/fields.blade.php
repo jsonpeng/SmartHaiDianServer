@@ -88,5 +88,5 @@
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
     {!! Form::submit('保存', ['class' => 'btn btn-primary']) !!}
-    <a href="{!! route('users.index') !!}" class="btn btn-default">返回</a>
+    <a href="{!! session('redirectUrlUser') ? session('redirectUrlUser') : route('users.index') !!}" class="btn btn-default">返回</a>
 </div>
