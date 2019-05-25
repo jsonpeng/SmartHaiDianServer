@@ -92,12 +92,12 @@ trait SmartControl{
         if(count($scenes))
         {
          
-                $sceneIdArr = [];
+            $sceneIdArr = [];
 
-                foreach ($scenes as $key => $scene) 
-                {
-                    $sceneIdArr[] = $scene->id;
-                }
+            foreach ($scenes as $key => $scene) 
+            {
+                $sceneIdArr[] = $scene->scene_id;
+            }
 
             $switch = \Smart::getCacheSceneSwitch();
             if($switch === 1)
@@ -117,6 +117,7 @@ trait SmartControl{
             }
             else{
                 $scenes = DevScene::whereIn('id',$sceneIdArr)->get();
+                // \Log::info($sceneIdArr);
                 foreach ($scenes as $key => $scene) {
                     self::setLfScene($scene);
                 }

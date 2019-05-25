@@ -30,12 +30,30 @@ class UserController extends AppBaseController
     public function index(Request $request)
     {
         $this->userRepository->pushCriteria(new RequestCriteria($request));
-        $users = $this->userRepository
+
+        $input = $request->all();
+
+        session(['redirectUrlUser'=>$request->fullUrl()]);
+
+        $users = $this->userRepository->model()::where('id','>',0);
+
+        if(isset($input['uuid']))
+        {
+            $users = $users->where('uuid','like','%'.$input['uuid'].'%');
+        }
+
+        if(isset($input['name']))
+        {
+            $users = $users->where('name','like','%'.$input['name'].'%');
+        }
+
+        $users = $users
         ->orderBy('created_at','desc')
         ->paginate(10);
 
         return view('users.index')
-            ->with('users', $users);
+            ->with('users', $users)
+            ->with('input',$input);
     }
 
     /**
@@ -70,7 +88,7 @@ class UserController extends AppBaseController
 
         Flash::success('新用户创建成功.');
 
-        return redirect(route('users.index'));
+        return redirect(session('redirectUrlUser'));
     }
 
     /**
@@ -87,7 +105,7 @@ class UserController extends AppBaseController
         if (empty($user)) {
             Flash::error('User not found');
 
-            return redirect(route('users.index'));
+            return redirect(session('redirectUrlUser'));
         }
 
         return view('users.show')->with('user', $user);
@@ -107,7 +125,7 @@ class UserController extends AppBaseController
         if (empty($user)) {
             Flash::error('User not found');
 
-            return redirect(route('users.index'));
+            return redirect(session('redirectUrlUser'));
         }
 
         return view('users.edit')
@@ -132,7 +150,7 @@ class UserController extends AppBaseController
         if (empty($user)) {
             Flash::error('User not found');
 
-            return redirect(route('users.index'));
+            return redirect(session('redirectUrlUser'));
         }
         $input = $request->all();
 
@@ -161,7 +179,7 @@ class UserController extends AppBaseController
 
         Flash::success('更新成功.');
 
-        return redirect(route('users.index'));
+        return redirect(session('redirectUrlUser'));
     }
 
     /**
@@ -178,7 +196,7 @@ class UserController extends AppBaseController
         if (empty($user)) {
             Flash::error('User not found');
 
-            return redirect(route('users.index'));
+            return redirect(session('redirectUrlUser'));
         }
 
         //设置门锁临时用户
@@ -190,6 +208,6 @@ class UserController extends AppBaseController
 
         Flash::success('删除成功.');
 
-        return redirect(route('users.index'));
+        return redirect(session('redirectUrlUser'));
     }
 }
