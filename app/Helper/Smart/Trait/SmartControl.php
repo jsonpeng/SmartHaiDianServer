@@ -116,7 +116,7 @@ trait SmartControl{
 
             }
             else{
-                $scenes = DevScene::whereIn('id',$sceneIdArr)->get();
+                $scenes = DevLfScene::whereIn('id',$sceneIdArr)->get();
                 // \Log::info($sceneIdArr);
                 foreach ($scenes as $key => $scene) {
                     self::setLfScene($scene);
