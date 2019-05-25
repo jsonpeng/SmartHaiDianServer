@@ -3,7 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Preference;
-use App\Models\DevScene;
+use App\Models\DevLfScene;
 use InfyOm\Generator\Common\BaseRepository;
 
 /**
@@ -40,12 +40,13 @@ class PreferenceRepository extends BaseRepository
         {
             return '无';
         }
-        $scene = DevScene::find($preference);
+        $scene = DevLfScene::find($preference);
         if(empty($scene))
         {
             return '无';
         }
-        return $scene->name.'['.app("common")->RegionRepo()->getNameById($scene->region_id).']';
+        return $scene->name;
+        //'['.app("common")->RegionRepo()->getNameById($scene->region_id).']';
     }
 
     /**
