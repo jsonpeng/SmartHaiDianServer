@@ -45,7 +45,12 @@
 
 @section('content')
 	<h1 style="text-align: center;">{!! $post->name !!}</h1>
-	<div style="text-align: center;padding-top: 50px;">{!! $post->content !!}</div>
+	<div style="text-align: center;padding-top: 50px;
+width: 70%;
+    margin: 0 auto;
+    font-size: 18px;
+    line-height: 32px;
+    text-align: left;">{!! $post->content !!}</div>
 @endsection
 
 @section('js')
