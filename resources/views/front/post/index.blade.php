@@ -39,18 +39,24 @@
 	       		padding:0 15px;
 	    	}
 	    }
+	    .post-detail-jjh{
+	    	padding-top: 50px;
+			width: 70%;
+		    margin: 0 auto;
+		    font-size: 18px;
+		    line-height: 32px;
+		    text-align: left;
+	    }
+	    .post-detail-jjh img{
+	    	width: 100%;
+	    }
 	</style>
 @endsection
 
 
 @section('content')
 	<h1 style="text-align: center;">{!! $post->name !!}</h1>
-	<div style="text-align: center;padding-top: 50px;
-width: 70%;
-    margin: 0 auto;
-    font-size: 18px;
-    line-height: 32px;
-    text-align: left;">{!! $post->content !!}</div>
+	<div class="post-detail-jjh">{!! $post->content !!}</div>
 @endsection
 
 @section('js')
