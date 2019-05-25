@@ -20,54 +20,61 @@ trait SmartControl{
     public static function closeAllSceneAndDev()
     {
         $switch =self::getCacheSceneSwitch();
+        //默认自定义场景
         if($switch === 1)
         {
             DevScene::orderBy('id','asc')->update(['enabled'=>0]);
-        }
-        else{
-            DevLfScene::orderBy('id','asc')->update(['enabled'=>0]);
-        }
 
-        $lights = DevLight::orderBy('region_id','asc')
-        ->where('state',1)
-        ->where('is_on',1)
-        ->select('me','idx','agt')
-        ->get();
-
-        $commandDatas = collect([]);
-
-        if(count($lights))
-        {
-            foreach ($lights as $key => $light) 
-            {
-              $light['type'] = '0x80';
-              $light['val'] = '0';
-            }
-
-            $commandDatas = $commandDatas->concat($lights);
-
-            //窗帘电机
-            $curtains = DevCurtain::orderBy('region_id','asc')
+            $lights = DevLight::orderBy('region_id','asc')
             ->where('state',1)
+            ->where('is_on',1)
             ->select('me','idx','agt')
             ->get();
 
-            if(count($curtains))
-            {
-                foreach ($curtains as $key => $curtain) 
-                {
-                  $curtain['type'] = '0xCE';
-                  $curtain['val'] = '0x80';
-                }
-                $commandDatas = $commandDatas->concat($curtains);
-            }
-        }
+            $commandDatas = collect([]);
 
-        if(count($commandDatas))
-        {
-             $commandDatas = json_encode($commandDatas);
-             //发起请求
-             self::mutiControlRequest($commandDatas);
+            if(count($lights))
+            {
+                foreach ($lights as $key => $light) 
+                {
+                  $light['type'] = '0x80';
+                  $light['val'] = '0';
+                }
+
+                $commandDatas = $commandDatas->concat($lights);
+
+                //窗帘电机
+                $curtains = DevCurtain::orderBy('region_id','asc')
+                ->where('state',1)
+                ->select('me','idx','agt')
+                ->get();
+
+                if(count($curtains))
+                {
+                    foreach ($curtains as $key => $curtain) 
+                    {
+                      $curtain['type'] = '0xCE';
+                      $curtain['val'] = '0x80';
+                    }
+                    $commandDatas = $commandDatas->concat($curtains);
+                }
+            }
+
+            if(count($commandDatas))
+            {
+                 $commandDatas = json_encode($commandDatas);
+                 //发起请求
+                 self::mutiControlRequest($commandDatas);
+            }
+
+        }
+        else{
+            DevLfScene::orderBy('id','asc')->update(['enabled'=>0]);
+            $scene = DevLfScene::where('name','全关')->first();
+            if(!empty($scene))
+            {
+                self::setLfScene($scene);
+            }
         }
 
     }
@@ -377,6 +384,34 @@ trait SmartControl{
             }
         }
         return $allGatewaies;
+    }
+
+
+    /**
+     * 获取所有的lifesmart场景列表
+     * @return [type] [description]
+     */
+    public static function getAllLfScenes($agt = null)
+    {
+        if(empty($agt))
+        {
+            $agt = self::getCacheAgt();
+        }
+        $params = ['agt'=>$agt];
+        $result = self::simpleGuzzleRequest(self::smartRequestUrl().'get_scenes','GET',$params);
+        $result = json_decode($result,1);
+        $allscenes = [];
+        if(isset($result['code']) && (int)$result['code'] === 0)
+        {
+            $scenes = $result['data'];
+            //只取stat是1 并且 agt是当前DB存的
+            foreach ($scenes as $key => $scene) 
+            {
+              
+                $allscenes[] = $scene;
+            }
+        }
+        return $allscenes;
     }
 
     /**

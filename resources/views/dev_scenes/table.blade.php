@@ -2,7 +2,7 @@
     <thead>
         <tr>
         <th>场景名称</th>
-        <th>场景图片</th>
+        <!-- <th>场景图片</th> -->
         <th class="hidden-xs">场景描述</th>
         <th>是否开启场景</th>
         <th>应用区域</th>
@@ -13,14 +13,14 @@
     @foreach($devScenes as $devScene)
         <tr>
             <td>{!! $devScene->name !!}</td>
-            <td><img src="{!! $devScene->image !!}" style="max-width: 100px;height: auto;" /></td>
+            <!-- <td><img src="{!! $devScene->image !!}" style="max-width: 100px;height: auto;" /></td> -->
             <td class="hidden-xs">{!! $devScene->description !!}</td>
             <td>    {!! Form::model($devScene, ['route' => ['devScenes.update', $devScene->id], 'method' => 'patch']) !!} 
                 <input type="hidden" name="name" value="{!! $devScene->name !!}"> 
                 <input type="hidden" name="enabled" value="{!! $devScene->enabled  ? '0' : '1' !!}">
                 {!! $devScene->EnabledStatus !!} 
             {!! Form::close() !!}</td>
-            <td>{!! app("common")->RegionRepo()->getNameById($devScene->region_id) !!}</td>
+            <td>{!! $devScene->region_id ? app("common")->RegionRepo()->getNameById($devScene->region_id) : '通用' !!}</td>
             <td>
                 {!! Form::open(['route' => ['devScenes.destroy', $devScene->id], 'method' => 'delete']) !!}
                 <div class='btn-group'>

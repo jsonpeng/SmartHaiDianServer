@@ -37,11 +37,21 @@
 <div class="form-group col-sm-12">
     {!! Form::label('region_id', '应用区域(一个区域只能同时开启一个场景):') !!}
     <select name="region_id" class="form-control">
+            <option value="0" @if(isset($devScene) && $devScene->region_id == 0) selected="selected" @endif>通用</option>
         @foreach($Regions as $item)
             <option value="{!! $item->id !!}" @if(isset($devScene) && $devScene->region_id == $item->id) selected="selected" @endif>{!! $item->des !!}</option>
         @endforeach
     </select>
 </div>
+
+<?php   $switch = \Smart::getCacheSceneSwitch(); ?>
+
+@if($switch === 2)
+    <div class="form-group col-sm-12">
+        {!! Form::label('me', 'lifesmart场景唯一编号:') !!}
+        {!! Form::text('me', null, ['class' => 'form-control']) !!}
+    </div>
+@endif
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">

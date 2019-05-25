@@ -155,7 +155,7 @@
     <a href="{!! route('users.index') !!}"><i class="fa fa-edit"></i><span>门锁用户及偏好管理</span></a>
 </li> -->
 
-<?php $lianDonActive = Request::is('smart/devScenes*') || Request::is('smart/devCommands*');?>
+<?php $lianDonActive = Request::is('smart/lfScenes*') || Request::is('smart/devScenes*') || Request::is('smart/devCommands*');?>
 
 <li class="treeview @if($lianDonActive) active @endif">
     <a href="#">
@@ -164,6 +164,12 @@
     <i class="fa fa-angle-left pull-right"></i>
     </a>
     <ul class="treeview-menu" @if($lianDonActive) style="display: block;" @else style="display: none;" @endif >
+
+        <li class="{{ Request::is('smart/lfScenes*') ? 'active' : '' }}">
+            <a href="{!! route('lfScenes.index') !!}"><i class="fa fa-edit"></i><span>Lifesmart场景管理</span></a>
+        </li>
+
+
         <li class="{{ Request::is('smart/devScenes*') ? 'active' : '' }}">
             <a href="{!! route('devScenes.index') !!}"><i class="fa fa-edit"></i><span>场景管理</span></a>
         </li>

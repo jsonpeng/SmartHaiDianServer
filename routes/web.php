@@ -12,7 +12,7 @@
 */
 
 Route::get('test',function(){
-		dd(\Smart::getAllGatewaies());
+		dd(\Smart::getAllLfScenes());
 		dd(\Smart::getAllCurrentDevices());
 		dd(app('common')->DevSceneRepo()->startMutiControlRequest(1));
 		dd(curl_post("https://api.ilifesmart.com/app/auth.RegisterUser",[]));
@@ -105,8 +105,11 @@ Route::group(['middleware' => ['web', 'auth.admin'],'prefix'=>'smart','namespace
 	Route::resource('posts', 'PostController');
 	//设备模型管理
 	Route::resource('devModels', 'DevModelController');
-
+	//lifesmart 场景管理
+	Route::resource('lfScenes', 'LfSceneController');
 });
+
+
 
 
 
