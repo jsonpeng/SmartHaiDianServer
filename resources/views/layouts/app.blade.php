@@ -22,7 +22,8 @@
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
     <style type="text/css">
     .skin-blue .main-header .logo,.skin-blue .main-header .navbar , .btn-primary , .pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover , .skin-blue .main-header .logo , .skin-blue .main-header .navbar .sidebar-toggle:hover{
-        background-color: #019875 !important;
+        background-color: black !important;
+        /*background-color: #019875 !important;*/
         border-color: white;
     }
 
