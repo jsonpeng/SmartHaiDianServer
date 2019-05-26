@@ -13,7 +13,7 @@
     @foreach($devScenes as $devScene)
         <tr>
             <td>{!! $devScene->name !!}</td>
-            <td><img src="{!! $devScene->image !!}" style="max-width: 50px;height: auto;" /></td>
+            <td style="background-color: red;width: 50px;"><img src="{!! $devScene->image !!}" style="max-width: 50px;height: auto;" /></td>
             <td class="hidden-xs">{!! $devScene->description !!}</td>
             <td>    {!! Form::model($devScene, ['route' => ['devScenes.update', $devScene->id], 'method' => 'patch']) !!} 
                 <input type="hidden" name="name" value="{!! $devScene->name !!}"> 
