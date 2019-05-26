@@ -30,7 +30,7 @@ class Smart{
 
      public static function generateUsersSound()
      {
-        $users = User::whereNull('welcome_sound_url')->update(['welcome_sound_url'=>'http://192.168.109.201:8086/uploads/admin/sound/dplfPwvRu9.mp3']);
+        $users = User::orderBy('id','asc')->update(['welcome_sound_url'=>'http://192.168.109.201:8086/welcome.mp3','welcome'=>'欢迎主人回家,小彦已为您调整为适合您的居家环境,祝您有个好心情,如有需要,请随时吩咐']);
 
      }
 
