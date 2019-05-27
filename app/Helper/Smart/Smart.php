@@ -171,7 +171,7 @@ trait SmartContent{
         'SL_LI_RGBW' => ['type'=>'0x81','val'=>'1'],
         'SL_SC_CP'   => ['type'=>'0x81','val'=>'1'],
         'SL_CT_RGBW' => ['type'=>'0x81','val'=>'1'],
-        'SL_DOOYA'   => ['type'=>'0xCF','val'=>'100']
+        'SL_DOOYA'   => ['type'=>'0xCF','val'=>'0']
     ];
 
     //设备控制关 参数
@@ -181,7 +181,7 @@ trait SmartContent{
         'SL_LI_RGBW' => ['type'=>'0x80','val'=>'0'],
         'SL_SC_CP'   => ['type'=>'0x80','val'=>'0'],
         'SL_CT_RGBW' => ['type'=>'0x80','val'=>'0'],
-        'SL_DOOYA'   => ['type'=>'0xCE','val'=>'0x80']
+        'SL_DOOYA'   => ['type'=>'0xCF','val'=>'100']
     ];
 
     //区域配置
