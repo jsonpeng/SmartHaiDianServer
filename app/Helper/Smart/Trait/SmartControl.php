@@ -197,6 +197,18 @@ trait SmartControl{
     }
 
     /**
+     * 删除新设备
+     * @param [type] $request [description]
+     */
+    public static function delDeviceRequest($me = null)
+    {
+        $input = ['agt'=>self::getCacheAgt(),'me'=>$me];
+        $result = self::simpleGuzzleRequest(self::smartRequestUrl().'del_device','GET',$input);
+        return self::returnVarifyJavaResultData($result);
+    }
+
+
+    /**
      * 单个设备控制请求
      * @param [type] $request [description]
      */

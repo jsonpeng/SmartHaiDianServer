@@ -47,9 +47,11 @@ $api->version('v1', function ($api) {
 			$api->get('light_control','DeviceApiController@controlLight');
 			//发起设备添加
 			$api->get('add','DeviceApiController@addDevice');
+			//发起设备删除
+			$api->get('del','DeviceApiController@delDevice');
+			
 			//发起多个设备控制
 			$api->post('control_muti','DeviceApiController@controlMutiDevice');
-
 			//重置场景及设备
 			$api->get('reset','DeviceApiController@resetDev');
 

@@ -137,7 +137,7 @@ class DeviceApiController extends AppBaseController
 		return zcjy_callback_data(\Smart::getAllDevicesAndByRegionName($region_name));
 	}
 
-	/**
+    /**
      * 发起单个设备添加
      *
      * @SWG\Get(path="/api/device/add",
@@ -161,8 +161,39 @@ class DeviceApiController extends AppBaseController
 		return \Smart::addDeviceRequest();
 	}
 
+    /**
+     * 发起单个设备删除
+     *
+     * @SWG\Get(path="/api/device/del",
+     *   tags={"设备模块"},
+     *   summary="发起单个设备删除",
+     *   description="发起单个设备删除",
+     *   operationId="testRecordsStore",
+     *   produces={"application/json"},
+     *   @SWG\Parameter(
+     *     in="query",
+     *     name="me",
+     *     type="string",
+     *     description="设备唯一id",
+     *     required=true,
+     *   ),
+     *     @SWG\Response(
+     *         response=200,
+     *         description="status_code=0请求成功,status_code=1请求失败(缺少请求参数,参数验证失败等),data返回操作结果",
+     *     ),
+     *     @SWG\Response(
+     *         response=500,
+     *         description="服务器出错",
+     *     ),
+     * )
+     */
+     public function delDevice(Request $request)
+     {
+          return \Smart::delDeviceRequest($request->get('me'));
+     }
 
-	/**
+
+    /**
      * 发起单个设备控制
      *
      * @SWG\Get(path="/api/device/control",

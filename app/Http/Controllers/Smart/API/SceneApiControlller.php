@@ -49,6 +49,7 @@ class SceneApiControlller extends AppBaseController
      *     cf : 厨房,
      *     sf : 书房,
      *     dm : 大门,
+     *     sp : 沙盘
      *     如传 kt 取出客厅的所有设备
      *     ",
      *     required=true,
