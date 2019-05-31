@@ -43,7 +43,9 @@ class DevElectricityMeterController extends AppBaseController
      */
     public function create()
     {
-        return view('dev_electricity_meters.create');
+        return view('dev_electricity_meters.create')
+        ->with('Regions',app('common')->RegionRepo()->all())
+        ->with('model_required',modelRequiredParam($this->devElectricityMeterRepository));
     }
 
     /**
@@ -55,11 +57,11 @@ class DevElectricityMeterController extends AppBaseController
      */
     public function store(CreateDevElectricityMeterRequest $request)
     {
-        $input = $request->all();
+        $input = app('common')->RegionRepo()->attachReginNameByInputId($request->all());
 
         $devElectricityMeter = $this->devElectricityMeterRepository->create($input);
 
-        Flash::success('Dev Electricity Meter saved successfully.');
+        Flash::success('添加成功.');
 
         return redirect(route('devElectricityMeters.index'));
     }
@@ -101,7 +103,10 @@ class DevElectricityMeterController extends AppBaseController
             return redirect(route('devElectricityMeters.index'));
         }
 
-        return view('dev_electricity_meters.edit')->with('devElectricityMeter', $devElectricityMeter);
+        return view('dev_electricity_meters.edit')
+        ->with('devElectricityMeter', $devElectricityMeter)
+        ->with('Regions',app('common')->RegionRepo()->all())
+        ->with('model_required',modelRequiredParam($this->devElectricityMeterRepository));
     }
 
     /**
@@ -122,9 +127,11 @@ class DevElectricityMeterController extends AppBaseController
             return redirect(route('devElectricityMeters.index'));
         }
 
-        $devElectricityMeter = $this->devElectricityMeterRepository->update($request->all(), $id);
+        $input = app('common')->RegionRepo()->attachReginNameByInputId($request->all());
 
-        Flash::success('Dev Electricity Meter updated successfully.');
+        $devElectricityMeter = $this->devElectricityMeterRepository->update($input, $id);
+
+        Flash::success('更新成功.');
 
         return redirect(route('devElectricityMeters.index'));
     }
@@ -148,7 +155,7 @@ class DevElectricityMeterController extends AppBaseController
 
         $this->devElectricityMeterRepository->delete($id);
 
-        Flash::success('Dev Electricity Meter deleted successfully.');
+        Flash::success('删除成功.');
 
         return redirect(route('devElectricityMeters.index'));
     }

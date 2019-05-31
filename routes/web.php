@@ -108,6 +108,8 @@ Route::group(['middleware' => ['web', 'auth.admin'],'prefix'=>'smart','namespace
 	Route::resource('devModels', 'DevModelController');
 	//lifesmart 场景管理
 	Route::resource('lfScenes', 'LfSceneController');
+	//电表管理
+	Route::resource('devElectricityMeters', 'DevElectricityMeterController');
 });
 
 

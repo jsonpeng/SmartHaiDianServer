@@ -69,7 +69,7 @@
 </li>
  -->
 
-<?php $deviceAllActive = Request::is('smart/gateways*') || Request::is('smart/gatewayDevs*') || Request::is('smart/devLights*') || Request::is('smart/devSensors*') || Request::is('smart/devCurtains*') || Request::is('smart/devModels*') || Request::is('smart/devDoorLocks*');?>
+<?php $deviceAllActive = Request::is('smart/gateways*') || Request::is('smart/gatewayDevs*') || Request::is('smart/devLights*') || Request::is('smart/devSensors*') || Request::is('smart/devCurtains*') || Request::is('smart/devElectricityMeters*') || Request::is('smart/devModels*') || Request::is('smart/devDoorLocks*');?>
 
 <li class="treeview @if($deviceAllActive) active @endif">
     <a href="#">
@@ -88,6 +88,10 @@
 
         <li class="{{ Request::is('smart/devModels*') ? 'active' : '' }}">
             <a href="{!! route('devModels.index') !!}"><i class="fa fa-edit"></i><span>设备模型分类</span></a>
+        </li>
+
+         <li class="{{ Request::is('smart/devElectricityMeters*') ? 'active' : '' }}">
+            <a href="{!! route('devElectricityMeters.index') !!}"><i class="fa fa-edit"></i><span>电表管理</span></a>
         </li>
 
         <li class="{{ Request::is('smart/devLights*') ? 'active' : '' }}">

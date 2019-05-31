@@ -3,7 +3,7 @@
 @section('content')
     <section class="content-header">
         <h1>
-            Dev Electricity Meter
+            添加
         </h1>
     </section>
     <div class="content">

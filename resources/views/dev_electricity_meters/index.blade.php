@@ -2,9 +2,9 @@
 
 @section('content')
     <section class="content-header">
-        <h1 class="pull-left">Dev Electricity Meters</h1>
+        <h1 class="pull-left">电表管理</h1>
         <h1 class="pull-right">
-           <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{!! route('devElectricityMeters.create') !!}">Add New</a>
+           <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{!! route('devElectricityMeters.create') !!}">添加</a>
         </h1>
     </section>
     <div class="content">
