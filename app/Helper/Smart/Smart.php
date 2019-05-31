@@ -181,7 +181,7 @@ trait SmartContent{
         'SL_LI_RGBW' => ['type'=>'0x80','val'=>'0'],
         'SL_SC_CP'   => ['type'=>'0x80','val'=>'0'],
         'SL_CT_RGBW' => ['type'=>'0x80','val'=>'0'],
-        'SL_DOOYA'   => ['type'=>'0xCE','val'=>'0x80']
+        'SL_DOOYA'   => ['type'=>'0xCF','val'=>'0']
     ];
 
     //区域配置
