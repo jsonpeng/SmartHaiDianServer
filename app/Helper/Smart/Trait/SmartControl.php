@@ -429,6 +429,7 @@ trait SmartControl{
             //只取stat是1 并且 agt是当前DB存的
             foreach ($scenes as $key => $scene) 
             {
+                unset($scene['cls']);
                 $scene['description'] = $scene['desc'];
                 $scene['image'] = '';//门禁感应器
                 if(stripos($scene['name'], '门禁感应器')  === false && stripos($scene['name'], '随心开关')  === false && stripos($scene['name'],'控') === false && $scene['name'] != '电视机')
