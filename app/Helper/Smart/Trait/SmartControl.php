@@ -429,7 +429,8 @@ trait SmartControl{
             //只取stat是1 并且 agt是当前DB存的
             foreach ($scenes as $key => $scene) 
             {
-              
+                $scene['description'] = $scene['desc'];
+                $scene['image'] = '';
                 $allscenes[] = $scene;
             }
         }
