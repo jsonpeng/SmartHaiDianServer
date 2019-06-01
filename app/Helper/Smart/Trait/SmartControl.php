@@ -430,8 +430,11 @@ trait SmartControl{
             foreach ($scenes as $key => $scene) 
             {
                 $scene['description'] = $scene['desc'];
-                $scene['image'] = '';
-                $allscenes[] = $scene;
+                $scene['image'] = '';//门禁感应器
+                if(stripos($scene['name'], '门禁感应器')  === false && stripos($scene['name'], '随心开关')  === false && stripos($scene['name'],'控') === false && $scene['name'] != '电视机')
+                {
+                    $allscenes[] = $scene;
+                }
             }
         }
         return $allscenes;
