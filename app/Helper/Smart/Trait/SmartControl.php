@@ -166,22 +166,31 @@ trait SmartControl{
      */
     public static function swithScene($scene_id,$switch)
     {
-        $scene = app('common')->DevSceneRepo()->findWithoutFail($scene_id);
-
-        if(empty($scene))
+        if(is_numeric($scene_id))
         {
-            return zcjy_callback_data('没有该场景',1);
+
+            $scene = app('common')->DevSceneRepo()->findWithoutFail($scene_id);
+
+            if(empty($scene))
+            {
+                return zcjy_callback_data('没有该场景',1);
+            }
+
+            $action = 0;
+
+            if($switch && (int)$switch === 1)
+            {
+                $action = 1;
+
+            }
+            //设置场景
+            app('common')->DevSceneRepo()->setSceneSwitch($action,$scene,true);
+
         }
-
-        $action = 0;
-
-        if($switch && (int)$switch === 1)
-        {
-            $action = 1;
-
+        else{
+            $params = ['agt'=>'A3QAAABGAD4DRzcyMjc1NQ','me'=>$scene_id];
+            $result = self::simpleGuzzleRequest(self::smartRequestUrl().'do_scene','GET',$params);
         }
-        //设置场景
-        app('common')->DevSceneRepo()->setSceneSwitch($action,$scene,true);
         return zcjy_callback_data('操作成功');
     }
 
