@@ -59,16 +59,16 @@ trait SmartDataShow{
             if($region_name == 'sp')
             {
                 $scenes = self::getAllLfScenes('A3QAAABGAD4DRzcyMjc1NQ');
-                if(count($scenes))
-                {
-                    foreach ($scenes as $key => $scene) {
-                        $scene['description'] = $scene['desc'];
-                        $scene['image'] = '';
-                    }
-                }
             }
             else{
                 $scenes = DevLfScene::where('region_name',$region_name)->get();
+                if(count($scenes)){
+                    foreach ($scenes as $key => $scene) {
+                       $id = $scene['id'];
+                       unset($scene['id']);
+                       $scene['id'] = (string)$id;
+                    }
+                }
             }
         }
         return $scenes;

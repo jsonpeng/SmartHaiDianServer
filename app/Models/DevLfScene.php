@@ -21,7 +21,7 @@ class DevLfScene extends Model
 
     public $table = 'dev_lf_scene';
     
-
+    public $incrementing=false;
     // protected $dates = ['deleted_at'];
 
 
