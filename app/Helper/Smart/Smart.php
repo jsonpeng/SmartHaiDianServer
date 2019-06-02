@@ -156,7 +156,8 @@ trait SmartContent{
         'SL_SC_CQ'   => '环境传感器',
         'SL_CT_RGBW' => '灯带',
         'SL_DOOYA'   => '窗帘电机',
-        'SL_LK_LS'   => '可视门锁'
+        'SL_LK_LS'   => '可视门锁',
+        'SL_SC_BE'   => '多功能环境感应器'
     ];
 
     //设备控制idx类型
