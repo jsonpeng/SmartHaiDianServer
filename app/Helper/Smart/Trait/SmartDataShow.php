@@ -172,6 +172,35 @@ trait SmartDataShow{
             return $allDevices;
        }
 
+       //doorModel
+        if(in_array($model, self::$doorModel))
+       {
+           $dooyas = DevDoorLock::orderBy('created_at','desc')->get();
+
+            if(count($dooyas))
+            {
+                foreach ($dooyas as $key => $dooya) 
+                {
+                   $allDevices[] = 
+                   [
+                        'name'       => $dooya->name,
+                        'model'      => $dooya->model,
+                        'model_name' => self::getModelName($dooya->model),
+                        'class'      => '智能可视门锁设备',
+                        'image'      => $dooya->image,
+                        'icon'       => $dooya->icon,
+                        'me'         => $dooya->me,
+                        'support_switch' => 0,
+                        'is_on'     => 0,
+                        'support_idx'=> 'P3',
+                        'region_name' => self::getRegionDescByName($dooya->region_name),
+                        'state'      => self::getDeviceState($dooya),
+                        'created_at' => $dooya->created_at
+                   ];
+                }
+            }
+            return $allDevices;
+       }
        return $allDevices;
     }
 

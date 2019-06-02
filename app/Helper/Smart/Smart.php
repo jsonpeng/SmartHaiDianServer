@@ -116,6 +116,11 @@ trait SmartContent{
         'SL_DOOYA'
     ];
 
+    //可视门锁
+    public static $doorModel = [
+        'SL_LK_LS'
+    ];
+
     /**
      * 模型类型
      * @var [type]
